@@ -8,45 +8,133 @@
       content="Portfolio de Dylan Couto de Oliveira — Développeur Web & Mobile, Expert Swift & Angular"
     />
     <meta name="theme-color" content="#faf9f7" />
+    <script>
+      (() => {
+        try {
+          const theme = localStorage.getItem("portfolio-theme");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.dataset.activeTheme = theme;
+          }
+        } catch {}
+      })();
+    </script>
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./style.css" />
     <title>Dylan COUTO DE OLIVEIRA — Développeur Web & Mobile</title>
   </head>
   <body>
     <div class="portfolio-bg">
-      <nav class="main-nav">
-        <button class="nav-btn active">Home</button>
-        <button class="nav-btn">Projets</button>
-        <button class="nav-btn">À propos</button>
-        <button class="nav-btn">Contact</button>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <div class="main-nav-inner">
+          <div class="main-nav-links">
+            <a href="#home" class="nav-btn active" data-section-link="home">Home</a>
+            <a href="#projects" class="nav-btn" data-section-link="projects"
+              >Projets</a
+            >
+            <a href="#about" class="nav-btn" data-section-link="about"
+              >À propos</a
+            >
+            <a href="#contact" class="nav-btn" data-section-link="contact"
+              >Contact</a
+            >
+          </div>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Activer le mode sombre"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"
+              >☀</span
+            >
+            <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"
+              >☾</span
+            >
+          </button>
+        </div>
       </nav>
-      <section class="hero">
+      <section class="hero" id="home">
         <!-- Interactive dots container -->
         <div id="dots-container" class="dots-container"></div>
 
-        <h1>
-          Je suis <span class="highlight">Dylan COUTO DE OLIVEIRA</span><br />
-          Développeur Web & Mobiles<br />
-          Expert <span class="marker-highlight">Swift</span> &
-          <span class="marker-highlight">Angular</span>
-        </h1>
-        <p class="hero-subtitle">
-          Création d'expériences digitales modernes, performantes et élégantes.
-        </p>
-        <div class="cta-row">
-          <a href="#contact" class="cta primary">Discuter</a>
+        <div class="hero-content">
+          <p class="hero-kicker">Portfolio</p>
+          <h1>
+            Je suis <span class="highlight">Dylan COUTO DE OLIVEIRA</span><br />
+            Développeur Web & Mobiles<br />
+            Expert <span class="marker-highlight">Swift</span> &
+            <span class="marker-highlight">Angular</span>
+          </h1>
+          <p class="hero-subtitle">
+            Création d'expériences digitales modernes, performantes et
+            élégantes, avec une approche simple, exigeante et premium.
+          </p>
+          <div class="cta-row">
+            <a href="#projects" class="cta">Voir mes projets</a>
+            <a href="#contact" class="cta primary">Discuter</a>
+          </div>
         </div>
       </section>
-      <section class="projects">
-        <h2>
-          Quelques projets<br />
-          réalisés ou collaborés
-        </h2>
-        <div class="projects-list">
-          <div id="projects-list" class="projects-list"></div>
+      <section class="projects" id="projects">
+        <div class="projects-shell">
+          <div class="section-divider"></div>
+          <div class="projects-header">
+            <div class="projects-copy">
+              <p class="projects-kicker">Sélection</p>
+              <h2>
+                Quelques projets<br />
+                réalisés ou collaborés
+              </h2>
+              <p class="projects-intro">
+                Une sélection pensée comme une vitrine: lisible, tactile et
+                fluide, avec une présentation premium centrée sur chaque
+                produit.
+              </p>
+            </div>
+            <div class="projects-controls" aria-label="Navigation des projets">
+              <button
+                id="projects-prev"
+                class="projects-nav"
+                type="button"
+                aria-label="Projet précédent"
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <button
+                id="projects-next"
+                class="projects-nav"
+                type="button"
+                aria-label="Projet suivant"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+          <div
+            id="projects-carousel"
+            class="projects-carousel"
+            aria-label="Carrousel de projets"
+            aria-roledescription="carousel"
+          >
+            <div
+              id="projects-viewport"
+              class="projects-viewport"
+              tabindex="0"
+              aria-label="Liste des projets"
+            >
+              <div id="projects-track" class="projects-track"></div>
+            </div>
+            <div
+              id="projects-pagination"
+              class="projects-pagination"
+              aria-label="Pagination des projets"
+            ></div>
+          </div>
         </div>
       </section>
-      <section class="about">
+      <section class="about" id="about">
         <div class="about-content">
           <div class="section-divider"></div>
           <h2>À propos</h2>
