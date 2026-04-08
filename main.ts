@@ -331,6 +331,78 @@ function initSectionNavigation() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function initMobileNav() {
+  const nav = document.querySelector(".main-nav");
+  const burger = document.getElementById("nav-burger");
+  const panel = document.getElementById("mobile-nav-panel");
+
+  if (
+    !(nav instanceof HTMLElement) ||
+    !(burger instanceof HTMLButtonElement) ||
+    !(panel instanceof HTMLElement)
+  ) {
+    return;
+  }
+
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const menuLinks = Array.from(
+    panel.querySelectorAll<HTMLAnchorElement>(".mobile-nav-btn")
+  );
+
+  const closeMenu = () => {
+    nav.dataset.menuOpen = "false";
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Ouvrir le menu");
+    panel.hidden = true;
+  };
+
+  const openMenu = () => {
+    nav.dataset.menuOpen = "true";
+    burger.setAttribute("aria-expanded", "true");
+    burger.setAttribute("aria-label", "Fermer le menu");
+    panel.hidden = false;
+  };
+
+  const toggleMenu = () => {
+    const isOpen = nav.dataset.menuOpen === "true";
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  closeMenu();
+
+  burger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (panel.hidden) return;
+    if (event.target instanceof Node && nav.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeMenu();
+  });
+
+  mobileQuery.addEventListener("change", (event) => {
+    if (!event.matches) {
+      closeMenu();
+    }
+  });
+}
+
 export function renderProjects(rootId = "projects-carousel") {
   const root = document.getElementById(rootId);
   const viewport = document.getElementById("projects-viewport");
@@ -540,11 +612,13 @@ if (typeof window !== "undefined") {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
       initThemeToggle();
+      initMobileNav();
       initSectionNavigation();
       renderProjects();
     });
   } else {
     initThemeToggle();
+    initMobileNav();
     initSectionNavigation();
     renderProjects();
   }

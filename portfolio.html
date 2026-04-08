@@ -27,34 +27,87 @@
     <div class="portfolio-bg">
       <nav class="main-nav" aria-label="Navigation principale">
         <div class="main-nav-inner">
-          <div class="main-nav-links">
-            <a href="#home" class="nav-btn active" data-section-link="home"
+          <div class="main-nav-links-wrap">
+            <button
+              id="nav-burger"
+              class="nav-burger"
+              type="button"
+              aria-label="Ouvrir le menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav-panel"
+            >
+              <span class="nav-burger-line"></span>
+              <span class="nav-burger-line"></span>
+              <span class="nav-burger-line"></span>
+            </button>
+            <div class="main-nav-links">
+              <a href="#home" class="nav-btn active" data-section-link="home"
+                >Home</a
+              >
+              <a href="#projects" class="nav-btn" data-section-link="projects"
+                >Projets</a
+              >
+              <a href="#about" class="nav-btn" data-section-link="about"
+                >À propos</a
+              >
+              <a href="#contact" class="nav-btn" data-section-link="contact"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="main-nav-actions">
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Activer le mode sombre"
+              aria-pressed="false"
+            >
+              <span
+                class="theme-toggle-icon theme-toggle-sun"
+                aria-hidden="true"
+                >☀</span
+              >
+              <span
+                class="theme-toggle-icon theme-toggle-moon"
+                aria-hidden="true"
+                >☾</span
+              >
+            </button>
+          </div>
+        </div>
+        <div
+          id="mobile-nav-panel"
+          class="mobile-nav-panel"
+          aria-label="Menu mobile"
+          hidden
+        >
+          <div class="mobile-nav-links">
+            <a
+              href="#home"
+              class="nav-btn mobile-nav-btn active"
+              data-section-link="home"
               >Home</a
             >
-            <a href="#projects" class="nav-btn" data-section-link="projects"
+            <a
+              href="#projects"
+              class="nav-btn mobile-nav-btn"
+              data-section-link="projects"
               >Projets</a
             >
-            <a href="#about" class="nav-btn" data-section-link="about"
+            <a
+              href="#about"
+              class="nav-btn mobile-nav-btn"
+              data-section-link="about"
               >À propos</a
             >
-            <a href="#contact" class="nav-btn" data-section-link="contact"
+            <a
+              href="#contact"
+              class="nav-btn mobile-nav-btn"
+              data-section-link="contact"
               >Contact</a
             >
           </div>
-          <button
-            id="theme-toggle"
-            class="theme-toggle"
-            type="button"
-            aria-label="Activer le mode sombre"
-            aria-pressed="false"
-          >
-            <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"
-              >☀</span
-            >
-            <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"
-              >☾</span
-            >
-          </button>
         </div>
       </nav>
       <section class="hero" id="home">
@@ -89,11 +142,6 @@
                 Quelques projets<br />
                 réalisés ou collaborés
               </h2>
-              <p class="projects-intro">
-                Une sélection pensée comme une vitrine: lisible, tactile et
-                fluide, avec une présentation premium centrée sur chaque
-                produit.
-              </p>
             </div>
             <div class="projects-controls" aria-label="Navigation des projets">
               <button
@@ -178,28 +226,52 @@
             <a
               href="mailto:dylan.coutodeoliveira@protonmail.com"
               class="contact-btn"
-              >📧 Email</a
+              ><span class="contact-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25zm1.8-.25L12 11.55l7.2-5.05zM19.5 8.2l-6.92 4.85a1 1 0 0 1-1.16 0L4.5 8.2v9.05c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25z"
+                  />
+                </svg> </span
+              ><span class="contact-btn-label">Email</span></a
             >
             <a
               href="https://www.linkedin.com/in/dylan-cdo/"
               target="_blank"
               rel="noopener noreferrer"
               class="contact-btn"
-              >💼 LinkedIn</a
+              ><span class="contact-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1M5.6 10h2.68v8.4H5.6zm4.35 0h2.57v1.15h.04c.36-.68 1.23-1.4 2.53-1.4 2.7 0 3.2 1.77 3.2 4.08v4.57H15.6v-4.05c0-.97-.02-2.2-1.34-2.2-1.35 0-1.56 1.05-1.56 2.14v4.11H9.95z"
+                  />
+                </svg> </span
+              ><span class="contact-btn-label">LinkedIn</span></a
             >
             <a
               href="https://github.com/Spocsk"
               target="_blank"
               rel="noopener noreferrer"
               class="contact-btn"
-              >🐙 GitHub</a
+              ><span class="contact-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M12 2C6.48 2 2 6.6 2 12.27c0 4.54 2.87 8.39 6.84 9.75.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.21-3.37-1.21-.45-1.2-1.11-1.52-1.11-1.52-.9-.63.07-.62.07-.62 1 .08 1.52 1.05 1.52 1.05.88 1.56 2.32 1.11 2.89.85.09-.66.34-1.11.62-1.36-2.22-.26-4.56-1.14-4.56-5.09 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.74 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.71.12 2.51.36 1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.48.1 2.74.64.72 1.03 1.63 1.03 2.75 0 3.96-2.34 4.83-4.57 5.08.36.32.68.93.68 1.88 0 1.36-.01 2.46-.01 2.8 0 .27.18.59.69.49A10.1 10.1 0 0 0 22 12.27C22 6.6 17.52 2 12 2"
+                  />
+                </svg> </span
+              ><span class="contact-btn-label">GitHub</span></a
             >
             <a
               href="https://x.com/Spocsk"
               target="_blank"
               rel="noopener noreferrer"
               class="contact-btn"
-              >𝕏 (Twitter)</a
+              ><span class="contact-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M18.9 3H21l-6.53 7.46L22.15 21h-6.02l-4.71-6.18L6 21H3.9l6.99-7.99L2 3h6.17l4.26 5.63zm-1.05 16.2h1.16L7.54 4.74H6.3z"
+                  />
+                </svg> </span
+              ><span class="contact-btn-label">X (Twitter)</span></a
             >
           </div>
         </div>
