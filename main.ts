@@ -1,18 +1,52 @@
 type ProjectTheme = "sunset" | "aurora" | "graphite";
 type ThemeMode = "light" | "dark";
 
+const artisanCodePreview = new URL(
+  "./assets/artisan-code-site-preview.png",
+  import.meta.url,
+).href;
+const hpSonorisationPreview = new URL(
+  "./assets/hp-sonorisation-site-preview.png",
+  import.meta.url,
+).href;
+
 interface Project {
   title: string;
   description: string;
   link: string;
   eyebrow: string;
   theme?: ProjectTheme;
+  previewImage?: string;
+  previewAlt?: string;
+  ctaLabel?: string;
 }
 
 const DEFAULT_THEME: ProjectTheme = "graphite";
 const THEME_STORAGE_KEY = "portfolio-theme";
 
 export const projects: Project[] = [
+  {
+    title: "Victor COUTO",
+    eyebrow: "Site vitrine",
+    theme: "sunset",
+    description:
+      "Une landing page pour l'entreprise de Victor COUTO. Un premium pour un artisan normand, avec direction artistique sobre, hiérarchie forte et conversion orientée prise de contact.",
+    link: "https://www.artisan-couto.fr",
+    ctaLabel: "Voir le projet",
+    previewImage: artisanCodePreview,
+    previewAlt: "Aperçu du site",
+  },
+  {
+    title: "HP Sonorisation",
+    eyebrow: "Event & Booking",
+    theme: "graphite",
+    description:
+      "Une vitrine immersive pour un prestataire son et animation, pensée autour d'un univers nocturne, d'un CTA fort et d'un hero visuel spectaculaire.",
+    link: "https://www.hpsonorisation.fr",
+    ctaLabel: "Voir le projet",
+    previewImage: hpSonorisationPreview,
+    previewAlt: "Aperçu du site HP Sonorisation",
+  },
   {
     title: "2048 Swift Game",
     eyebrow: "iOS Game",
@@ -138,7 +172,23 @@ function createProjectSlide(project: Project, index: number, total: number) {
 
   const visual = document.createElement("div");
   visual.className = "project-showcase-visual";
+  if (project.previewImage) {
+    visual.classList.add("has-preview");
+  }
   visual.setAttribute("aria-hidden", "true");
+
+  if (project.previewImage) {
+    const previewImage = document.createElement("img");
+    previewImage.className = "project-preview-image";
+    previewImage.src = project.previewImage;
+    previewImage.alt = project.previewAlt ?? project.title;
+    previewImage.loading = "lazy";
+    visual.appendChild(previewImage);
+
+    const previewOverlay = document.createElement("span");
+    previewOverlay.className = "project-preview-overlay";
+    visual.appendChild(previewOverlay);
+  }
 
   const glowPrimary = document.createElement("span");
   glowPrimary.className = "project-orb project-orb-primary";
@@ -177,13 +227,13 @@ function createProjectSlide(project: Project, index: number, total: number) {
   cta.href = project.link;
   cta.target = "_blank";
   cta.rel = "noopener noreferrer";
-  cta.textContent = "Découvrir le projet";
+  cta.textContent = project.ctaLabel ?? "Découvrir le projet";
   footer.appendChild(cta);
 
   const indexLabel = document.createElement("span");
   indexLabel.className = "project-index";
   indexLabel.textContent = `${String(index + 1).padStart(2, "0")} / ${String(
-    total
+    total,
   ).padStart(2, "0")}`;
   footer.appendChild(indexLabel);
 
@@ -197,10 +247,11 @@ function createProjectSlide(project: Project, index: number, total: number) {
 
 function getSlideOffsets(
   slides: HTMLElement[],
-  viewport: HTMLElement
+  viewport: HTMLElement,
 ): number[] {
   return slides.map(
-    (slide) => slide.offsetLeft + slide.offsetWidth / 2 - viewport.clientWidth / 2
+    (slide) =>
+      slide.offsetLeft + slide.offsetWidth / 2 - viewport.clientWidth / 2,
   );
 }
 
@@ -208,11 +259,16 @@ function clampIndex(index: number, max: number) {
   return Math.min(Math.max(index, 0), max);
 }
 
+function isInteractiveTarget(target: EventTarget | null): boolean {
+  return (
+    target instanceof HTMLElement &&
+    target.closest("a, button, input, select, textarea, summary") !== null
+  );
+}
+
 function getStoredTheme(): ThemeMode | null {
   const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-  return storedTheme === "light" || storedTheme === "dark"
-    ? storedTheme
-    : null;
+  return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
 }
 
 function getSystemTheme(): ThemeMode {
@@ -241,7 +297,7 @@ function updateThemeToggleButton(theme: ThemeMode) {
   themeToggle.setAttribute("aria-pressed", String(isDark));
   themeToggle.setAttribute(
     "aria-label",
-    isDark ? "Activer le mode clair" : "Activer le mode sombre"
+    isDark ? "Activer le mode clair" : "Activer le mode sombre",
   );
 }
 
@@ -295,11 +351,13 @@ function setActiveNavLink(sectionId: string) {
 
 function initSectionNavigation() {
   const links = Array.from(
-    document.querySelectorAll<HTMLAnchorElement>(".nav-btn[data-section-link]")
+    document.querySelectorAll<HTMLAnchorElement>(".nav-btn[data-section-link]"),
   );
   const sections = links
     .map((link) => document.getElementById(link.dataset.sectionLink ?? ""))
-    .filter((section): section is HTMLElement => section instanceof HTMLElement);
+    .filter(
+      (section): section is HTMLElement => section instanceof HTMLElement,
+    );
 
   if (links.length === 0 || sections.length === 0) return;
 
@@ -325,7 +383,7 @@ function initSectionNavigation() {
     {
       threshold: [0.2, 0.45, 0.7],
       rootMargin: "-20% 0px -45% 0px",
-    }
+    },
   );
 
   sections.forEach((section) => observer.observe(section));
@@ -346,7 +404,7 @@ function initMobileNav() {
 
   const mobileQuery = window.matchMedia("(max-width: 768px)");
   const menuLinks = Array.from(
-    panel.querySelectorAll<HTMLAnchorElement>(".mobile-nav-btn")
+    panel.querySelectorAll<HTMLAnchorElement>(".mobile-nav-btn"),
   );
 
   const closeMenu = () => {
@@ -431,7 +489,7 @@ export function renderProjects(rootId = "projects-carousel") {
   }
 
   const slides = projects.map((project, index) =>
-    createProjectSlide(project, index, projects.length)
+    createProjectSlide(project, index, projects.length),
   );
 
   for (const slide of slides) {
@@ -474,7 +532,10 @@ export function renderProjects(rootId = "projects-carousel") {
       slide.classList.toggle("is-next", index === activeIndex + 1);
       slide.classList.toggle("is-before", index < activeIndex);
       slide.classList.toggle("is-after", index > activeIndex);
-      slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+      slide.setAttribute(
+        "aria-hidden",
+        index === activeIndex ? "false" : "true",
+      );
     });
 
     dots.forEach((dot, index) => {
@@ -485,7 +546,10 @@ export function renderProjects(rootId = "projects-carousel") {
 
     prevButton.disabled = activeIndex === 0;
     nextButton.disabled = activeIndex === maxIndex;
-    root.setAttribute("aria-label", `Carrousel de projets, élément ${activeIndex + 1} sur ${slides.length}`);
+    root.setAttribute(
+      "aria-label",
+      `Carrousel de projets, élément ${activeIndex + 1} sur ${slides.length}`,
+    );
 
     setTranslate(-offsets[activeIndex], animate);
   };
@@ -534,6 +598,7 @@ export function renderProjects(rootId = "projects-carousel") {
 
   const onPointerDown = (event: PointerEvent) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (isInteractiveTarget(event.target)) return;
 
     isDragging = true;
     suppressClick = false;
@@ -598,7 +663,7 @@ export function renderProjects(rootId = "projects-carousel") {
       event.preventDefault();
       event.stopPropagation();
     },
-    true
+    true,
   );
 
   window.addEventListener("resize", () => {
