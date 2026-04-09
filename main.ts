@@ -54,23 +54,23 @@ export const projects: Project[] = [
     theme: "sunset",
     description:
       "Un clone du célèbre puzzle, écrit en Swift, avec des animations fluides et une logique de jeu entièrement personnalisée.",
-    link: "https://github.com/tonprofil/2048-swift",
+    link: "https://github.com/Spocsk/2048-Like",
   },
   {
-    title: "Progressive Running Planner",
-    eyebrow: "Health Tech",
+    title: "Allocator C++",
+    eyebrow: "Systems Programming",
     theme: "aurora",
     description:
-      "Un planificateur progressif web et iOS pensé pour créer des programmes de course personnalisés connectés à Apple Health et Bevel.",
-    link: "https://github.com/tonprofil/running-planner",
+      "Un projet C++ centré sur l'allocation mémoire et la compréhension fine des mécanismes bas niveau, avec une approche orientée performance et architecture système.",
+    link: "https://github.com/Spocsk/Allocator-Cpp",
   },
   {
-    title: "Jenkins CI/CD Manager",
-    eyebrow: "DevOps",
+    title: "Portfolio Dylan",
+    eyebrow: "Frontend",
     theme: "graphite",
     description:
-      "Un gestionnaire d'automatisation pour piloter des workflows CI/CD web et mobile avec une expérience plus lisible et centralisée.",
-    link: "https://github.com/tonprofil/jenkins-manager",
+      "Le code source de ce portfolio, construit avec Vite et TypeScript, avec un loader animé, un carrousel de projets et une direction artistique premium.",
+    link: "https://github.com/Spocsk/Portfolio-Dylan",
   },
 ];
 
