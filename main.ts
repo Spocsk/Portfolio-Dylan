@@ -31,7 +31,7 @@ export const projects: Project[] = [
     eyebrow: "Site vitrine",
     theme: "sunset",
     description:
-      "Une landing page pour l'entreprise de Victor COUTO. Un premium pour un artisan normand, avec direction artistique sobre, hiérarchie forte et conversion orientée prise de contact.",
+      "Une landing page pour l'entreprise de Victor COUTO. Un site premium pour un artisan normand, avec direction artistique sobre, hiérarchie forte et conversion orientée prise de contact.",
     link: "https://www.artisan-couto.fr",
     ctaLabel: "Voir le projet",
     previewImage: artisanCodePreview,
