@@ -23,6 +23,7 @@ interface Project {
 
 const DEFAULT_THEME: ProjectTheme = "graphite";
 const THEME_STORAGE_KEY = "portfolio-theme";
+const SYNC_PROJECTS_CAROUSEL_MESSAGE = "portfolio:sync-projects-carousel";
 
 export const projects: Project[] = [
   {
@@ -515,6 +516,7 @@ export function renderProjects(rootId = "projects-carousel") {
   let baseTranslate = 0;
   let isDragging = false;
   let suppressClick = false;
+  let layoutSyncFrame: number | null = null;
 
   const setTranslate = (value: number, animate: boolean) => {
     currentTranslate = value;
@@ -551,16 +553,40 @@ export function renderProjects(rootId = "projects-carousel") {
       `Carrousel de projets, élément ${activeIndex + 1} sur ${slides.length}`,
     );
 
-    setTranslate(-offsets[activeIndex], animate);
+    setTranslate(-(offsets[activeIndex] ?? 0), animate);
   };
 
-  const syncLayout = (animate = false) => {
+  const performLayoutSync = (animate = false) => {
+    layoutSyncFrame = null;
+
     const slideWidth = slides[0]?.offsetWidth ?? 0;
+    const viewportWidth = viewport.clientWidth;
+
+    if (viewportWidth === 0 || slideWidth === 0) {
+      return;
+    }
+
     const sidePadding = Math.max((viewport.clientWidth - slideWidth) / 2, 0);
+    const nextOffsets = getSlideOffsets(slides, viewport);
+
+    if (nextOffsets.some((offset) => !Number.isFinite(offset))) {
+      return;
+    }
+
     track.style.paddingLeft = `${sidePadding}px`;
     track.style.paddingRight = `${sidePadding}px`;
-    offsets = getSlideOffsets(slides, viewport);
+    offsets = nextOffsets;
     updateState(animate);
+  };
+
+  const queueLayoutSync = (animate = false) => {
+    if (layoutSyncFrame !== null) {
+      window.cancelAnimationFrame(layoutSyncFrame);
+    }
+
+    layoutSyncFrame = window.requestAnimationFrame(() => {
+      performLayoutSync(animate);
+    });
   };
 
   const moveToIndex = (index: number, animate = true) => {
@@ -569,6 +595,10 @@ export function renderProjects(rootId = "projects-carousel") {
   };
 
   const getClosestIndex = () => {
+    if (offsets.length === 0) {
+      return activeIndex;
+    }
+
     const target = -currentTranslate;
     let closestIndex = 0;
     let minDistance = Number.POSITIVE_INFINITY;
@@ -667,10 +697,53 @@ export function renderProjects(rootId = "projects-carousel") {
   );
 
   window.addEventListener("resize", () => {
-    syncLayout(false);
+    queueLayoutSync(false);
   });
 
-  syncLayout(false);
+  window.addEventListener("load", () => {
+    queueLayoutSync(false);
+  });
+
+  if (typeof ResizeObserver !== "undefined") {
+    const resizeObserver = new ResizeObserver(() => {
+      queueLayoutSync(false);
+    });
+
+    resizeObserver.observe(viewport);
+  }
+
+  slides.forEach((slide) => {
+    const previewImage = slide.querySelector<HTMLImageElement>(
+      ".project-preview-image",
+    );
+
+    if (!previewImage || previewImage.complete) {
+      return;
+    }
+
+    const onImageSettled = () => {
+      queueLayoutSync(false);
+    };
+
+    previewImage.addEventListener("load", onImageSettled, { once: true });
+    previewImage.addEventListener("error", onImageSettled, { once: true });
+  });
+
+  window.addEventListener("message", (event) => {
+    if (event.origin !== window.location.origin) return;
+    if (
+      !event.data ||
+      typeof event.data !== "object" ||
+      event.data.type !== SYNC_PROJECTS_CAROUSEL_MESSAGE
+    ) {
+      return;
+    }
+
+    queueLayoutSync(false);
+  });
+
+  updateState(false);
+  queueLayoutSync(false);
 }
 
 if (typeof window !== "undefined") {

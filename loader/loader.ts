@@ -7,6 +7,15 @@ window.addEventListener("load", () => {
     if (container) container.remove();
 
     const iframe = document.querySelector<HTMLIFrameElement>(".portfolio-reveal");
-    if (iframe) iframe.style.pointerEvents = "auto";
+    if (!iframe) return;
+
+    iframe.style.pointerEvents = "auto";
+
+    window.requestAnimationFrame(() => {
+      iframe.contentWindow?.postMessage(
+        { type: "portfolio:sync-projects-carousel" },
+        window.location.origin,
+      );
+    });
   }, 3600);
 });
