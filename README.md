@@ -1,20 +1,14 @@
 # Dylan Portfolio
 
-Personal portfolio website built with Vite and TypeScript.
-
-The site includes:
-
-- a loader landing screen in `index.html`
-- the main portfolio page in `portfolio.html`
-- custom styling in `style.css`
-- a small TypeScript setup for the loader and project rendering
+Personal portfolio website built with Next.js App Router and TypeScript.
 
 ## Tech Stack
 
-- Vite
+- Next.js
+- React
 - TypeScript
-- HTML
 - CSS
+- Vercel Analytics
 
 ## Getting Started
 
@@ -36,34 +30,32 @@ Build for production:
 npm run build
 ```
 
-Preview the production build:
+Start the production server:
 
 ```bash
-npm run preview
+npm run start
 ```
 
 ## Project Structure
 
 ```text
 .
-├── index.html
-├── portfolio.html
+├── app/
+├── components/
+├── lib/
+├── public/
 ├── style.css
-├── main.ts
-├── loader/
-│   ├── loader.html
-│   ├── loader.css
-│   └── loader.ts
-├── fonts/
+├── next.config.ts
+├── tsconfig.json
 └── package.json
 ```
 
 ## Notes
 
-- `index.html` is the main entry point.
-- `portfolio.html` contains the portfolio layout and content.
-- `main.ts` handles project data rendering.
-- `loader/` contains the animated intro experience.
+- `/` is the canonical portfolio route.
+- `/portfolio.html` is redirected to `/` for backward compatibility.
+- The intro loader is disabled so the portfolio loads immediately.
+- Vercel Analytics is mounted in the root Next.js layout.
 
 ## License
 
