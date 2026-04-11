@@ -1,3 +1,7 @@
+import { inject } from '@vercel/analytics';
+
+inject();
+
 type ProjectTheme = "sunset" | "aurora" | "graphite";
 type ThemeMode = "light" | "dark";
 
