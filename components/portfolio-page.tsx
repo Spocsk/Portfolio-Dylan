@@ -619,14 +619,15 @@ export default function PortfolioPage() {
 
         <div className="hero-content">
           <p className="hero-kicker">Portfolio</p>
-          <h1>
+          <h1 className="hero-title">
             Je suis <span className="highlight">Dylan COUTO DE OLIVEIRA</span>
-            <br />
-            Développeur Web & Mobiles
-            <br />
-            Expert <span className="marker-highlight">Swift</span> &{" "}
-            <span className="marker-highlight">Angular</span>
           </h1>
+          <p className="hero-role">Développeur Web & Mobiles</p>
+          <p className="hero-offer">
+            Je réalise vos projets{" "}
+            <span className="marker-highlight">web</span> &{" "}
+            <span className="marker-highlight">marketing</span>.
+          </p>
           <p className="hero-subtitle">
             Création d&apos;expériences digitales modernes, performantes et
             élégantes, avec une approche simple, exigeante et premium.
@@ -692,12 +693,13 @@ export default function PortfolioPage() {
           <div className="section-divider" />
           <h2>À propos</h2>
           <p>
-            Je suis un développeur passionné avec une expertise en{" "}
-            <span className="marker-highlight">Swift</span> et{" "}
-            <span className="marker-highlight">Angular</span>. Je crée des
-            applications web et mobiles modernes, performantes et esthétiques,
-            en mettant l&apos;accent sur l&apos;expérience utilisateur et la qualité du
-            code.
+            Je suis un développeur passionné, sénior sur la stack TypeScript
+            avec une expertise en{" "}
+            Angular, Nest.js et TypeScript. Je me forme actuellement à Swift.
+            Je conçois des applications web et mobiles modernes, performantes
+            et esthétiques, avec une attention particulière portée à
+            l&apos;expérience utilisateur, à la qualité du code et à la gestion de
+            données avec MongoDB et PostgreSQL.
           </p>
           <p>
             Avec plusieurs années d&apos;expérience, j&apos;aime transformer les idées en
@@ -705,12 +707,8 @@ export default function PortfolioPage() {
             défis techniques.
           </p>
           <div className="skills">
-            <span className="skill-tag">
-              <span className="marker-highlight">Swift</span>
-            </span>
-            <span className="skill-tag">
-              <span className="marker-highlight">Angular</span>
-            </span>
+            <span className="skill-tag">Swift</span>
+            <span className="skill-tag">Angular</span>
             <span className="skill-tag">TypeScript</span>
             <span className="skill-tag">React</span>
             <span className="skill-tag">Web Design</span>

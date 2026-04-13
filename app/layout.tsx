@@ -36,7 +36,7 @@ const themeInitScript = `
 export const metadata: Metadata = {
   title: "Dylan COUTO DE OLIVEIRA — Développeur Web & Mobile",
   description:
-    "Portfolio de Dylan Couto de Oliveira — Développeur Web & Mobile, Expert Swift & Angular",
+    "Portfolio de Dylan Couto de Oliveira — Développeur Web & Mobile, sénior TypeScript (Angular, Nest.js), en formation Swift",
   appleWebApp: {
     title: "Dylan Portfolio",
   },
