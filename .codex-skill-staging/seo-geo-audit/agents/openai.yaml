@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO/GEO Audit"
+  short_description: "Audit SEO technique, contenu et GEO"
+  default_prompt: "Use $seo-geo-audit to audit this web project for SEO and GEO, then return prioritized code and web actions."

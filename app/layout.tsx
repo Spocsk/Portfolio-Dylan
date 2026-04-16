@@ -4,6 +4,7 @@ import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 
+import { createPageMetadata, siteConfig, siteSchema } from "../lib/site";
 import "../style.css";
 
 const geist = Geist({
@@ -34,9 +35,17 @@ const themeInitScript = `
 `;
 
 export const metadata: Metadata = {
-  title: "Dylan COUTO DE OLIVEIRA — Développeur Web & Mobile",
-  description:
-    "Portfolio de Dylan Couto de Oliveira — Développeur Web & Mobile, sénior TypeScript (Angular, Nest.js), en formation Swift",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.siteName,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "portfolio",
+  ...createPageMetadata({
+    title: siteConfig.title,
+    description: siteConfig.description,
+    path: "/",
+  }),
   appleWebApp: {
     title: "Dylan Portfolio",
   },
@@ -68,6 +77,12 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteSchema),
+          }}
+        />
         {children}
         <Analytics />
       </body>

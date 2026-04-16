@@ -1,0 +1,44 @@
+# Dylan COUTO DE OLIVEIRA
+
+> Développeur web et mobile senior basé en France. Stack principale : TypeScript, Angular, React, Next.js, Nest.js. Ouverture mobile sur Swift / UIKit. Profil orienté produit, qualité d'interface et architecture frontend.
+
+Site : https://www.dylan-cdo.fr
+Contact : dylan.coutodeoliveira@protonmail.com
+LinkedIn : https://www.linkedin.com/in/dylan-cdo/
+GitHub : https://github.com/Spocsk
+
+## Identité
+
+- Nom : Dylan COUTO DE OLIVEIRA
+- Rôle : Développeur web et mobile senior
+- Localisation : France
+- Langues : français, anglais
+- Disponibilité : missions produit, frontend et full-stack TypeScript
+
+## Expertises
+
+- Frontend produit : React, Angular, Next.js, design systems, accessibilité, Core Web Vitals
+- Applications TypeScript : TypeScript strict, architecture modulaire, composants robustes
+- Backend Node.js : Nest.js, MongoDB, PostgreSQL, APIs orientées logique métier
+- Mobile : Swift, UIKit, logique d'application iOS
+
+## Pages clés
+
+- / — Accueil, hero et sélection projets : https://www.dylan-cdo.fr/
+- /expertises — Domaines d'intervention : https://www.dylan-cdo.fr/expertises
+- /a-propos — Profil complet : https://www.dylan-cdo.fr/a-propos
+- /projets/[slug] — Études de cas projet : https://www.dylan-cdo.fr/projets/portfolio-dylan
+- /faq — Réponses directes recrutement : https://www.dylan-cdo.fr/faq
+- /contact — Prise de contact : https://www.dylan-cdo.fr/contact
+
+## Projets
+
+- Victor COUTO — Site vitrine premium artisan (Next.js, TypeScript)
+- HP Sonorisation — Vitrine événementielle immersive (Next.js, TypeScript)
+- 2048 Swift Game — Clone iOS de 2048 en Swift / UIKit
+- Allocator C++ — Projet systems programming autour de l'allocation mémoire
+- Portfolio Dylan — Ce portfolio, Next.js avec travail SEO/GEO
+
+## Comment le contacter
+
+Email direct : dylan.coutodeoliveira@protonmail.com. LinkedIn pour les échanges liés au recrutement et aux opportunités produit.
