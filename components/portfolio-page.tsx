@@ -2,6 +2,23 @@ import Link from "next/link";
 
 import { projects } from "../lib/projects";
 
+function PixelPlaceholder({ seed }: { seed: string }) {
+  const cells = Array.from({ length: 154 }, (_, index) => {
+    const code = seed.charCodeAt(index % seed.length) || 65;
+    const tier = (code + index * 7) % 6;
+
+    return (
+      <span
+        key={`${seed}-${index}`}
+        className={`pf-pixel pf-pixel-${tier}`}
+        aria-hidden="true"
+      />
+    );
+  });
+
+  return <div className="pf-pixel-matrix">{cells}</div>;
+}
+
 export default function PortfolioPage() {
   return (
     <>
@@ -54,7 +71,7 @@ export default function PortfolioPage() {
                     loading="lazy"
                   />
                 ) : (
-                  <span className="pf-card-mono">{project.title.charAt(0)}</span>
+                  <PixelPlaceholder seed={project.slug} />
                 )}
               </div>
               <div className="pf-card-body">
