@@ -1,23 +1,7 @@
 import Link from "next/link";
 
 import { projects } from "../lib/projects";
-
-function PixelPlaceholder({ seed }: { seed: string }) {
-  const cells = Array.from({ length: 154 }, (_, index) => {
-    const code = seed.charCodeAt(index % seed.length) || 65;
-    const tier = (code + index * 7) % 6;
-
-    return (
-      <span
-        key={`${seed}-${index}`}
-        className={`pf-pixel pf-pixel-${tier}`}
-        aria-hidden="true"
-      />
-    );
-  });
-
-  return <div className="pf-pixel-matrix">{cells}</div>;
-}
+import ProjectCarousel from "./project-carousel";
 
 export default function PortfolioPage() {
   return (
@@ -56,31 +40,7 @@ export default function PortfolioPage() {
           <h2 className="pf-section-title">Sélection.</h2>
         </div>
 
-        <div className="pf-grid">
-          {projects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/projets/${project.slug}`}
-              className="pf-card"
-            >
-              <div className="pf-card-media">
-                {project.previewImage ? (
-                  <img
-                    src={project.previewImage}
-                    alt={project.previewAlt ?? project.title}
-                    loading="lazy"
-                  />
-                ) : (
-                  <PixelPlaceholder seed={project.slug} />
-                )}
-              </div>
-              <div className="pf-card-body">
-                <p className="pf-card-eyebrow">{project.eyebrow}</p>
-                <h3 className="pf-card-title">{project.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <ProjectCarousel projects={projects} />
       </section>
 
       <section className="pf-contact" id="contact">
