@@ -2032,110 +2032,394 @@ body {
 }
 
 /* Project carousel — Apple-style -------------------------------- */
+/* Editorial slide carousel -------------------------------- */
 .pf-carousel {
   position: relative;
+  --slide-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pf-carousel-track {
-  display: flex;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 4px 4px 8px;
-  margin: -4px -4px 0;
+.pf-carousel-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  min-height: clamp(22rem, 58vh, 32rem);
+  touch-action: pan-y;
+  user-select: none;
 }
 
-.pf-carousel-track::-webkit-scrollbar {
-  display: none;
+.pf-carousel-index {
+  position: absolute;
+  top: -1.25rem;
+  right: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--pf-ink-faint);
+  pointer-events: none;
 }
 
-.pf-carousel-card {
-  flex: 0 0 auto;
-  width: clamp(16rem, 32%, 22rem);
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
+.pf-carousel-index-num {
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 600;
+  color: var(--pf-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-carousel-index-sep {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: var(--pf-ink-faint);
+  margin: 0 0.2em;
+}
+
+.pf-carousel-index-tot {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  letter-spacing: 0.04em;
+  color: var(--pf-ink-faint);
+}
+
+.pf-carousel-slide {
+  display: contents;
   color: inherit;
-  border-radius: 20px;
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.pf-carousel-card:hover {
-  transform: translateY(-4px);
+  text-decoration: none;
 }
 
 .pf-carousel-media {
-  aspect-ratio: 4 / 3;
-  background: var(--pf-surface);
-  border: 1px solid var(--pf-hair);
-  border-radius: 20px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
   position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  transform-origin: left center;
+  animation: pf-slide-in 700ms var(--slide-ease) both;
 }
 
-.pf-carousel-media img {
+.pf-carousel-stage[data-dir="backward"] .pf-carousel-media {
+  animation-name: pf-slide-in-rev;
+}
+
+.pf-carousel-media-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-hair);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 28px 60px -32px color-mix(in srgb, var(--pf-ink) 35%, transparent),
+    0 2px 0 color-mix(in srgb, var(--pf-ink) 6%, transparent);
+  transition: transform 900ms var(--slide-ease), box-shadow 600ms ease;
+}
+
+.pf-carousel-media-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1200ms var(--slide-ease), filter 600ms ease;
+  filter: saturate(0.96);
 }
 
-.pf-carousel-card:hover .pf-carousel-media img {
-  transform: scale(1.03);
+.pf-carousel-slide:hover .pf-carousel-media-frame {
+  transform: translateY(-4px);
+}
+.pf-carousel-slide:hover .pf-carousel-media-frame img {
+  transform: scale(1.04);
+  filter: saturate(1.05);
 }
 
-.pf-carousel-body {
-  padding: 1.1rem 0.25rem 0;
+.pf-carousel-media-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 26px;
+  pointer-events: none;
+  border: 1px dashed color-mix(in srgb, var(--pf-ink) 18%, transparent);
+  opacity: 0.55;
+  transform: rotate(-0.4deg);
+  transition: transform 900ms var(--slide-ease), opacity 400ms ease;
+}
+.pf-carousel-slide:hover .pf-carousel-media-ring {
+  transform: rotate(-1deg) scale(1.01);
+  opacity: 0.9;
 }
 
-.pf-carousel-controls {
+.pf-carousel-media[data-theme="sunset"] .pf-carousel-media-ring {
+  border-color: color-mix(in srgb, #c2410c 45%, transparent);
+}
+.pf-carousel-media[data-theme="aurora"] .pf-carousel-media-ring {
+  border-color: color-mix(in srgb, #0e7490 45%, transparent);
+}
+.pf-carousel-media[data-theme="graphite"] .pf-carousel-media-ring {
+  border-color: color-mix(in srgb, var(--pf-ink) 25%, transparent);
+}
+
+.pf-carousel-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 1.6vw, 1.35rem);
+  animation: pf-copy-in 780ms var(--slide-ease) 80ms both;
+}
+
+.pf-carousel-stage[data-dir="backward"] .pf-carousel-copy {
+  animation-name: pf-copy-in-rev;
+}
+
+.pf-carousel-eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pf-ink-soft);
+  font-weight: 500;
+}
+
+.pf-carousel-dot-mark {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--pf-ink);
+  display: inline-block;
+}
+
+.pf-carousel-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--pf-ink);
+  text-wrap: balance;
+}
+
+.pf-carousel-summary {
+  margin: 0;
+  max-width: 38ch;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--pf-ink-soft);
+}
+
+.pf-carousel-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+
+.pf-carousel-chip {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--pf-hair);
+  background: color-mix(in srgb, var(--pf-ink) 2%, transparent);
+  color: var(--pf-ink-soft);
+}
+
+.pf-carousel-cta {
+  margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--pf-ink);
+  letter-spacing: -0.01em;
+}
+
+.pf-carousel-cta svg {
+  transition: transform 380ms var(--slide-ease);
+}
+
+.pf-carousel-slide:hover .pf-carousel-cta svg {
+  transform: translateX(5px);
+}
+
+/* Peek of the next slide */
+.pf-carousel-peek {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  translate: 55% 20%;
+  width: clamp(5.5rem, 8vw, 7.5rem);
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  border: 1px solid var(--pf-hair);
+  background: var(--page-background);
+  color: var(--pf-ink);
+  padding: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  box-shadow:
+    0 18px 40px -28px color-mix(in srgb, var(--pf-ink) 40%, transparent);
+  transform: rotate(3deg);
+  overflow: visible;
+  transition: transform 520ms var(--slide-ease),
+    box-shadow 520ms var(--slide-ease), translate 520ms var(--slide-ease);
+}
+
+.pf-carousel-peek::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--page-background) 20%, transparent),
+    color-mix(in srgb, var(--page-background) 80%, transparent)
+  );
+  pointer-events: none;
+}
+
+/* Stable hover hit-area: covers the resting + hovered positions so the
+   pointer doesn't fall off when the card translates. */
+.pf-carousel-peek::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  right: -20%;
+  left: -220%;
+  z-index: 2;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  background: transparent;
+  pointer-events: auto;
+}
+
+.pf-carousel-peek:hover {
+  transform: rotate(0deg) scale(1.04);
+  translate: 45% 20%;
+  box-shadow:
+    0 28px 60px -28px color-mix(in srgb, var(--pf-ink) 55%, transparent);
+}
+
+.pf-carousel-peek-label {
+  position: relative;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pf-ink-soft);
+}
+
+.pf-carousel-peek-title {
+  position: relative;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--pf-ink);
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pf-carousel-peek-label {
+  font-size: 0.55rem !important;
+  letter-spacing: 0.18em !important;
+}
+
+.pf-carousel-peek-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.55;
+  filter: grayscale(0.15);
+  border-radius: inherit;
+  overflow: hidden;
+}
+.pf-carousel-peek-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rail: numbered tabs + arrows */
+.pf-carousel-rail {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-top: clamp(1.75rem, 3.5vh, 2.5rem);
+  margin-top: clamp(2.5rem, 5vh, 3.75rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--pf-hair);
 }
 
-.pf-carousel-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pf-carousel-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  border: 0;
+.pf-carousel-list {
+  list-style: none;
   padding: 0;
-  background: var(--pf-ink-faint);
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.pf-carousel-chip-btn {
+  position: relative;
+  background: none;
+  border: 0;
+  padding: 0.5rem 0 0.9rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: var(--pf-ink-faint);
   cursor: pointer;
-  transition: width 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 260ms ease, opacity 260ms ease;
-  opacity: 0.85;
+  font: inherit;
+  transition: color 260ms ease;
 }
 
-.pf-carousel-dot:hover {
-  opacity: 1;
+.pf-carousel-chip-btn:hover {
+  color: var(--pf-ink-soft);
 }
 
-.pf-carousel-dot.is-active {
-  width: 22px;
+.pf-carousel-chip-btn.is-active {
+  color: var(--pf-ink);
+}
+
+.pf-carousel-chip-num {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.pf-carousel-chip-name {
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.pf-carousel-chip-bar {
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
   background: var(--pf-ink);
-  opacity: 1;
+  transition: right 520ms var(--slide-ease);
+}
+
+.pf-carousel-chip-btn.is-active .pf-carousel-chip-bar {
+  right: 0;
+  animation: pf-bar-fill 520ms var(--slide-ease) both;
 }
 
 .pf-carousel-arrows {
   display: flex;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .pf-carousel-arrow {
@@ -2150,31 +2434,105 @@ body {
   color: var(--pf-ink);
   cursor: pointer;
   transition: background-color 220ms ease, border-color 220ms ease,
-    color 220ms ease, opacity 220ms ease, transform 220ms ease;
+    transform 220ms ease;
 }
 
-.pf-carousel-arrow:hover:not(:disabled) {
+.pf-carousel-arrow:hover {
   background: var(--pf-surface);
   border-color: color-mix(in srgb, var(--pf-ink) 22%, transparent);
 }
 
-.pf-carousel-arrow:active:not(:disabled) {
-  transform: scale(0.96);
+.pf-carousel-arrow:active {
+  transform: scale(0.94);
 }
 
-.pf-carousel-arrow:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-@media (max-width: 640px) {
-  .pf-carousel-card {
-    width: 78%;
+@keyframes pf-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(32px) scale(0.985);
   }
-  .pf-carousel-controls {
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pf-slide-in-rev {
+  from {
+    opacity: 0;
+    transform: translateX(-32px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pf-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pf-copy-in-rev {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pf-bar-fill {
+  from { right: 100%; }
+  to { right: 0; }
+}
+
+@media (max-width: 860px) {
+  .pf-carousel-stage {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    min-height: 0;
+  }
+  .pf-carousel-index {
+    position: relative;
+    top: 0;
+    margin-bottom: -0.2em;
+  }
+  .pf-carousel-index-num {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+  .pf-carousel-peek {
+    display: none;
+  }
+  .pf-carousel-rail {
     flex-direction: column-reverse;
-    align-items: center;
-    gap: 1rem;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+  .pf-carousel-arrows {
+    justify-content: center;
+  }
+  .pf-carousel-list {
+    gap: 0.25rem 1rem;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-carousel-media,
+  .pf-carousel-copy {
+    animation: none;
+  }
+  .pf-carousel-chip-bar {
+    transition: none;
   }
 }
 

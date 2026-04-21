@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     "Portfolio de Dylan COUTO DE OLIVEIRA, développeur web et mobile senior spécialisé TypeScript, Angular, Nest.js et React.",
   locale: "fr_FR",
-  email: "dylan.coutodeoliveira@protonmail.com",
+  email: "contact@dylan-cdo.fr",
   social: {
     linkedin: "https://www.linkedin.com/in/dylan-cdo/",
     github: "https://github.com/Spocsk",

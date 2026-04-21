@@ -13,7 +13,9 @@ export default function PortfolioPage() {
         <h1 className="pf-hero-title">
           Développeur web <span className="pf-hero-soft">& mobile.</span>
           <br />
-          Interfaces produit,<br />soignées jusqu&apos;au pixel.
+          Interfaces produit,
+          <br />
+          soignées jusqu&apos;au pixel.
         </h1>
         <div className="pf-hero-cta">
           <Link href="#work" className="pf-link-arrow">
@@ -29,7 +31,8 @@ export default function PortfolioPage() {
         <p className="pf-about-lead">
           Je conçois et développe des produits web et mobiles —
           <span className="pf-about-dim">
-            {" "}TypeScript, React, Angular, Nest.js.
+            {" "}
+            TypeScript, React, Angular, Nest.js.
           </span>
         </p>
       </section>
@@ -46,14 +49,12 @@ export default function PortfolioPage() {
       <section className="pf-contact" id="contact">
         <span className="pf-label">Contact</span>
         <h2 className="pf-contact-title">
-          Un projet, un poste,<br />
+          Un projet, un poste,
+          <br />
           <span className="pf-contact-dim">une conversation ?</span>
         </h2>
-        <a
-          href="mailto:dylan.coutodeoliveira@protonmail.com"
-          className="pf-contact-mail"
-        >
-          dylan.coutodeoliveira@protonmail.com
+        <a href="mailto:contact@dylan-cdo.fr" className="pf-contact-mail">
+          contact@dylan-cdo.fr
         </a>
       </section>
     </>

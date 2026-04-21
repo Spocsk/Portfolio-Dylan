@@ -3,7 +3,7 @@
 > Développeur web et mobile senior basé en France. Stack principale : TypeScript, Angular, React, Next.js, Nest.js. Ouverture mobile sur Swift / UIKit. Profil orienté produit, qualité d'interface et architecture frontend.
 
 Site : https://www.dylan-cdo.fr
-Contact : dylan.coutodeoliveira@protonmail.com
+Contact : contact@dylan-cdo.fr
 LinkedIn : https://www.linkedin.com/in/dylan-cdo/
 GitHub : https://github.com/Spocsk
 
@@ -41,4 +41,4 @@ GitHub : https://github.com/Spocsk
 
 ## Comment le contacter
 
-Email direct : dylan.coutodeoliveira@protonmail.com. LinkedIn pour les échanges liés au recrutement et aux opportunités produit.
+Email direct : contact@dylan-cdo.fr. LinkedIn pour les échanges liés au recrutement et aux opportunités produit.
