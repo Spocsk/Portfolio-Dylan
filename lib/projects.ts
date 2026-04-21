@@ -32,8 +32,7 @@ export const projects: Project[] = [
       "Plateforme SaaS multi-tenant de planification et publication sociale pour agences et équipes, avec cockpit unique multi-comptes.",
     description:
       "Produit SaaS complet pour connecter plusieurs comptes sociaux (LinkedIn, Facebook, Instagram), gérer plusieurs entreprises clientes et orchestrer brouillons, calendrier, programmation et publication depuis un cockpit unique.",
-    role:
-      "Conception produit, architecture fullstack, frontend Next.js, API NestJS, schéma Supabase et pipeline de publication.",
+    role: "Conception produit, architecture fullstack, frontend Next.js, API NestJS, schéma Supabase et pipeline de publication.",
     stack: [
       "Next.js",
       "NestJS",
@@ -67,8 +66,7 @@ export const projects: Project[] = [
       "Landing page premium pour un artisan avec hiérarchie claire, univers sobre et conversion orientée prise de contact.",
     description:
       "Conception et développement d'une vitrine premium pour un artisan normand, pensée pour présenter le savoir-faire, rassurer rapidement et déclencher une prise de contact.",
-    role:
-      "Direction artistique, structuration de contenu, intégration frontend et optimisation de la conversion.",
+    role: "Direction artistique, structuration de contenu, intégration frontend et optimisation de la conversion.",
     stack: ["Next.js", "TypeScript", "UI direction", "Performance web"],
     problem:
       "Le besoin était de proposer une présence web plus qualitative qu'un simple site catalogue, tout en gardant un message lisible et une expérience fluide sur mobile.",
@@ -96,8 +94,7 @@ export const projects: Project[] = [
       "Vitrine immersive pour un prestataire son et animation, pensée autour d'un univers nocturne et d'un hero spectaculaire.",
     description:
       "Refonte d'une vitrine événementielle pour mettre en avant l'univers de marque, la capacité à animer des événements et la lisibilité des prises de contact.",
-    role:
-      "Conception produit, design frontend, storytelling visuel et cadrage des sections de conversion.",
+    role: "Conception produit, design frontend, storytelling visuel et cadrage des sections de conversion.",
     stack: ["Next.js", "TypeScript", "Brand experience", "Responsive UI"],
     problem:
       "Le site devait se différencier visuellement tout en restant compréhensible sur des usages mobiles et en conservant un objectif de conversion.",
@@ -122,8 +119,7 @@ export const projects: Project[] = [
       "Clone du puzzle 2048 développé en Swift, avec logique de jeu personnalisée et animations fluides.",
     description:
       "Projet iOS construit pour explorer Swift, les patterns de logique applicative et la qualité perçue à travers l'animation et la réactivité de l'interface.",
-    role:
-      "Développement iOS, architecture de logique de jeu et travail sur l'animation de l'expérience.",
+    role: "Développement iOS, architecture de logique de jeu et travail sur l'animation de l'expérience.",
     stack: ["Swift", "UIKit", "Game logic", "Animation"],
     problem:
       "L'objectif était de reproduire un gameplay connu tout en contrôlant entièrement la logique de fusion, de score et les transitions d'état.",
@@ -148,8 +144,7 @@ export const projects: Project[] = [
       "Projet C++ centré sur l'allocation mémoire et la compréhension fine des mécanismes bas niveau.",
     description:
       "Exploration plus systémique d'un allocateur en C++ pour approfondir les sujets de mémoire, performance et architecture bas niveau.",
-    role:
-      "Conception bas niveau, expérimentation algorithmique et travail sur les compromis performance / lisibilité.",
+    role: "Conception bas niveau, expérimentation algorithmique et travail sur les compromis performance / lisibilité.",
     stack: ["C++", "Memory management", "Systems programming", "Performance"],
     problem:
       "Le projet visait à mieux comprendre les mécanismes d'allocation mémoire et à manipuler des sujets rarement visibles dans des projets frontend classiques.",
@@ -170,12 +165,14 @@ export const projects: Project[] = [
     title: "Portfolio Dylan",
     eyebrow: "Frontend",
     theme: "graphite",
+    previewImage: "/assets/portfolio-dylan-site-preview.png",
+    previewAlt:
+      "Portfolio Dylan COUTO DE OLIVEIRA, développeur web et mobile senior, direction artistique premium.",
     summary:
       "Le code source de ce portfolio, construit avec Next.js, une direction artistique premium et une logique SEO/GEO plus solide.",
     description:
       "Portfolio personnel pensé comme une vitrine de profil senior: frontend léché, structure éditoriale plus claire et meilleur cadrage pour les moteurs et les recruteurs.",
-    role:
-      "Conception produit, frontend, structuration de contenu, travail SEO/GEO et maintien du design system léger.",
+    role: "Conception produit, frontend, structuration de contenu, travail SEO/GEO et maintien du design system léger.",
     stack: ["Next.js", "TypeScript", "React", "Metadata API", "Vercel"],
     problem:
       "Le portfolio devait rester distinctif visuellement tout en devenant plus explicite, plus indexable et plus utile pour le recrutement.",
