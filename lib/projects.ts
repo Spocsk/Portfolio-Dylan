@@ -21,6 +21,41 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "cast-loop",
+    title: "Cast Loop",
+    eyebrow: "SaaS multi-tenant",
+    theme: "aurora",
+    previewImage: "/assets/cast-loop-site-preview.png",
+    previewAlt:
+      "Cockpit de publication Cast Loop avec tableau de bord, calendrier éditorial et pipeline de posts.",
+    summary:
+      "Plateforme SaaS multi-tenant de planification et publication sociale pour agences et équipes, avec cockpit unique multi-comptes.",
+    description:
+      "Produit SaaS complet pour connecter plusieurs comptes sociaux (LinkedIn, Facebook, Instagram), gérer plusieurs entreprises clientes et orchestrer brouillons, calendrier, programmation et publication depuis un cockpit unique.",
+    role:
+      "Conception produit, architecture fullstack, frontend Next.js, API NestJS, schéma Supabase et pipeline de publication.",
+    stack: [
+      "Next.js",
+      "NestJS",
+      "TypeScript",
+      "Supabase",
+      "Postgres",
+      "Monorepo pnpm",
+    ],
+    problem:
+      "Les équipes qui gèrent plusieurs marques sur plusieurs réseaux perdent du temps à jongler entre interfaces, comptes et fuseaux de publication, sans visibilité centralisée sur ce qui est planifié, publié ou en échec.",
+    solution:
+      "J'ai conçu une architecture multi-tenant stricte (filtrage par organisation et membership, JWT Supabase validé côté API Nest), un scheduler minute-par-minute avec verrouillage Postgres pour traiter les posts planifiés, et un cockpit Next.js qui consolide comptes, calendrier, pipeline éditorial et rappels Telegram pour les comptes connect-only.",
+    results: [
+      "Un cockpit unique pour piloter plusieurs entreprises clientes et plusieurs comptes sociaux.",
+      "Un pipeline de publication robuste avec états explicites (draft, scheduled, publishing, published, failed) et audit log.",
+      "Une base SaaS extensible prête à accueillir analytics, workflow d'approbation et formats de contenu additionnels.",
+    ],
+    seoTitle: "Cast Loop — Étude de cas SaaS de publication sociale",
+    seoDescription:
+      "Étude de cas de Cast Loop, plateforme SaaS multi-tenant de planification et publication sociale: architecture Next.js + NestJS + Supabase et pipeline de publication.",
+  },
+  {
     slug: "victor-couto",
     title: "Victor COUTO",
     eyebrow: "Site vitrine",
