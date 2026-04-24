@@ -83,6 +83,11 @@ export default function RootLayout({
             __html: JSON.stringify(siteSchema),
           }}
         />
+        <script
+          defer
+          src="https://analytics.dylan-cdo.fr/script.js"
+          data-website-id="a17a490e-2af3-4ada-a912-8ca569cb554c"
+        />
         {children}
         <Analytics />
       </body>
