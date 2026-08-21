@@ -1,50 +1,21 @@
+import { FaqContent } from "../../components/content-pages";
 import SiteFrame from "../../components/site-frame";
-import {
-  breadcrumbSchema,
-  createPageMetadata,
-  faqEntries,
-  faqPageSchema,
-} from "../../lib/site";
+import { getDictionary } from "../../lib/i18n";
+import { breadcrumbSchema, createPageMetadata, faqPageSchema } from "../../lib/site";
 
-export const metadata = createPageMetadata({
-  title: "FAQ — Dylan COUTO DE OLIVEIRA",
-  description:
-    "FAQ sur Dylan COUTO DE OLIVEIRA: profil, stack TypeScript, type de projets, rôle produit et moyens de contact.",
-  path: "/faq",
-});
-
-const faqJsonLd = [
-  faqPageSchema(faqEntries),
-  breadcrumbSchema([
-    { name: "Accueil", path: "/" },
-    { name: "FAQ", path: "/faq" },
-  ]),
-];
+const locale = "fr";
+const dictionary = getDictionary(locale);
+export const metadata = createPageMetadata({ ...dictionary.metadata.faq, path: "/faq", locale });
 
 export default function FaqPage() {
+  const jsonLd = [
+    faqPageSchema(dictionary.faq.entries, locale),
+    breadcrumbSchema([{ name: dictionary.project.homeBreadcrumb, path: "/" }, { name: dictionary.faq.label, path: "/faq" }], locale),
+  ];
   return (
-    <SiteFrame>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <div className="pf-page">
-        <section className="pf-page-hero">
-          <span className="pf-label">FAQ</span>
-          <h1>Questions fréquentes.</h1>
-        </section>
-
-        <section className="pf-section">
-          <div className="pf-faq">
-            {faqEntries.map((entry) => (
-              <article key={entry.question} className="pf-faq-item">
-                <h2>{entry.question}</h2>
-                <p>{entry.answer}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      </div>
+    <SiteFrame locale={locale}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <FaqContent locale={locale} />
     </SiteFrame>
   );
 }

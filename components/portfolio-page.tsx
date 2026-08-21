@@ -1,57 +1,62 @@
 import Link from "next/link";
 
-import { projects } from "../lib/projects";
+import { getDictionary, localizePath, type Locale } from "../lib/i18n";
+import { getProjects } from "../lib/projects";
 import ProjectCarousel from "./project-carousel";
 
-export default function PortfolioPage() {
+export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
+  const dictionary = getDictionary(locale);
+  const copy = dictionary.home;
+  const projects = getProjects(locale);
+
   return (
     <>
       <section className="pf-hero" id="home">
         <p className="pf-hero-eyebrow">
-          Dylan Couto de Oliveira — Développeur web &amp; mobile senior, France
+          {copy.eyebrow}
         </p>
         <h1 className="pf-hero-title">
-          Développeur web <span className="pf-hero-soft">& mobile.</span>
+          {copy.titleLead} <span className="pf-hero-soft">{copy.titleSoft}</span>
           <br />
-          Interfaces produit,
+          {copy.titleLine2}
           <br />
-          soignées jusqu&apos;au pixel.
+          {copy.titleLine3}
         </h1>
         <div className="pf-hero-cta">
-          <Link href="#work" className="pf-link-arrow">
-            Voir les projets
+          <Link href={localizePath("/#work", locale)} className="pf-link-arrow">
+            {copy.projectsCta}
           </Link>
-          <Link href="#contact" className="pf-link-arrow pf-link-muted">
-            Me contacter
+          <Link href={localizePath("/#contact", locale)} className="pf-link-arrow pf-link-muted">
+            {copy.contactCta}
           </Link>
         </div>
       </section>
 
       <section className="pf-about" id="about">
         <p className="pf-about-lead">
-          Je conçois et développe des produits web et mobiles —
+          {copy.aboutLead}
           <span className="pf-about-dim">
             {" "}
-            TypeScript, React, Angular, Nest.js.
+            {copy.aboutStack}
           </span>
         </p>
       </section>
 
       <section className="pf-work" id="work">
         <div className="pf-work-head">
-          <span className="pf-label">Travaux</span>
-          <h2 className="pf-section-title">Sélection.</h2>
+          <span className="pf-label">{copy.workLabel}</span>
+          <h2 className="pf-section-title">{copy.workTitle}</h2>
         </div>
 
-        <ProjectCarousel projects={projects} />
+        <ProjectCarousel projects={projects} locale={locale} />
       </section>
 
       <section className="pf-contact" id="contact">
-        <span className="pf-label">Contact</span>
+        <span className="pf-label">{copy.contactLabel}</span>
         <h2 className="pf-contact-title">
-          Un projet, un poste,
+          {copy.contactTitle}
           <br />
-          <span className="pf-contact-dim">une conversation ?</span>
+          <span className="pf-contact-dim">{copy.contactTitleSoft}</span>
         </h2>
         <a href="mailto:contact@dylan-cdo.fr" className="pf-contact-mail">
           contact@dylan-cdo.fr

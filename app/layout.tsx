@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist } from "next/font/google";
+import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 
-import { createPageMetadata, siteConfig, siteSchema } from "../lib/site";
+import { getDictionary, isLocale } from "../lib/i18n";
+import { createPageMetadata, getSiteSchema, siteConfig } from "../lib/site";
 import "../style.css";
 
 const geist = Geist({
@@ -42,9 +44,9 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "portfolio",
   ...createPageMetadata({
-    title: siteConfig.title,
-    description: siteConfig.description,
+    ...getDictionary("fr").metadata.home,
     path: "/",
+    locale: "fr",
   }),
   appleWebApp: {
     title: "Dylan Portfolio",
@@ -66,13 +68,23 @@ export const viewport: Viewport = {
   themeColor: "#faf9f7",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const localeHeader = requestHeaders.get("x-portfolio-locale") ?? "fr";
+  const locale = isLocale(localeHeader) ? localeHeader : "fr";
+  const dictionary = getDictionary(locale);
+
   return (
-    <html lang="fr" className={geist.variable} suppressHydrationWarning>
+    <html
+      lang={dictionary.htmlLang}
+      className={geist.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
@@ -80,7 +92,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(siteSchema),
+            __html: JSON.stringify(getSiteSchema(locale)),
           }}
         />
         <script

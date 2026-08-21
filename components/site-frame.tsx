@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { siteConfig, socialLinks } from "../lib/site";
+import {
+  getDictionary,
+  localizePath,
+  locales,
+  stripLocalePrefix,
+  type Locale,
+} from "../lib/i18n";
 
 type ThemeMode = "light" | "dark";
 
@@ -41,26 +48,28 @@ function applyTheme(themePreference: ThemeMode | null): ThemeMode {
   return activeTheme;
 }
 
-const navLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/expertises", label: "Expertises" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/contact", label: "Contact" },
-];
-
-const footerLinks = [
-  { href: "/faq", label: "FAQ" },
-  { href: "/expertises", label: "Expertises" },
-  { href: "/a-propos", label: "Profil" },
-  { href: "/#projects", label: "Projets" },
-];
-
-export default function SiteFrame({ children }: PropsWithChildren) {
+export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren<{ locale?: Locale }>) {
   const pathname = usePathname();
+  const router = useRouter();
   const navRef = useRef<HTMLElement>(null);
   const preferredThemeRef = useRef<ThemeMode | null>(null);
   const [activeTheme, setActiveTheme] = useState<ThemeMode>("light");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const dictionary = getDictionary(locale);
+  const navCopy = dictionary.navigation;
+  const navLinks = [
+    { href: "/", label: navCopy.home },
+    { href: "/expertises", label: navCopy.expertises },
+    { href: "/a-propos", label: navCopy.about },
+    { href: "/contact", label: navCopy.contact },
+  ];
+  const footerLinks = [
+    { href: "/faq", label: dictionary.footer.faq },
+    { href: "/expertises", label: dictionary.footer.expertises },
+    { href: "/a-propos", label: dictionary.footer.profile },
+    { href: "/#work", label: dictionary.footer.projects },
+  ];
 
   useEffect(() => {
     const storedTheme = getStoredTheme();
@@ -82,21 +91,24 @@ export default function SiteFrame({ children }: PropsWithChildren) {
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsLanguageOpen(false);
   }, [pathname]);
 
   useEffect(() => {
     const handleDocumentClick = (event: MouseEvent) => {
-      if (!isMenuOpen) return;
+      if (!isMenuOpen && !isLanguageOpen) return;
       if (event.target instanceof Node && navRef.current?.contains(event.target)) {
         return;
       }
 
       setIsMenuOpen(false);
+      setIsLanguageOpen(false);
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       setIsMenuOpen(false);
+      setIsLanguageOpen(false);
     };
 
     document.addEventListener("click", handleDocumentClick);
@@ -106,7 +118,7 @@ export default function SiteFrame({ children }: PropsWithChildren) {
       document.removeEventListener("click", handleDocumentClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isMenuOpen]);
+  }, [isLanguageOpen, isMenuOpen]);
 
   const isDark = activeTheme === "dark";
 
@@ -115,7 +127,7 @@ export default function SiteFrame({ children }: PropsWithChildren) {
       <nav
         ref={navRef}
         className="main-nav"
-        aria-label="Navigation principale"
+        aria-label={navCopy.label}
         data-menu-open={isMenuOpen}
       >
         <div className="main-nav-inner">
@@ -124,12 +136,13 @@ export default function SiteFrame({ children }: PropsWithChildren) {
               id="nav-burger"
               className="nav-burger"
               type="button"
-              aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-label={isMenuOpen ? navCopy.closeMenu : navCopy.openMenu}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-nav-panel"
               onClick={(event) => {
                 event.stopPropagation();
                 setIsMenuOpen((current) => !current);
+                setIsLanguageOpen(false);
               }}
             >
               <span className="nav-burger-line" />
@@ -139,11 +152,11 @@ export default function SiteFrame({ children }: PropsWithChildren) {
 
             <div className="main-nav-links">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = stripLocalePrefix(pathname) === link.href;
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={localizePath(link.href, locale)}
                     className={`nav-btn${isActive ? " active" : ""}`}
                     aria-current={isActive ? "page" : undefined}
                   >
@@ -155,11 +168,66 @@ export default function SiteFrame({ children }: PropsWithChildren) {
           </div>
 
           <div className="main-nav-actions">
+            <div className="language-switcher">
+              <button
+                id="language-toggle"
+                className="language-toggle"
+                type="button"
+                aria-label={`${navCopy.languageSelector} : ${dictionary.languageName}`}
+                aria-haspopup="menu"
+                aria-expanded={isLanguageOpen}
+                aria-controls="language-menu"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setIsLanguageOpen((current) => !current);
+                  setIsMenuOpen(false);
+                }}
+              >
+                <span>{dictionary.languageCode}</span>
+                <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                  <path d="m2.5 4.5 3.5 3 3.5-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <div
+                id="language-menu"
+                className="language-menu"
+                role="menu"
+                aria-label={navCopy.chooseLanguage}
+                hidden={!isLanguageOpen}
+              >
+                {locales.map((targetLocale) => {
+                  const targetDictionary = getDictionary(targetLocale);
+                  const href = localizePath(pathname, targetLocale);
+                  const isActive = targetLocale === locale;
+                  return (
+                    <Link
+                      key={targetLocale}
+                      href={href}
+                      hrefLang={targetDictionary.htmlLang}
+                      role="menuitemradio"
+                      aria-checked={isActive}
+                      aria-label={`${navCopy.switchTo} ${targetDictionary.languageName}`}
+                      className={`language-option${isActive ? " is-active" : ""}`}
+                      onClick={(event) => {
+                        const suffix = `${window.location.search}${window.location.hash}`;
+                        setIsLanguageOpen(false);
+                        if (!suffix) return;
+                        event.preventDefault();
+                        router.push(`${href}${suffix}`);
+                      }}
+                    >
+                      <span>{targetDictionary.languageName}</span>
+                      <span className="language-option-code">{targetDictionary.languageCode}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
             <button
               id="theme-toggle"
               className="theme-toggle"
               type="button"
-              aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
+              aria-label={isDark ? navCopy.lightMode : navCopy.darkMode}
               aria-pressed={isDark}
               data-active-theme={activeTheme}
               onClick={() => {
@@ -182,16 +250,16 @@ export default function SiteFrame({ children }: PropsWithChildren) {
         <div
           id="mobile-nav-panel"
           className="mobile-nav-panel"
-          aria-label="Menu mobile"
+          aria-label={navCopy.mobileMenu}
           hidden={!isMenuOpen}
         >
           <div className="mobile-nav-links">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = stripLocalePrefix(pathname) === link.href;
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={localizePath(link.href, locale)}
                   className={`nav-btn mobile-nav-btn${isActive ? " active" : ""}`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -210,7 +278,7 @@ export default function SiteFrame({ children }: PropsWithChildren) {
           <p className="footer-title">{siteConfig.name}</p>
           <div className="footer-links">
             {footerLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="footer-link">
+              <Link key={link.href} href={localizePath(link.href, locale)} className="footer-link">
                 {link.label}
               </Link>
             ))}
@@ -234,7 +302,7 @@ export default function SiteFrame({ children }: PropsWithChildren) {
             ))}
           </div>
         </div>
-        <p className="footer-legal">© 2026 — Dylan Couto de Oliveira · Basé en France</p>
+        <p className="footer-legal">© 2026 — Dylan Couto de Oliveira · {dictionary.footer.location}</p>
       </footer>
     </div>
   );

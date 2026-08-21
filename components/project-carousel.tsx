@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { Project } from "../lib/projects";
+import { getDictionary, localizePath, type Locale } from "../lib/i18n";
 
 function PixelPlaceholder({ seed }: { seed: string }) {
   const cells = Array.from({ length: 154 }, (_, index) => {
@@ -22,7 +23,8 @@ function PixelPlaceholder({ seed }: { seed: string }) {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-export default function ProjectCarousel({ projects }: { projects: Project[] }) {
+export default function ProjectCarousel({ projects, locale }: { projects: Project[]; locale: Locale }) {
+  const copy = getDictionary(locale).carousel;
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -75,7 +77,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       className="pf-carousel"
       role="region"
       aria-roledescription="carousel"
-      aria-label="Projets"
+      aria-label={copy.label}
     >
       <div
         className="pf-carousel-stage"
@@ -92,9 +94,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
 
         <Link
           key={project.slug}
-          href={`/projets/${project.slug}`}
+          href={localizePath(`/projets/${project.slug}`, locale)}
           className="pf-carousel-slide"
-          aria-label={`Ouvrir le projet ${project.title}`}
+          aria-label={`${copy.openProject} ${project.title}`}
         >
           <div className="pf-carousel-media" data-theme={project.theme ?? "graphite"}>
             <div className="pf-carousel-media-frame">
@@ -126,7 +128,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
               ))}
             </div>
             <span className="pf-carousel-cta">
-              Voir l&apos;étude de cas
+              {copy.caseStudy}
               <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
                 <path
                   d="M5 12h14M13 6l6 6-6 6"
@@ -145,9 +147,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           type="button"
           className="pf-carousel-peek"
           onClick={() => goTo(activeIndex + 1)}
-          aria-label={`Projet suivant : ${nextProject.title}`}
+          aria-label={`${copy.nextProject} : ${nextProject.title}`}
         >
-          <span className="pf-carousel-peek-label">Suivant</span>
+          <span className="pf-carousel-peek-label">{copy.next}</span>
           <span className="pf-carousel-peek-title">{nextProject.title}</span>
           <span className="pf-carousel-peek-media" aria-hidden="true">
             {nextProject.previewImage ? (
@@ -160,7 +162,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       <div className="pf-carousel-rail">
-        <ol className="pf-carousel-list" role="tablist" aria-label="Projets">
+        <ol className="pf-carousel-list" role="tablist" aria-label={copy.label}>
           {projects.map((p, i) => (
             <li key={p.slug}>
               <button
@@ -184,7 +186,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           <button
             type="button"
             className="pf-carousel-arrow"
-            aria-label="Projet précédent"
+            aria-label={copy.previousProject}
             onClick={() => goTo(activeIndex - 1)}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
@@ -201,7 +203,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
           <button
             type="button"
             className="pf-carousel-arrow"
-            aria-label="Projet suivant"
+            aria-label={copy.nextProject}
             onClick={() => goTo(activeIndex + 1)}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">

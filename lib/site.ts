@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 
+import { getDictionary, localizePath, locales, type Locale } from "./i18n";
+
 export const siteConfig = {
   name: "Dylan COUTO DE OLIVEIRA",
   siteName: "dylan-cdo.fr",
   url: "https://www.dylan-cdo.fr",
-  title: "Dylan COUTO DE OLIVEIRA — Développeur Web & Mobile Senior",
-  description:
-    "Portfolio de Dylan COUTO DE OLIVEIRA, développeur web et mobile senior spécialisé TypeScript, Angular, Nest.js et React.",
-  locale: "fr_FR",
   email: "contact@dylan-cdo.fr",
   social: {
     linkedin: "https://www.linkedin.com/in/dylan-cdo/",
@@ -22,71 +20,14 @@ export const socialLinks = [
   { label: "X", href: siteConfig.social.x },
 ] as const;
 
-export const expertiseAreas = [
-  {
-    title: "Frontend produit",
-    description:
-      "Interfaces React et Angular pensées pour la clarté, la performance et la qualité perçue.",
-    items: ["Design systems légers", "Accessibilité", "Performance web"],
-  },
-  {
-    title: "Applications TypeScript",
-    description:
-      "Conception d'applications web maintenables avec un niveau d'exigence élevé sur la lisibilité et l'architecture.",
-    items: ["TypeScript strict", "Composants robustes", "Architecture modulaire"],
-  },
-  {
-    title: "Backend Node.js",
-    description:
-      "APIs et services Nest.js orientés logique métier, données propres et intégration produit.",
-    items: ["Nest.js", "MongoDB", "PostgreSQL"],
-  },
-  {
-    title: "Ouverture mobile",
-    description:
-      "Montée en compétence Swift pour élargir le spectre produit vers l'écosystème Apple.",
-    items: ["Swift", "UIKit", "Logique d'application"],
-  },
-] as const;
-
-export const faqEntries = [
-  {
-    question: "Qui est Dylan COUTO DE OLIVEIRA ?",
-    answer:
-      "Dylan COUTO DE OLIVEIRA est un développeur web et mobile senior basé en France. Son cœur d'expertise est la stack TypeScript, avec une expérience forte sur Angular, Nest.js et React, et un intérêt concret pour Swift.",
-  },
-  {
-    question: "Quelles technologies maîtrise-t-il principalement ?",
-    answer:
-      "Son socle principal repose sur TypeScript, Angular, React, Nest.js, MongoDB et PostgreSQL. Il s'intéresse aussi à Swift pour étendre son champ d'action côté mobile.",
-  },
-  {
-    question: "Sur quel type de projets intervient-il ?",
-    answer:
-      "Il intervient sur des interfaces produit, des vitrines premium, des applications métier et des projets où l'expérience utilisateur, la structure du code et la qualité perçue comptent réellement.",
-  },
-  {
-    question: "Quel rôle prend-il dans une équipe ?",
-    answer:
-      "Il peut intervenir comme développeur frontend ou full-stack TypeScript, avec une sensibilité forte pour l'UX, la performance, la clarté produit et la qualité globale de l'exécution.",
-  },
-  {
-    question: "Comment le contacter ?",
-    answer:
-      "Le moyen le plus direct est l'email, complété par LinkedIn pour les échanges liés au recrutement, aux projets ou aux opportunités produit.",
-  },
-] as const;
-
-export const hiringSignals = [
-  "Profil senior orienté TypeScript, Angular, Nest.js et React.",
-  "Sensibilité produit et exigence visuelle sur les interfaces.",
-  "Travail aussi bien sur la clarté du code que sur la qualité perçue.",
-] as const;
-
 export const siteLastModified = new Date().toISOString();
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
+}
+
+export function localizedAbsoluteUrl(path: string, locale: Locale) {
+  return absoluteUrl(localizePath(path, locale));
 }
 
 function resolveImage(image?: string) {
@@ -100,13 +41,16 @@ export function createPageMetadata({
   description,
   path,
   image,
+  locale = "fr",
 }: {
   title: string;
   description: string;
   path: string;
   image?: string;
+  locale?: Locale;
 }): Metadata {
-  const url = absoluteUrl(path);
+  const dictionary = getDictionary(locale);
+  const url = localizedAbsoluteUrl(path, locale);
   const imageUrl = resolveImage(image);
 
   return {
@@ -114,22 +58,25 @@ export function createPageMetadata({
     description,
     alternates: {
       canonical: url,
+      languages: {
+        "x-default": localizedAbsoluteUrl(path, "fr"),
+        ...Object.fromEntries(locales.map((alternateLocale) => [
+          getDictionary(alternateLocale).htmlLang,
+          localizedAbsoluteUrl(path, alternateLocale),
+        ])),
+      },
     },
     openGraph: {
       title,
       description,
       url,
       siteName: siteConfig.siteName,
-      locale: siteConfig.locale,
+      locale: dictionary.ogLocale,
+      alternateLocale: locales
+        .filter((alternateLocale) => alternateLocale !== locale)
+        .map((alternateLocale) => getDictionary(alternateLocale).ogLocale),
       type: "website",
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
@@ -141,73 +88,49 @@ export function createPageMetadata({
   };
 }
 
-export const siteSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${siteConfig.url}/#person`,
-    name: siteConfig.name,
-    givenName: "Dylan",
-    familyName: "COUTO DE OLIVEIRA",
-    url: siteConfig.url,
-    image: absoluteUrl("/opengraph-image"),
-    jobTitle: "Développeur web et mobile senior",
-    description: siteConfig.description,
-    email: `mailto:${siteConfig.email}`,
-    knowsLanguage: ["fr", "en"],
-    knowsAbout: [
-      "TypeScript",
-      "JavaScript",
-      "Angular",
-      "React",
-      "Next.js",
-      "Nest.js",
-      "Node.js",
-      "Swift",
-      "UIKit",
-      "MongoDB",
-      "PostgreSQL",
-      "Architecture frontend",
-      "Design systems",
-      "Accessibilité",
-      "Performance web",
-      "Core Web Vitals",
-      "UX",
-    ],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "FR",
+export function getSiteSchema(locale: Locale) {
+  const dictionary = getDictionary(locale);
+  const homepage = localizedAbsoluteUrl("/", locale);
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${homepage}#person`,
+      name: siteConfig.name,
+      givenName: "Dylan",
+      familyName: "COUTO DE OLIVEIRA",
+      url: homepage,
+      image: absoluteUrl("/opengraph-image"),
+      jobTitle: dictionary.schema.jobTitle,
+      description: dictionary.schema.description,
+      email: `mailto:${siteConfig.email}`,
+      knowsLanguage: ["fr", "en", "es"],
+      knowsAbout: ["TypeScript", "JavaScript", "Angular", "React", "Next.js", "Nest.js", "Node.js", "Swift", "UIKit", "MongoDB", "PostgreSQL", "Frontend architecture", "Design systems", "Accessibility", "Web performance", "Core Web Vitals", "UX"],
+      address: { "@type": "PostalAddress", addressCountry: "FR" },
+      nationality: { "@type": "Country", name: dictionary.schema.country },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: dictionary.schema.contactType,
+        email: siteConfig.email,
+        availableLanguage: dictionary.schema.availableLanguages,
+        areaServed: "FR",
+      },
+      sameAs: Object.values(siteConfig.social),
     },
-    nationality: {
-      "@type": "Country",
-      name: "France",
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${homepage}#website`,
+      url: homepage,
+      name: siteConfig.siteName,
+      inLanguage: dictionary.htmlLang,
+      dateModified: siteLastModified,
+      publisher: { "@id": `${homepage}#person` },
     },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "professional",
-      email: siteConfig.email,
-      availableLanguage: ["French", "English"],
-      areaServed: "FR",
-    },
-    sameAs: Object.values(siteConfig.social),
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteConfig.url}/#website`,
-    url: siteConfig.url,
-    name: siteConfig.siteName,
-    inLanguage: "fr-FR",
-    dateModified: siteLastModified,
-    publisher: {
-      "@id": `${siteConfig.url}/#person`,
-    },
-  },
-];
+  ];
+}
 
-export function breadcrumbSchema(
-  items: { name: string; path: string }[],
-) {
+export function breadcrumbSchema(items: { name: string; path: string }[], locale: Locale = "fr") {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -215,37 +138,34 @@ export function breadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: absoluteUrl(item.path),
+      item: localizedAbsoluteUrl(item.path, locale),
     })),
   };
 }
 
-export function faqPageSchema(
-  entries: readonly { question: string; answer: string }[],
-) {
+export function faqPageSchema(entries: readonly { question: string; answer: string }[], locale: Locale = "fr") {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: getDictionary(locale).htmlLang,
     mainEntity: entries.map((entry) => ({
       "@type": "Question",
       name: entry.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: entry.answer,
-      },
+      acceptedAnswer: { "@type": "Answer", text: entry.answer },
     })),
   };
 }
 
-export function profilePageSchema(path: string) {
+export function profilePageSchema(path: string, locale: Locale = "fr") {
+  const homepage = localizedAbsoluteUrl("/", locale);
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    url: absoluteUrl(path),
-    inLanguage: "fr-FR",
+    url: localizedAbsoluteUrl(path, locale),
+    inLanguage: getDictionary(locale).htmlLang,
     dateModified: siteLastModified,
-    mainEntity: { "@id": `${siteConfig.url}/#person` },
-    about: { "@id": `${siteConfig.url}/#person` },
+    mainEntity: { "@id": `${homepage}#person` },
+    about: { "@id": `${homepage}#person` },
   };
 }
 
@@ -257,8 +177,9 @@ export function projectCreativeWorkSchema(project: {
   stack: readonly string[] | string[];
   previewImage?: string;
   externalUrl?: string;
-}) {
-  const url = absoluteUrl(`/projets/${project.slug}`);
+}, locale: Locale = "fr") {
+  const url = localizedAbsoluteUrl(`/projets/${project.slug}`, locale);
+  const homepage = localizedAbsoluteUrl("/", locale);
   return {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -268,13 +189,13 @@ export function projectCreativeWorkSchema(project: {
     description: project.description,
     abstract: project.summary,
     url,
-    inLanguage: "fr-FR",
+    inLanguage: getDictionary(locale).htmlLang,
     dateModified: siteLastModified,
     keywords: Array.from(project.stack).join(", "),
     image: project.previewImage ? absoluteUrl(project.previewImage) : undefined,
     sameAs: project.externalUrl,
-    author: { "@id": `${siteConfig.url}/#person` },
-    creator: { "@id": `${siteConfig.url}/#person` },
-    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    author: { "@id": `${homepage}#person` },
+    creator: { "@id": `${homepage}#person` },
+    isPartOf: { "@id": `${homepage}#website` },
   };
 }
