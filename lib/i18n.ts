@@ -1,5 +1,15 @@
 export const locales = ["fr", "en", "es"] as const;
 export const prefixedLocales = ["en", "es"] as const;
+export const localeCookieName = "portfolio-locale";
+export const localeCookieMaxAge = 60 * 60 * 24 * 365;
+
+const localizedPagePaths = new Set([
+  "/",
+  "/a-propos",
+  "/contact",
+  "/expertises",
+  "/faq",
+]);
 
 export type Locale = (typeof locales)[number];
 
@@ -330,6 +340,10 @@ export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
+export function parseLocale(value: string | null | undefined): Locale | null {
+  return value && isLocale(value) ? value : null;
+}
+
 export function isPrefixedLocale(value: string): value is Exclude<Locale, "fr"> {
   return prefixedLocales.includes(value as Exclude<Locale, "fr">);
 }
@@ -353,4 +367,37 @@ export function localizePath(path: string, locale: Locale): string {
 export function localeFromPathname(pathname: string): Locale {
   const segment = pathname.split("/")[1];
   return isPrefixedLocale(segment) ? segment : "fr";
+}
+
+export function isLocalizablePath(pathname: string): boolean {
+  const normalized = stripLocalePrefix(pathname).replace(/\/$/, "") || "/";
+  return localizedPagePaths.has(normalized) || /^\/projets\/[^/]+$/.test(normalized);
+}
+
+export function localeFromAcceptLanguage(acceptLanguage: string | null): Locale {
+  if (!acceptLanguage) return "fr";
+
+  const preferences = acceptLanguage
+    .split(",")
+    .map((entry, index) => {
+      const [languageRange, ...parameters] = entry.trim().toLowerCase().split(";");
+      const qualityParameter = parameters.find((parameter) => parameter.trim().startsWith("q="));
+      const parsedQuality = qualityParameter
+        ? Number.parseFloat(qualityParameter.trim().slice(2))
+        : 1;
+
+      return {
+        language: languageRange.split("-")[0],
+        quality: Number.isFinite(parsedQuality) ? parsedQuality : 0,
+        index,
+      };
+    })
+    .filter(({ quality }) => quality > 0)
+    .sort((a, b) => b.quality - a.quality || a.index - b.index);
+
+  for (const preference of preferences) {
+    if (isLocale(preference.language)) return preference.language;
+  }
+
+  return "fr";
 }

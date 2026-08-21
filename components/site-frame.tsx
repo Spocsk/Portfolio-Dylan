@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { siteConfig, socialLinks } from "../lib/site";
 import {
   getDictionary,
+  localeCookieMaxAge,
+  localeCookieName,
   localizePath,
   locales,
   stripLocalePrefix,
@@ -50,7 +52,6 @@ function applyTheme(themePreference: ThemeMode | null): ThemeMode {
 
 export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren<{ locale?: Locale }>) {
   const pathname = usePathname();
-  const router = useRouter();
   const navRef = useRef<HTMLElement>(null);
   const preferredThemeRef = useRef<ThemeMode | null>(null);
   const [activeTheme, setActiveTheme] = useState<ThemeMode>("light");
@@ -203,20 +204,19 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                   const href = localizePath(pathname, targetLocale);
                   const isActive = targetLocale === locale;
                   return (
-                    <Link
+                    <button
                       key={targetLocale}
-                      href={href}
-                      hrefLang={targetDictionary.htmlLang}
+                      type="button"
                       role="menuitemradio"
                       aria-checked={isActive}
                       aria-label={`${navCopy.switchTo} ${targetDictionary.languageName}`}
                       className={`language-option${isActive ? " is-active" : ""}`}
-                      onClick={(event) => {
+                      onClick={() => {
                         const suffix = `${window.location.search}${window.location.hash}`;
+                        const secure = window.location.protocol === "https:" ? "; Secure" : "";
+                        document.cookie = `${localeCookieName}=${targetLocale}; Max-Age=${localeCookieMaxAge}; Path=/; SameSite=Lax${secure}`;
                         setIsLanguageOpen(false);
-                        if (!suffix) return;
-                        event.preventDefault();
-                        router.push(`${href}${suffix}`);
+                        window.location.assign(`${href}${suffix}`);
                       }}
                     >
                       <span className="language-option-label">
@@ -226,7 +226,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                         <span>{targetDictionary.languageName}</span>
                       </span>
                       <span className="language-option-code">{targetDictionary.languageCode}</span>
-                    </Link>
+                    </button>
                   );
                 })}
               </div>
