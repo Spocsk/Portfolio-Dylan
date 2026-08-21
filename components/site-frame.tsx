@@ -183,6 +183,9 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                   setIsMenuOpen(false);
                 }}
               >
+                <span className="language-flag" aria-hidden="true">
+                  {dictionary.languageFlag}
+                </span>
                 <span>{dictionary.languageCode}</span>
                 <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
                   <path d="m2.5 4.5 3.5 3 3.5-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -216,7 +219,12 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                         router.push(`${href}${suffix}`);
                       }}
                     >
-                      <span>{targetDictionary.languageName}</span>
+                      <span className="language-option-label">
+                        <span className="language-flag" aria-hidden="true">
+                          {targetDictionary.languageFlag}
+                        </span>
+                        <span>{targetDictionary.languageName}</span>
+                      </span>
                       <span className="language-option-code">{targetDictionary.languageCode}</span>
                     </Link>
                   );

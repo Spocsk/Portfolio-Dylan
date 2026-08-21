@@ -11,6 +11,7 @@ type PageMetadataCopy = {
 export type Dictionary = {
   languageName: string;
   languageCode: string;
+  languageFlag: string;
   htmlLang: string;
   ogLocale: string;
   navigation: {
@@ -124,6 +125,7 @@ export type Dictionary = {
 const fr: Dictionary = {
   languageName: "Français",
   languageCode: "FR",
+  languageFlag: "🇫🇷",
   htmlLang: "fr-FR",
   ogLocale: "fr_FR",
   navigation: {
@@ -231,6 +233,7 @@ const fr: Dictionary = {
 const en: Dictionary = {
   languageName: "English",
   languageCode: "EN",
+  languageFlag: "🇬🇧",
   htmlLang: "en-US",
   ogLocale: "en_US",
   navigation: {
@@ -277,6 +280,7 @@ const en: Dictionary = {
 const es: Dictionary = {
   languageName: "Español",
   languageCode: "ES",
+  languageFlag: "🇪🇸",
   htmlLang: "es-ES",
   ogLocale: "es_ES",
   navigation: {
