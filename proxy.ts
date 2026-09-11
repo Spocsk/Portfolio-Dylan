@@ -36,10 +36,11 @@ function rememberLocale(response: NextResponse, locale: "fr" | "en" | "es") {
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");
 
-  if (host === "dylan-cdo.fr") {
+  if (host === "dylan-cdo.fr" || host === "dylan-cdo.fr:3000") {
     const url = request.nextUrl.clone();
     url.protocol = "https:";
-    url.host = "www.dylan-cdo.fr";
+    url.hostname = "www.dylan-cdo.fr";
+    url.port = "";
     return NextResponse.redirect(url, 308);
   }
 
