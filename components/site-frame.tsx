@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { siteConfig, socialLinks } from "../lib/site";
+import { trackUmami } from "../lib/analytics";
 import {
   getDictionary,
   localeCookieMaxAge,
@@ -160,6 +161,14 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                     href={localizePath(link.href, locale)}
                     className={`nav-btn${isActive ? " active" : ""}`}
                     aria-current={isActive ? "page" : undefined}
+                    onClick={() => {
+                      if (link.href === "/contact") {
+                        trackUmami("contact_section_click", {
+                          placement: "nav_desktop",
+                          locale,
+                        });
+                      }
+                    }}
                   >
                     {link.label}
                   </Link>
@@ -212,6 +221,11 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                       aria-label={`${navCopy.switchTo} ${targetDictionary.languageName}`}
                       className={`language-option${isActive ? " is-active" : ""}`}
                       onClick={() => {
+                        trackUmami("language_change", {
+                          from: locale,
+                          to: targetLocale,
+                          path: pathname,
+                        });
                         const suffix = `${window.location.search}${window.location.hash}`;
                         const secure = window.location.protocol === "https:" ? "; Secure" : "";
                         document.cookie = `${localeCookieName}=${targetLocale}; Max-Age=${localeCookieMaxAge}; Path=/; SameSite=Lax${secure}`;
@@ -270,6 +284,14 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                   href={localizePath(link.href, locale)}
                   className={`nav-btn mobile-nav-btn${isActive ? " active" : ""}`}
                   aria-current={isActive ? "page" : undefined}
+                  onClick={() => {
+                    if (link.href === "/contact") {
+                      trackUmami("contact_section_click", {
+                        placement: "nav_mobile",
+                        locale,
+                      });
+                    }
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -294,6 +316,12 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
               href={`mailto:${siteConfig.email}`}
               className="footer-link"
               rel="me"
+              onClick={() =>
+                trackUmami("contact_email_click", {
+                  placement: "footer",
+                  locale,
+                })
+              }
             >
               Email
             </a>
@@ -304,6 +332,13 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                 className="footer-link"
                 rel="me noopener noreferrer"
                 target="_blank"
+                onClick={() =>
+                  trackUmami("social_click", {
+                    network: link.label.toLowerCase(),
+                    placement: "footer",
+                    locale,
+                  })
+                }
               >
                 {link.label}
               </a>

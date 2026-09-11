@@ -26,7 +26,7 @@ export function ExpertisesContent({ locale }: { locale: Locale }) {
       </section>
       <section className="pf-page-footnav">
         <Link href={localizePath("/#work", locale)} className="pf-text-link">{copy.projectsCta}</Link>
-        <Link href={localizePath("/contact", locale)} className="pf-text-link">{copy.contactCta}</Link>
+        <Link href={localizePath("/contact", locale)} className="pf-text-link" data-umami-event="contact_section_click" data-umami-event-placement="expertises_footer" data-umami-event-locale={locale}>{copy.contactCta}</Link>
       </section>
     </div>
   );
@@ -56,7 +56,7 @@ export function AboutContent({ locale }: { locale: Locale }) {
         </div>
       </section>
       <section className="pf-page-footnav">
-        <Link href={localizePath("/contact", locale)} className="pf-text-link">{copy.contactCta}</Link>
+        <Link href={localizePath("/contact", locale)} className="pf-text-link" data-umami-event="contact_section_click" data-umami-event-placement="about_footer" data-umami-event-locale={locale}>{copy.contactCta}</Link>
         <Link href={localizePath("/expertises", locale)} className="pf-text-link">{copy.expertisesCta}</Link>
       </section>
     </div>
@@ -73,9 +73,9 @@ export function ContactContent({ locale }: { locale: Locale }) {
         <p className="pf-page-lead">{copy.lead}</p>
       </section>
       <section className="pf-section">
-        <a href={`mailto:${siteConfig.email}`} className="pf-contact-mail" style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)" }}>{siteConfig.email}</a>
+        <a href={`mailto:${siteConfig.email}`} className="pf-contact-mail" style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.5rem)" }} data-umami-event="contact_email_click" data-umami-event-placement="contact_page" data-umami-event-locale={locale}>{siteConfig.email}</a>
         <div className="pf-page-footnav" style={{ paddingTop: "3rem", paddingBottom: 0 }}>
-          {socialLinks.map((link) => <a key={link.href} href={link.href} className="pf-text-link" target="_blank" rel="noopener noreferrer">{link.label}</a>)}
+          {socialLinks.map((link) => <a key={link.href} href={link.href} className="pf-text-link" target="_blank" rel="noopener noreferrer" data-umami-event="social_click" data-umami-event-network={link.label.toLowerCase()} data-umami-event-placement="contact_page" data-umami-event-locale={locale}>{link.label}</a>)}
         </div>
       </section>
     </div>

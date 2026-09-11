@@ -26,7 +26,13 @@ export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
           <Link href={localizePath("/#work", locale)} className="pf-link-arrow">
             {copy.projectsCta}
           </Link>
-          <Link href={localizePath("/#contact", locale)} className="pf-link-arrow pf-link-muted">
+          <Link
+            href={localizePath("/#contact", locale)}
+            className="pf-link-arrow pf-link-muted"
+            data-umami-event="contact_section_click"
+            data-umami-event-placement="home_hero"
+            data-umami-event-locale={locale}
+          >
             {copy.contactCta}
           </Link>
         </div>
@@ -58,7 +64,13 @@ export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
           <br />
           <span className="pf-contact-dim">{copy.contactTitleSoft}</span>
         </h2>
-        <a href="mailto:contact@dylan-cdo.fr" className="pf-contact-mail">
+        <a
+          href="mailto:contact@dylan-cdo.fr"
+          className="pf-contact-mail"
+          data-umami-event="contact_email_click"
+          data-umami-event-placement="home_section"
+          data-umami-event-locale={locale}
+        >
           contact@dylan-cdo.fr
         </a>
       </section>

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { Project } from "../lib/projects";
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
+import { trackUmami } from "../lib/analytics";
 
 function PixelPlaceholder({ seed }: { seed: string }) {
   const cells = Array.from({ length: 154 }, (_, index) => {
@@ -97,6 +98,7 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
           href={localizePath(`/projets/${project.slug}`, locale)}
           className="pf-carousel-slide"
           aria-label={`${copy.openProject} ${project.title}`}
+          onClick={() => trackUmami("project_open", { slug: project.slug, locale })}
         >
           <div className="pf-carousel-media" data-theme={project.theme ?? "graphite"}>
             <div className="pf-carousel-media-frame">

@@ -19,7 +19,7 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
           <div className="pf-block"><span className="pf-label">{copy.role}</span><p>{project.role}</p></div>
           <div className="pf-block">
             <span className="pf-label">{copy.angle}</span><p>{project.summary}</p>
-            {project.externalUrl ? <a href={project.externalUrl} className="pf-text-link" target="_blank" rel="noopener noreferrer">{copy.viewOnline}</a> : null}
+            {project.externalUrl ? <a href={project.externalUrl} className="pf-text-link" target="_blank" rel="noopener noreferrer" data-umami-event="project_external_click" data-umami-event-slug={project.slug} data-umami-event-locale={locale}>{copy.viewOnline}</a> : null}
           </div>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
       </section>
       <section className="pf-page-footnav">
         <Link href={localizePath("/#work", locale)} className="pf-text-link">{copy.otherProjects}</Link>
-        <Link href={localizePath("/contact", locale)} className="pf-text-link">{copy.contact}</Link>
+        <Link href={localizePath("/contact", locale)} className="pf-text-link" data-umami-event="contact_section_click" data-umami-event-placement="project_footer" data-umami-event-locale={locale}>{copy.contact}</Link>
       </section>
     </div>
   );

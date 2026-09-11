@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist } from "next/font/google";
 import { headers } from "next/headers";
-import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 
 import { getDictionary, isLocale } from "../lib/i18n";
@@ -99,9 +98,13 @@ export default async function RootLayout({
           defer
           src="https://analytics.dylan-cdo.fr/script.js"
           data-website-id="a17a490e-2af3-4ada-a912-8ca569cb554c"
+          data-domains="dylan-cdo.fr,www.dylan-cdo.fr"
+          data-exclude-hash="true"
+          data-tag="tracking-v2"
+          data-performance="true"
+          data-do-not-track="true"
         />
         {children}
-        <Analytics />
       </body>
     </html>
   );
