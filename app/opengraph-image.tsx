@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Dylan COUTO DE OLIVEIRA — Développeur Web & Mobile Senior";
+export const alt = "Dylan COUTO DE OLIVEIRA — Full-stack TypeScript, Angular & NestJS";
 export const size = {
   width: 1200,
   height: 630,
@@ -59,9 +59,9 @@ export default function OpenGraphImage() {
               opacity: 0.9,
             }}
           >
-            Développeur web et mobile senior.
+            Développeur full-stack TypeScript.
             <br />
-            TypeScript, Angular, Nest.js, React.
+            Angular, NestJS, Node.js.
           </p>
         </div>
 
@@ -73,11 +73,11 @@ export default function OpenGraphImage() {
             opacity: 0.9,
           }}
         >
-          <span>Interfaces produit</span>
+          <span>Angular</span>
           <span>•</span>
-          <span>Architecture TypeScript</span>
+          <span>NestJS</span>
           <span>•</span>
-          <span>Qualité perçue</span>
+          <span>DevOps</span>
         </div>
       </div>
     ),

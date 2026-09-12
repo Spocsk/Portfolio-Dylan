@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
 import type { Project } from "../lib/projects";
+import PixelPlaceholder from "./pixel-placeholder";
 
 export default function ProjectDetail({ project, locale }: { project: Project; locale: Locale }) {
   const copy = getDictionary(locale).project;
@@ -12,7 +14,24 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
         <h1>{project.title}.</h1>
         <p className="pf-page-lead">{project.description}</p>
         <div className="pf-tags">{project.stack.map((item) => <span key={item} className="pf-tag">{item}</span>)}</div>
-        {project.previewImage ? <div className="pf-hero-media"><img src={project.previewImage} alt={project.previewAlt ?? project.title} /></div> : null}
+        {project.previewImage ? (
+          <div className="pf-hero-media">
+            <Image
+              src={project.previewImage}
+              alt={project.previewAlt ?? project.title}
+              fill
+              sizes="(max-width: 980px) 100vw, 980px"
+              priority
+            />
+          </div>
+        ) : (
+          <div className="pf-hero-media pf-hero-media-empty" data-theme={project.theme ?? "graphite"}>
+            <PixelPlaceholder seed={project.slug} />
+            <p className="pf-hero-media-caption">
+              {project.eyebrow} · {project.title}
+            </p>
+          </div>
+        )}
       </section>
       <section className="pf-section">
         <div className="pf-split">
@@ -33,7 +52,7 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
         <div className="pf-block"><span className="pf-label">{copy.results}</span><ul>{project.results.map((result) => <li key={result}>{result}</li>)}</ul></div>
       </section>
       <section className="pf-page-footnav">
-        <Link href={localizePath("/#work", locale)} className="pf-text-link">{copy.otherProjects}</Link>
+        <Link href={localizePath("/projets", locale)} className="pf-text-link">{copy.otherProjects}</Link>
         <Link href={localizePath("/contact", locale)} className="pf-text-link" data-umami-event="contact_section_click" data-umami-event-placement="project_footer" data-umami-event-locale={locale}>{copy.contact}</Link>
       </section>
     </div>

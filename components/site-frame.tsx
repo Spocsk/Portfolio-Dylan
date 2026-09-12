@@ -8,8 +8,6 @@ import { siteConfig, socialLinks } from "../lib/site";
 import { trackUmami } from "../lib/analytics";
 import {
   getDictionary,
-  localeCookieMaxAge,
-  localeCookieName,
   localizePath,
   locales,
   stripLocalePrefix,
@@ -64,13 +62,14 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
     { href: "/", label: navCopy.home },
     { href: "/expertises", label: navCopy.expertises },
     { href: "/a-propos", label: navCopy.about },
+    { href: "/faq", label: navCopy.faq },
     { href: "/contact", label: navCopy.contact },
   ];
   const footerLinks = [
     { href: "/faq", label: dictionary.footer.faq },
     { href: "/expertises", label: dictionary.footer.expertises },
     { href: "/a-propos", label: dictionary.footer.profile },
-    { href: "/#work", label: dictionary.footer.projects },
+    { href: "/projets", label: dictionary.footer.projects },
   ];
 
   useEffect(() => {
@@ -210,12 +209,12 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
               >
                 {locales.map((targetLocale) => {
                   const targetDictionary = getDictionary(targetLocale);
-                  const href = localizePath(pathname, targetLocale);
+                  const href = localizePath(stripLocalePrefix(pathname), targetLocale);
                   const isActive = targetLocale === locale;
                   return (
-                    <button
+                    <Link
                       key={targetLocale}
-                      type="button"
+                      href={href}
                       role="menuitemradio"
                       aria-checked={isActive}
                       aria-label={`${navCopy.switchTo} ${targetDictionary.languageName}`}
@@ -226,11 +225,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                           to: targetLocale,
                           path: pathname,
                         });
-                        const suffix = `${window.location.search}${window.location.hash}`;
-                        const secure = window.location.protocol === "https:" ? "; Secure" : "";
-                        document.cookie = `${localeCookieName}=${targetLocale}; Max-Age=${localeCookieMaxAge}; Path=/; SameSite=Lax${secure}`;
                         setIsLanguageOpen(false);
-                        window.location.assign(`${href}${suffix}`);
                       }}
                     >
                       <span className="language-option-label">
@@ -240,7 +235,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
                         <span>{targetDictionary.languageName}</span>
                       </span>
                       <span className="language-option-code">{targetDictionary.languageCode}</span>
-                    </button>
+                    </Link>
                   );
                 })}
               </div>

@@ -1,26 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { Project } from "../lib/projects";
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
 import { trackUmami } from "../lib/analytics";
-
-function PixelPlaceholder({ seed }: { seed: string }) {
-  const cells = Array.from({ length: 154 }, (_, index) => {
-    const code = seed.charCodeAt(index % seed.length) || 65;
-    const tier = (code + index * 7) % 6;
-    return (
-      <span
-        key={`${seed}-${index}`}
-        className={`pf-pixel pf-pixel-${tier}`}
-        aria-hidden="true"
-      />
-    );
-  });
-  return <div className="pf-pixel-matrix">{cells}</div>;
-}
+import PixelPlaceholder from "./pixel-placeholder";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -103,10 +90,12 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
           <div className="pf-carousel-media" data-theme={project.theme ?? "graphite"}>
             <div className="pf-carousel-media-frame">
               {project.previewImage ? (
-                <img
+                <Image
                   src={project.previewImage}
                   alt={project.previewAlt ?? project.title}
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 860px) 100vw, 52vw"
+                  priority={activeIndex === 0}
                 />
               ) : (
                 <PixelPlaceholder seed={project.slug} />
@@ -155,7 +144,7 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
           <span className="pf-carousel-peek-title">{nextProject.title}</span>
           <span className="pf-carousel-peek-media" aria-hidden="true">
             {nextProject.previewImage ? (
-              <img src={nextProject.previewImage} alt="" loading="lazy" />
+              <Image src={nextProject.previewImage} alt="" fill sizes="120px" />
             ) : (
               <PixelPlaceholder seed={nextProject.slug} />
             )}

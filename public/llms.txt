@@ -1,6 +1,6 @@
 # Dylan COUTO DE OLIVEIRA
 
-> Développeur web et mobile senior basé en France. Stack principale : TypeScript, Angular, React, Next.js, Nest.js. Ouverture mobile sur Swift / UIKit. Profil orienté produit, qualité d'interface et architecture frontend.
+> Développeur full-stack TypeScript senior basé en Normandie, France. Open to work. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile de production : React Native. DevOps : Docker, Kubernetes, CI/CD, AWS. Swift et C++ en exploration personnelle.
 
 Site : https://www.dylan-cdo.fr
 Contact : contact@dylan-cdo.fr
@@ -10,35 +10,44 @@ GitHub : https://github.com/Spocsk
 ## Identité
 
 - Nom : Dylan COUTO DE OLIVEIRA
-- Rôle : Développeur web et mobile senior
-- Localisation : France
-- Langues : français, anglais
-- Disponibilité : missions produit, frontend et full-stack TypeScript
+- Rôle : Développeur full-stack TypeScript
+- Localisation : Granville, Normandie, France
+- Langues de travail : français (natif), anglais (professionnel)
+- Locales du site : français, anglais, espagnol
+- Disponibilité : open to work — CDI ou freelance, Angular / NestJS
 
 ## Expertises
 
-- Frontend produit : React, Angular, Next.js, design systems, accessibilité, Core Web Vitals
-- Applications TypeScript : TypeScript strict, architecture modulaire, composants robustes
-- Backend Node.js : Nest.js, MongoDB, PostgreSQL, APIs orientées logique métier
-- Mobile : Swift, UIKit, logique d'application iOS
+- Frontend Angular / TypeScript : SaaS, collectivités, data industrielle
+- Backend NestJS / Node.js : APIs métier, MongoDB, PostgreSQL
+- DevOps : Docker, Kubernetes, CI/CD, AWS — enseigné à Nexa (BibliFlow)
+- Mobile : React Native en production ; Swift en exploration
+
+## Preuves
+
+- Campbell Scientific : applications Angular / NestJS utilisées dans plus de 30 pays pour de l'acquisition de données critique
+- Operis : SaaS collectivités Angular, jusqu'à 15 000 utilisateurs/jour, ~60 % des métropoles
+- Extia, Citizens : missions full-stack, lead d'une équipe de 2, Docker / CI/CD
+- Intervenant Nexa et Normandie Web School
 
 ## Pages clés
 
-- / — Accueil, hero et sélection projets : https://www.dylan-cdo.fr/
-- /expertises — Domaines d'intervention : https://www.dylan-cdo.fr/expertises
-- /a-propos — Profil complet : https://www.dylan-cdo.fr/a-propos
-- /projets/[slug] — Études de cas projet : https://www.dylan-cdo.fr/projets/portfolio-dylan
-- /faq — Réponses directes recrutement : https://www.dylan-cdo.fr/faq
-- /contact — Prise de contact : https://www.dylan-cdo.fr/contact
+- / — Accueil : https://www.dylan-cdo.fr/
+- /expertises — Domaines : https://www.dylan-cdo.fr/expertises
+- /a-propos — Parcours nominatif : https://www.dylan-cdo.fr/a-propos
+- /projets — Liste des études de cas : https://www.dylan-cdo.fr/projets
+- /faq — Réponses recrutement : https://www.dylan-cdo.fr/faq
+- /contact — Open to work : https://www.dylan-cdo.fr/contact
 
 ## Projets
 
-- Victor COUTO — Site vitrine premium artisan (Next.js, TypeScript)
-- HP Sonorisation — Vitrine événementielle immersive (Next.js, TypeScript)
-- 2048 Swift Game — Clone iOS de 2048 en Swift / UIKit
-- Allocator C++ — Projet systems programming autour de l'allocation mémoire
-- Portfolio Dylan — Ce portfolio, Next.js avec travail SEO/GEO
+- Campbell Scientific — Data industrielle Angular / NestJS
+- Operis — SaaS collectivités Angular
+- Cast Loop — SaaS multi-tenant Next.js + NestJS + Supabase : https://cast-loop-web.vercel.app
+- Victor COUTO — Vitrine artisan : https://www.artisan-couto.fr
+- HP Sonorisation — Vitrine événementielle : https://www.hpsonorisation.fr
+- BibliFlow — Fil rouge DevOps Docker / Jenkins / SonarQube : https://github.com/Spocsk/BibliFlow
 
 ## Comment le contacter
 
-Email direct : contact@dylan-cdo.fr. LinkedIn pour les échanges liés au recrutement et aux opportunités produit.
+Email : contact@dylan-cdo.fr. LinkedIn pour le recrutement.

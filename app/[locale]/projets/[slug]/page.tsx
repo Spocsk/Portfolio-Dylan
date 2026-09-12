@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const project = getProjectBySlug(slug, locale);
   const copy = getDictionary(locale).project;
   if (!project) return createPageMetadata({ title: copy.notFoundTitle, description: copy.notFoundDescription, path: `/projets/${slug}`, locale });
-  return createPageMetadata({ title: project.seoTitle, description: project.seoDescription, path: `/projets/${project.slug}`, image: project.previewImage, locale });
+  return createPageMetadata({ title: project.seoTitle, description: project.seoDescription, path: `/projets/${project.slug}`, image: project.previewImage, locale, ogType: "article" });
 }
 
 export default async function LocalizedProjectPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
@@ -25,6 +25,6 @@ export default async function LocalizedProjectPage({ params }: { params: Promise
   const project = getProjectBySlug(slug, locale);
   if (!project) notFound();
   const copy = getDictionary(locale).project;
-  const jsonLd = [projectCreativeWorkSchema(project, locale), breadcrumbSchema([{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/#work" }, { name: project.title, path: `/projets/${project.slug}` }], locale)];
+  const jsonLd = [projectCreativeWorkSchema(project, locale), breadcrumbSchema([{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/projets" }, { name: project.title, path: `/projets/${project.slug}` }], locale)];
   return <SiteFrame locale={locale}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><ProjectDetail project={project} locale={locale} /></SiteFrame>;
 }

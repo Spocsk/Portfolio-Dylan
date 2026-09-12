@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
-import { getProjects } from "../lib/projects";
+import { getFeaturedProjects } from "../lib/projects";
 import ProjectCarousel from "./project-carousel";
 
 export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
   const dictionary = getDictionary(locale);
   const copy = dictionary.home;
-  const projects = getProjects(locale);
+  const projects = getFeaturedProjects(locale);
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
             {copy.projectsCta}
           </Link>
           <Link
-            href={localizePath("/#contact", locale)}
+            href={localizePath("/contact", locale)}
             className="pf-link-arrow pf-link-muted"
             data-umami-event="contact_section_click"
             data-umami-event-placement="home_hero"
@@ -55,6 +55,17 @@ export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
         </div>
 
         <ProjectCarousel projects={projects} locale={locale} />
+        <nav className="pf-project-ssr" aria-label={dictionary.carousel.label}>
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              href={localizePath(`/projets/${project.slug}`, locale)}
+              className="pf-project-ssr-link"
+            >
+              {project.title}
+            </Link>
+          ))}
+        </nav>
       </section>
 
       <section className="pf-contact" id="contact">

@@ -8,7 +8,7 @@ import { breadcrumbSchema, createPageMetadata, profilePageSchema } from "../../.
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isPrefixedLocale(locale)) return {};
-  return createPageMetadata({ ...getDictionary(locale).metadata.about, path: "/a-propos", locale });
+  return createPageMetadata({ ...getDictionary(locale).metadata.about, path: "/a-propos", locale, ogType: "profile" });
 }
 
 export default async function LocalizedAboutPage({ params }: { params: Promise<{ locale: string }> }) {

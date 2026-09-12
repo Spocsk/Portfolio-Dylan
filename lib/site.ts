@@ -20,7 +20,7 @@ export const socialLinks = [
   { label: "X", href: siteConfig.social.x },
 ] as const;
 
-export const siteLastModified = new Date().toISOString();
+export const siteLastModified = "2026-09-12T20:00:00.000Z";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
@@ -42,12 +42,14 @@ export function createPageMetadata({
   path,
   image,
   locale = "fr",
+  ogType = "website",
 }: {
   title: string;
   description: string;
   path: string;
   image?: string;
   locale?: Locale;
+  ogType?: "website" | "article" | "profile";
 }): Metadata {
   const dictionary = getDictionary(locale);
   const url = localizedAbsoluteUrl(path, locale);
@@ -75,7 +77,7 @@ export function createPageMetadata({
       alternateLocale: locales
         .filter((alternateLocale) => alternateLocale !== locale)
         .map((alternateLocale) => getDictionary(alternateLocale).ogLocale),
-      type: "website",
+      type: ogType,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
@@ -104,9 +106,27 @@ export function getSiteSchema(locale: Locale) {
       jobTitle: dictionary.schema.jobTitle,
       description: dictionary.schema.description,
       email: `mailto:${siteConfig.email}`,
-      knowsLanguage: ["fr", "en", "es"],
-      knowsAbout: ["TypeScript", "JavaScript", "Angular", "React", "Next.js", "Nest.js", "Node.js", "Swift", "UIKit", "MongoDB", "PostgreSQL", "Frontend architecture", "Design systems", "Accessibility", "Web performance", "Core Web Vitals", "UX"],
-      address: { "@type": "PostalAddress", addressCountry: "FR" },
+      knowsLanguage: ["fr", "en"],
+      knowsAbout: [
+        "TypeScript",
+        "Angular",
+        "NestJS",
+        "Node.js",
+        "React",
+        "Next.js",
+        "React Native",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "CI/CD",
+        "PostgreSQL",
+        "MongoDB",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "FR",
+        addressRegion: "Normandie",
+      },
       nationality: { "@type": "Country", name: dictionary.schema.country },
       contactPoint: {
         "@type": "ContactPoint",

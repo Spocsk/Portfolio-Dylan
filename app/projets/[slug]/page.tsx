@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = getProjectBySlug(slug, locale);
   const copy = getDictionary(locale).project;
   if (!project) return createPageMetadata({ title: copy.notFoundTitle, description: copy.notFoundDescription, path: `/projets/${slug}`, locale });
-  return createPageMetadata({ title: project.seoTitle, description: project.seoDescription, path: `/projets/${project.slug}`, image: project.previewImage, locale });
+  return createPageMetadata({ title: project.seoTitle, description: project.seoDescription, path: `/projets/${project.slug}`, image: project.previewImage, locale, ogType: "article" });
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -26,7 +26,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const copy = getDictionary(locale).project;
   const jsonLd = [
     projectCreativeWorkSchema(project, locale),
-    breadcrumbSchema([{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/#work" }, { name: project.title, path: `/projets/${project.slug}` }], locale),
+    breadcrumbSchema([{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/projets" }, { name: project.title, path: `/projets/${project.slug}` }], locale),
   ];
   return (
     <SiteFrame locale={locale}>

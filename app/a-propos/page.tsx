@@ -5,7 +5,7 @@ import { breadcrumbSchema, createPageMetadata, profilePageSchema } from "../../l
 
 const locale = "fr";
 const dictionary = getDictionary(locale);
-export const metadata = createPageMetadata({ ...dictionary.metadata.about, path: "/a-propos", locale });
+export const metadata = createPageMetadata({ ...dictionary.metadata.about, path: "/a-propos", locale, ogType: "profile" });
 
 export default function AboutPage() {
   const jsonLd = [

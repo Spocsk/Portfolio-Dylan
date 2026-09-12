@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 
 import { projects } from "../lib/projects";
 import { localizePath, locales } from "../lib/i18n";
-import { absoluteUrl } from "../lib/site";
+import { absoluteUrl, siteLastModified } from "../lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const staticRoutes = ["/", "/expertises", "/a-propos", "/contact", "/faq"];
+  const now = new Date(siteLastModified);
+  const staticRoutes = ["/", "/expertises", "/a-propos", "/contact", "/faq", "/projets"];
 
   const routes = [
     ...staticRoutes,
