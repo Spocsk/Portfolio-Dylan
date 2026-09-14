@@ -20,7 +20,7 @@ export const socialLinks = [
   { label: "X", href: siteConfig.social.x },
 ] as const;
 
-export const siteLastModified = "2026-09-12T20:00:00.000Z";
+export const siteLastModified = "2026-09-14T16:00:00.000Z";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();

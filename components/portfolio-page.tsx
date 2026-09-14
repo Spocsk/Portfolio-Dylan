@@ -55,7 +55,7 @@ export default function PortfolioPage({ locale = "fr" }: { locale?: Locale }) {
         </div>
 
         <ProjectCarousel projects={projects} locale={locale} />
-        <nav className="pf-project-ssr" aria-label={dictionary.carousel.label}>
+        <nav className="pf-project-ssr" aria-hidden="true">
           {projects.map((project) => (
             <Link
               key={project.slug}

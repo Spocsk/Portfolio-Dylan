@@ -175,11 +175,11 @@ html[data-theme="dark"],
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.75rem;
+  scroll-padding-top: 6.5rem;
 }
 
 section[id] {
-  scroll-margin-top: 7.5rem;
+  scroll-margin-top: 8.5rem;
 }
 
 html,
@@ -290,8 +290,8 @@ body {
 .main-nav-links {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 0.28rem;
+  flex-wrap: nowrap;
 }
 
 .nav-burger {
@@ -384,8 +384,8 @@ body {
   background: transparent;
   border: 1.5px solid transparent;
   border-radius: var(--border-radius-lg);
-  padding: 0.5rem 0.9rem;
-  font-size: 0.84rem;
+  padding: 0.5rem 0.72rem;
+  font-size: 0.82rem;
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition);
@@ -412,6 +412,9 @@ body {
 }
 .main-nav-links > .nav-btn:nth-child(5) {
   animation-delay: 0.25s;
+}
+.main-nav-links > .nav-btn:nth-child(6) {
+  animation-delay: 0.3s;
 }
 
 .nav-btn:hover {
@@ -1908,6 +1911,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .language-menu { animation: none; }
   .language-toggle,
   .language-toggle svg,
@@ -1934,7 +1940,7 @@ body {
   --pf-gutter: clamp(1.25rem, 4vw, 2.5rem);
   --pf-ink: var(--text-dark);
   --pf-ink-soft: color-mix(in srgb, var(--text-dark) 55%, transparent);
-  --pf-ink-faint: color-mix(in srgb, var(--text-dark) 32%, transparent);
+  --pf-ink-faint: color-mix(in srgb, var(--text-dark) 58%, transparent);
   --pf-hair: color-mix(in srgb, var(--text-dark) 10%, transparent);
   --pf-surface: color-mix(in srgb, var(--text-dark) 3%, transparent);
 }
@@ -2185,10 +2191,6 @@ body {
 
 .pf-carousel-stage {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
   min-height: clamp(22rem, 58vh, 32rem);
   touch-action: pan-y;
   user-select: none;
@@ -2230,9 +2232,18 @@ body {
 }
 
 .pf-carousel-slide {
-  display: contents;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
   color: inherit;
   text-decoration: none;
+  border-radius: 18px;
+}
+
+.pf-carousel-slide:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
 }
 
 .pf-carousel-media {
@@ -2270,6 +2281,26 @@ body {
   object-fit: cover;
   transition: transform 1200ms var(--slide-ease), filter 600ms ease;
   filter: saturate(0.96);
+}
+
+.pf-media-empty-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  z-index: 1;
+  padding: 2.25rem 0.85rem 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--pf-ink-soft);
+  pointer-events: none;
+  background: linear-gradient(
+    transparent,
+    color-mix(in srgb, var(--page-background) 88%, transparent)
+  );
 }
 
 .pf-carousel-slide:hover .pf-carousel-media-frame {
@@ -2397,7 +2428,7 @@ body {
   bottom: 0;
   right: 0;
   translate: 55% 20%;
-  width: clamp(5.5rem, 8vw, 7.5rem);
+  width: clamp(6.4rem, 9vw, 8.4rem);
   aspect-ratio: 3 / 4;
   border-radius: 14px;
   border: 1px solid var(--pf-hair);
@@ -2453,8 +2484,8 @@ body {
 
 .pf-carousel-peek-label {
   position: relative;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--pf-ink-soft);
 }
@@ -2465,15 +2496,12 @@ body {
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--pf-ink);
-  line-height: 1.15;
+  line-height: 1.2;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.pf-carousel-peek-label {
-  font-size: 0.55rem !important;
-  letter-spacing: 0.18em !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .pf-carousel-peek-media {
@@ -2516,17 +2544,23 @@ body {
   background: none;
   border: 0;
   padding: 0.5rem 0 0.9rem;
+  min-height: 44px;
   display: inline-flex;
   align-items: baseline;
   gap: 0.55rem;
-  color: var(--pf-ink-faint);
+  color: var(--pf-ink-soft);
   cursor: pointer;
   font: inherit;
   transition: color 260ms ease;
 }
 
+.pf-carousel-chip-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .pf-carousel-chip-btn:hover {
-  color: var(--pf-ink-soft);
+  color: var(--pf-ink);
 }
 
 .pf-carousel-chip-btn.is-active {
@@ -2568,8 +2602,8 @@ body {
 }
 
 .pf-carousel-arrow {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2580,6 +2614,11 @@ body {
   cursor: pointer;
   transition: background-color 220ms ease, border-color 220ms ease,
     transform 220ms ease;
+}
+
+.pf-carousel-arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .pf-carousel-arrow:hover {
@@ -2641,10 +2680,30 @@ body {
 }
 
 @media (max-width: 860px) {
+  html {
+    scroll-padding-top: 8.75rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 10.5rem;
+  }
+
+  .pf-work {
+    padding-top: 5.75rem;
+  }
+
+  .pf-carousel-copy {
+    scroll-margin-top: 6.75rem;
+    padding-top: 0.35rem;
+  }
+
   .pf-carousel-stage {
+    min-height: 0;
+  }
+
+  .pf-carousel-slide {
     grid-template-columns: 1fr;
     gap: 1.75rem;
-    min-height: 0;
   }
   .pf-carousel-index {
     position: relative;
@@ -2652,7 +2711,7 @@ body {
     margin-bottom: -0.2em;
   }
   .pf-carousel-index-num {
-    font-size: clamp(3.5rem, 18vw, 6rem);
+    font-size: clamp(1.45rem, 7vw, 2.2rem);
   }
   .pf-carousel-peek {
     display: none;
@@ -2676,8 +2735,22 @@ body {
   .pf-carousel-copy {
     animation: none;
   }
-  .pf-carousel-chip-bar {
+  .pf-carousel-chip-bar,
+  .pf-carousel-chip-btn,
+  .pf-carousel-arrow,
+  .pf-carousel-peek,
+  .pf-carousel-slide:hover .pf-carousel-media-frame,
+  .pf-carousel-slide:hover .pf-carousel-media-frame img,
+  .pf-carousel-slide:hover .pf-carousel-media-ring,
+  .pf-carousel-cta svg {
     transition: none;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+  .pf-carousel-peek:hover {
+    transform: none;
+    translate: 55% 20%;
   }
 }
 
@@ -2847,6 +2920,13 @@ body {
   color: var(--pf-ink);
 }
 
+.pf-block h2.pf-label {
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
 .pf-block p {
   margin: 0;
   font-size: 1rem;
@@ -3008,7 +3088,7 @@ body {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pf-ink-faint);
+  color: var(--pf-ink-soft);
 }
 
 .pf-timeline {
@@ -3049,11 +3129,17 @@ body {
   max-width: 46ch;
 }
 
+.pf-sr-only,
 .pf-project-ssr {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
-  margin-top: 2.25rem;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .pf-project-ssr-link {

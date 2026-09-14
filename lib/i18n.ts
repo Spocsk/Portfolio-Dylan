@@ -28,6 +28,7 @@ export type Dictionary = {
   navigation: {
     label: string;
     home: string;
+    projects: string;
     expertises: string;
     about: string;
     faq: string;
@@ -71,6 +72,8 @@ export type Dictionary = {
     next: string;
     nextProject: string;
     previousProject: string;
+    noPreview: string;
+    slideOf: string;
   };
   expertises: {
     label: string;
@@ -117,6 +120,7 @@ export type Dictionary = {
     problem: string;
     solution: string;
     results: string;
+    noPreview: string;
     otherProjects: string;
     contact: string;
     homeBreadcrumb: string;
@@ -155,6 +159,7 @@ const fr: Dictionary = {
   navigation: {
     label: "Navigation principale",
     home: "Accueil",
+    projects: "Projets",
     expertises: "Expertises",
     about: "À propos",
     faq: "FAQ",
@@ -198,6 +203,8 @@ const fr: Dictionary = {
     next: "Suivant",
     nextProject: "Projet suivant",
     previousProject: "Projet précédent",
+    noPreview: "Capture d’interface à venir.",
+    slideOf: "Projet {current} sur {total}",
   },
   expertises: {
     label: "Expertises",
@@ -210,7 +217,7 @@ const fr: Dictionary = {
       { title: "Frontend Angular", description: "Interfaces TypeScript pour du SaaS, des collectivités et de la data industrielle : lisibilité, accessibilité et composants réutilisables.", items: ["Angular / TypeScript", "Parcours métier", "Accessibilité"] },
       { title: "Backend NestJS", description: "APIs Node.js structurées autour de la logique métier, des données fiables et de l’intégration produit.", items: ["NestJS", "REST / GraphQL", "MongoDB / PostgreSQL"] },
       { title: "DevOps", description: "Industrialiser les livraisons : containers, pipelines, qualité. Enseigné aussi à Nexa via un projet fil rouge Docker / Jenkins / SonarQube.", items: ["Docker", "Kubernetes", "CI/CD · AWS"] },
-      { title: "Mobile", description: "React Native pour du multi-plateforme. Swift reste une exploration personnelle, pas l’offre principale.", items: ["React Native", "Swift en exploration", "Logique d’application"] },
+      { title: "Mobile", description: "React Native pour du multi-plateforme. Swift pour des apps iOS livrées (PoseLock, Pas envoyé), pas l’offre recrutement TypeScript.", items: ["React Native", "SwiftUI livré", "Logique d’application"] },
     ],
   },
   about: {
@@ -225,14 +232,14 @@ const fr: Dictionary = {
       { period: "2022 — 2023", title: "Ingénieur consultant · Extia", description: "Missions web full-stack en agile, dont du front Angular / Next.js chez Operis. Qualité, revues, livraison courte." },
       { period: "2020 — 2022", title: "Concepteur développeur · Citizens", description: "Symfony 5, Vue.js, Docker, CI/CD, Linux. Lead d’une équipe de deux développeurs en Scrum." },
       { period: "2024 —", title: "Intervenant · Nexa & Normandie Web School", description: "Full-stack et DevOps : Node, Angular, MongoDB, Docker, Jenkins, SonarQube. Projet fil rouge BibliFlow." },
-      { period: "2022 —", title: "Freelance · Granville", description: "Web, mobile et industrialisation pour des produits et des vitrines, en parallèle des missions salariées." },
+      { period: "2022 —", title: "Freelance · Granville", description: "Produits livrés en parallèle des missions : DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop et vitrines clients." },
     ],
     methodLabel: "Méthode",
     methodTitle: "Ce que je regarde d’abord.",
     methodItems: ["Fiabilité des données et des APIs.", "Lisibilité Angular / TypeScript.", "CI/CD et qualité avant la démo.", "Friction réelle du parcours utilisateur."],
     explorationsLabel: "Explorations",
     explorationsTitle: "Hors de l’offre principale.",
-    explorationsText: "Swift / SwiftUI (2048, PoseLock) et un allocateur C++ : curiosité système, pas le positionnement recrutement.",
+    explorationsText: "Clone 2048 en SwiftUI et un allocateur C++ : curiosité système, hors du carousel.",
     contactCta: "Me contacter",
     expertisesCta: "Voir les expertises",
   },
@@ -250,14 +257,14 @@ const fr: Dictionary = {
     entries: [
       { question: "Qui es-tu ?", answer: "Je suis Dylan COUTO DE OLIVEIRA, développeur full-stack TypeScript senior basé en Normandie. Plus de 5 ans d’expérience, open to work." },
       { question: "Quelle est ta stack principale ?", answer: "Angular, NestJS, Node.js et TypeScript au quotidien. React et Next.js en complément. Mobile : React Native. DevOps : Docker, Kubernetes, CI/CD, AWS." },
-      { question: "Quelles preuves concrètes peux-tu montrer ?", answer: "Chez Campbell Scientific, des applications Angular / NestJS utilisées dans plus de 30 pays. Chez Operis, des SaaS collectivités jusqu’à 15 000 utilisateurs/jour. Côté perso : Cast Loop, et BibliFlow pour l’enseignement DevOps." },
+      { question: "Quelles preuves concrètes peux-tu montrer ?", answer: "Chez Campbell Scientific, des applications Angular / NestJS utilisées dans plus de 30 pays. Chez Operis, des SaaS collectivités jusqu’à 15 000 utilisateurs/jour. Produits livrés : DuoShot, MakeItGueznet, PoseLock, Pas envoyé. Aussi Cast Loop et BibliFlow." },
       { question: "Quel rôle prends-tu dans une équipe ?", answer: "Full-stack TypeScript, plutôt Angular + NestJS, avec un œil DevOps sur la CI/CD. Je peux aussi intervenir en front seul ou former (Nexa, Normandie Web School)." },
-      { question: "Tu fais du Swift ou du React Native ?", answer: "React Native est le mobile de production. Swift est une exploration personnelle, visible dans 2048 et PoseLock, pas l’offre que je vends." },
+      { question: "Tu fais du Swift ou du React Native ?", answer: "React Native est le mobile de production pour l’offre TypeScript. Swift, je le livre aussi : PoseLock et Pas envoyé sont des apps iOS shipped, pas seulement une exploration 2048." },
       { question: "Comment te contacter ?", answer: "Le plus direct : contact@dylan-cdo.fr. LinkedIn pour le recrutement : https://www.linkedin.com/in/dylan-cdo/" },
     ],
   },
   project: {
-    role: "Rôle", angle: "Angle", viewOnline: "Voir en ligne", problem: "Problème", solution: "Solution", results: "Résultats", otherProjects: "Tous les projets", contact: "Me contacter", homeBreadcrumb: "Accueil", projectsBreadcrumb: "Projets", indexLabel: "Projets", indexTitle: "Études de cas et preuves.", indexLead: "Missions nommées, produits livrés, et quelques explorations. Les six premiers sont ceux que je mets en avant.", featuredLabel: "À retenir", moreLabel: "Autres projets", notFoundTitle: "Projet introuvable — Dylan COUTO DE OLIVEIRA", notFoundDescription: "La page projet demandée n’existe pas.",
+    role: "Rôle", angle: "Angle", viewOnline: "Voir en ligne", problem: "Problème", solution: "Solution", results: "Résultats", noPreview: "Capture d’interface à venir.", otherProjects: "Tous les projets", contact: "Me contacter", homeBreadcrumb: "Accueil", projectsBreadcrumb: "Projets", indexLabel: "Projets", indexTitle: "Études de cas et preuves.", indexLead: "Missions nommées, produits livrés, et quelques explorations. Les six en avant : Campbell, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé.", featuredLabel: "À retenir", moreLabel: "Autres projets", notFoundTitle: "Projet introuvable — Dylan COUTO DE OLIVEIRA", notFoundDescription: "La page projet demandée n’existe pas.",
   },
   metadata: {
     home: { title: "Dylan COUTO DE OLIVEIRA — Full-stack TypeScript · Angular & NestJS", description: "Portfolio de Dylan COUTO DE OLIVEIRA, développeur full-stack TypeScript senior en Normandie. Angular, NestJS, Node.js. Open to work." },
@@ -265,7 +272,7 @@ const fr: Dictionary = {
     about: { title: "À propos — Dylan COUTO DE OLIVEIRA", description: "5+ ans en full-stack TypeScript : Campbell Scientific, Operis, Extia, Citizens. Intervenant Nexa et Normandie Web School. Basé en Normandie." },
     contact: { title: "Contact — Dylan COUTO DE OLIVEIRA", description: "Contacter Dylan COUTO DE OLIVEIRA : open to work, full-stack TypeScript Angular / NestJS. contact@dylan-cdo.fr" },
     faq: { title: "FAQ — Dylan COUTO DE OLIVEIRA", description: "FAQ : stack Angular / NestJS, preuves Campbell et Operis, DevOps, React Native vs Swift, contact." },
-    projects: { title: "Projets — Dylan COUTO DE OLIVEIRA", description: "Études de cas : Campbell Scientific, Operis, Cast Loop, vitrines clients, BibliFlow, explorations Swift et C++." },
+    projects: { title: "Projets — Dylan COUTO DE OLIVEIRA", description: "Études de cas : Campbell Scientific, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop, vitrines, BibliFlow." },
   },
   schema: { jobTitle: "Développeur full-stack TypeScript", description: "Développeur full-stack TypeScript senior, spécialisé Angular et NestJS, basé en Normandie.", country: "France", contactType: "professionnel", availableLanguages: ["Français", "Anglais"] },
 };
@@ -277,20 +284,20 @@ const en: Dictionary = {
   htmlLang: "en-US",
   ogLocale: "en_US",
   navigation: {
-    label: "Main navigation", home: "Home", expertises: "Expertise", about: "About", faq: "FAQ", contact: "Contact", openMenu: "Open menu", closeMenu: "Close menu", mobileMenu: "Mobile menu", languageSelector: "Language selector", chooseLanguage: "Choose a language", switchTo: "Switch to", lightMode: "Enable light mode", darkMode: "Enable dark mode",
+    label: "Main navigation", home: "Home", projects: "Projects", expertises: "Expertise", about: "About", faq: "FAQ", contact: "Contact", openMenu: "Open menu", closeMenu: "Close menu", mobileMenu: "Mobile menu", languageSelector: "Language selector", chooseLanguage: "Choose a language", switchTo: "Switch to", lightMode: "Enable light mode", darkMode: "Enable dark mode",
   },
   footer: { faq: "FAQ", expertises: "Expertise", profile: "Profile", projects: "Projects", location: "Based in Normandy, France" },
   home: {
     eyebrow: "Dylan Couto de Oliveira — Full-stack TypeScript, Normandy · Open to work", titleLead: "Full-stack", titleSoft: "TypeScript.", titleLine2: "Angular, NestJS,", titleLine3: "software that lasts.", projectsCta: "View projects", contactCta: "Contact me", aboutLead: "Five-plus years building web applications —", aboutStack: "Angular, NestJS, Node.js. React as a complement.", workLabel: "Work", workTitle: "Proof.", contactLabel: "Contact", contactTitle: "A role, a brief,", contactTitleSoft: "a conversation?",
   },
-  carousel: { label: "Projects", openProject: "Open project", caseStudy: "View case study", next: "Next", nextProject: "Next project", previousProject: "Previous project" },
+  carousel: { label: "Projects", openProject: "Open project", caseStudy: "View case study", next: "Next", nextProject: "Next project", previousProject: "Previous project", noPreview: "Interface still to come.", slideOf: "Project {current} of {total}" },
   expertises: {
     label: "Expertise",     title: "Angular, NestJS, and deliveries that hold up.", lead: "TypeScript at the core. Angular day to day, NestJS APIs, Docker / CI/CD to ship. React and Next.js as a complement.", areaLabel: "Area", projectsCta: "View projects", contactCta: "Contact me",
     areas: [
       { title: "Angular frontend", description: "TypeScript interfaces for SaaS, local government and industrial data: readable journeys, accessibility and reusable components.", items: ["Angular / TypeScript", "Business journeys", "Accessibility"] },
       { title: "NestJS backend", description: "Node.js APIs structured around business logic, reliable data and product integration.", items: ["NestJS", "REST / GraphQL", "MongoDB / PostgreSQL"] },
       { title: "DevOps", description: "Shipping with containers, pipelines and quality gates. Also taught at Nexa through the BibliFlow Docker / Jenkins / SonarQube project.", items: ["Docker", "Kubernetes", "CI/CD · AWS"] },
-      { title: "Mobile", description: "React Native for cross-platform work. Swift is a personal exploration, not the hiring offer.", items: ["React Native", "Swift as exploration", "Application logic"] },
+      { title: "Mobile", description: "React Native for cross-platform work. Swift for shipped iOS apps (PoseLock, Pas envoyé), not the TypeScript hiring offer.", items: ["React Native", "Shipped SwiftUI", "Application logic"] },
     ],
   },
   about: {
@@ -301,10 +308,10 @@ const en: Dictionary = {
       { period: "2022 — 2023", title: "Consulting engineer · Extia", description: "Agile full-stack web assignments, including Angular / Next.js at Operis. Reviews, quality, short delivery cycles." },
       { period: "2020 — 2022", title: "Application developer · Citizens", description: "Symfony 5, Vue.js, Docker, CI/CD, Linux. Led a two-developer Scrum team." },
       { period: "2024 —", title: "Lecturer · Nexa & Normandie Web School", description: "Full-stack and DevOps: Node, Angular, MongoDB, Docker, Jenkins, SonarQube. Fil-rouge project: BibliFlow." },
-      { period: "2022 —", title: "Freelance · Granville", description: "Web, mobile and delivery work alongside employed roles." },
+      { period: "2022 —", title: "Freelance · Granville", description: "Shipped products alongside employed roles: DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop and client sites." },
     ],
     methodLabel: "Method", methodTitle: "What I look at first.", methodItems: ["Reliability of data and APIs.", "Angular / TypeScript readability.", "CI/CD and quality before the demo.", "Real friction in the user journey."],
-    explorationsLabel: "Explorations", explorationsTitle: "Outside the hiring offer.", explorationsText: "Swift / SwiftUI (2048, PoseLock) and a C++ allocator: systems curiosity, not the role I am targeting.",
+    explorationsLabel: "Explorations", explorationsTitle: "Outside the hiring offer.", explorationsText: "A 2048 clone in SwiftUI and a C++ allocator: systems curiosity, outside the carousel.",
     contactCta: "Contact me", expertisesCta: "View expertise",
   },
   contact: { label: "Contact", title: "Open to work.", lead: "I am looking for a full-stack TypeScript role or assignment — Angular / NestJS, with a real delivery bar.", lookingFor: "Permanent or freelance. Web, APIs, industrialisation. Remote or Normandy / France.", location: "Granville · Normandy · France", availability: "Available to talk. Email first, LinkedIn second." },
@@ -312,20 +319,20 @@ const en: Dictionary = {
     label: "FAQ", title: "Frequently asked questions.", entries: [
       { question: "Who are you?", answer: "I am Dylan COUTO DE OLIVEIRA, a senior full-stack TypeScript developer based in Normandy. Five-plus years of experience, open to work." },
       { question: "What is your main stack?", answer: "Angular, NestJS, Node.js and TypeScript day to day. React and Next.js as a complement. Mobile: React Native. DevOps: Docker, Kubernetes, CI/CD, AWS." },
-      { question: "What proof can you show?", answer: "At Campbell Scientific, Angular / NestJS apps used in 30+ countries. At Operis, local-government SaaS with up to 15,000 users/day. Personally: Cast Loop, and BibliFlow for DevOps teaching." },
+      { question: "What proof can you show?", answer: "At Campbell Scientific, Angular / NestJS apps used in 30+ countries. At Operis, local-government SaaS with up to 15,000 users/day. Shipped products: DuoShot, MakeItGueznet, PoseLock, Pas envoyé. Also Cast Loop and BibliFlow." },
       { question: "What role do you take in a team?", answer: "Full-stack TypeScript, usually Angular + NestJS, with a DevOps eye on CI/CD. I can also work front-end only or teach (Nexa, Normandie Web School)." },
-      { question: "Swift or React Native?", answer: "React Native is the production mobile stack. Swift is a personal exploration, visible in 2048 and PoseLock, not what I am hiring for." },
+      { question: "Swift or React Native?", answer: "React Native is the production mobile stack for the TypeScript offer. I also ship Swift: PoseLock and Pas envoyé are iOS apps, not only a 2048 exploration." },
       { question: "How can I contact you?", answer: "The most direct channel is contact@dylan-cdo.fr. LinkedIn for recruiting: https://www.linkedin.com/in/dylan-cdo/" },
     ],
   },
-  project: { role: "Role", angle: "Approach", viewOnline: "View online", problem: "Problem", solution: "Solution", results: "Results", otherProjects: "All projects", contact: "Contact me", homeBreadcrumb: "Home", projectsBreadcrumb: "Projects", indexLabel: "Projects", indexTitle: "Case studies and proof.", indexLead: "Named missions, shipped products, and a few explorations. The first six are the ones I put forward.", featuredLabel: "Featured", moreLabel: "Other projects", notFoundTitle: "Project not found — Dylan COUTO DE OLIVEIRA", notFoundDescription: "The requested project page does not exist." },
+  project: { role: "Role", angle: "Approach", viewOnline: "View online", problem: "Problem", solution: "Solution", results: "Results", noPreview: "Interface still to come.", otherProjects: "All projects", contact: "Contact me", homeBreadcrumb: "Home", projectsBreadcrumb: "Projects", indexLabel: "Projects", indexTitle: "Case studies and proof.", indexLead: "Named missions, shipped products, and a few explorations. Featured six: Campbell, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé.", featuredLabel: "Featured", moreLabel: "Other projects", notFoundTitle: "Project not found — Dylan COUTO DE OLIVEIRA", notFoundDescription: "The requested project page does not exist." },
   metadata: {
     home: { title: "Dylan COUTO DE OLIVEIRA — Full-stack TypeScript · Angular & NestJS", description: "Portfolio of Dylan COUTO DE OLIVEIRA, a senior full-stack TypeScript developer in Normandy. Angular, NestJS, Node.js. Open to work." },
     expertises: { title: "Expertise — Dylan COUTO DE OLIVEIRA", description: "Angular, NestJS, DevOps (Docker, Kubernetes, CI/CD, AWS) and React Native. Proof at Campbell Scientific, Operis and Nexa." },
     about: { title: "About — Dylan COUTO DE OLIVEIRA", description: "5+ years in full-stack TypeScript: Campbell Scientific, Operis, Extia, Citizens. Lecturer at Nexa and Normandie Web School. Based in Normandy." },
     contact: { title: "Contact — Dylan COUTO DE OLIVEIRA", description: "Contact Dylan COUTO DE OLIVEIRA: open to work, full-stack TypeScript Angular / NestJS. contact@dylan-cdo.fr" },
     faq: { title: "FAQ — Dylan COUTO DE OLIVEIRA", description: "FAQ: Angular / NestJS stack, Campbell and Operis proof, DevOps, React Native vs Swift, contact." },
-    projects: { title: "Projects — Dylan COUTO DE OLIVEIRA", description: "Case studies: Campbell Scientific, Operis, Cast Loop, client sites, BibliFlow, Swift and C++ explorations." },
+    projects: { title: "Projects — Dylan COUTO DE OLIVEIRA", description: "Case studies: Campbell Scientific, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop, client sites, BibliFlow." },
   },
   schema: { jobTitle: "Full-stack TypeScript developer", description: "Senior full-stack TypeScript developer specializing in Angular and NestJS, based in Normandy.", country: "France", contactType: "professional", availableLanguages: ["French", "English"] },
 };
@@ -337,20 +344,20 @@ const es: Dictionary = {
   htmlLang: "es-ES",
   ogLocale: "es_ES",
   navigation: {
-    label: "Navegación principal", home: "Inicio", expertises: "Especialidades", about: "Sobre mí", faq: "FAQ", contact: "Contacto", openMenu: "Abrir el menú", closeMenu: "Cerrar el menú", mobileMenu: "Menú móvil", languageSelector: "Selector de idioma", chooseLanguage: "Elegir un idioma", switchTo: "Cambiar a", lightMode: "Activar el modo claro", darkMode: "Activar el modo oscuro",
+    label: "Navegación principal", home: "Inicio", projects: "Proyectos", expertises: "Especialidades", about: "Sobre mí", faq: "FAQ", contact: "Contacto", openMenu: "Abrir el menú", closeMenu: "Cerrar el menú", mobileMenu: "Menú móvil", languageSelector: "Selector de idioma", chooseLanguage: "Elegir un idioma", switchTo: "Cambiar a", lightMode: "Activar el modo claro", darkMode: "Activar el modo oscuro",
   },
   footer: { faq: "FAQ", expertises: "Especialidades", profile: "Perfil", projects: "Proyectos", location: "Con base en Normandía, Francia" },
   home: {
     eyebrow: "Dylan Couto de Oliveira — Full-stack TypeScript, Normandía · Open to work", titleLead: "Full-stack", titleSoft: "TypeScript.", titleLine2: "Angular, NestJS,", titleLine3: "software que aguanta.", projectsCta: "Ver proyectos", contactCta: "Contactarme", aboutLead: "Más de 5 años construyendo aplicaciones web —", aboutStack: "Angular, NestJS, Node.js. React como complemento.", workLabel: "Trabajos", workTitle: "Pruebas.", contactLabel: "Contacto", contactTitle: "¿Un puesto, un encargo,", contactTitleSoft: "una conversación?",
   },
-  carousel: { label: "Proyectos", openProject: "Abrir el proyecto", caseStudy: "Ver el caso de estudio", next: "Siguiente", nextProject: "Proyecto siguiente", previousProject: "Proyecto anterior" },
+  carousel: { label: "Proyectos", openProject: "Abrir el proyecto", caseStudy: "Ver el caso de estudio", next: "Siguiente", nextProject: "Proyecto siguiente", previousProject: "Proyecto anterior", noPreview: "Captura de interfaz pendiente.", slideOf: "Proyecto {current} de {total}" },
   expertises: {
     label: "Especialidades", title: "Angular, NestJS y entregas que se sostienen.", lead: "TypeScript como base. Angular en el día a día, APIs NestJS, Docker / CI/CD para entregar. React y Next.js como complemento.", areaLabel: "Área", projectsCta: "Ver proyectos", contactCta: "Contactarme",
     areas: [
       { title: "Frontend Angular", description: "Interfaces TypeScript para SaaS, administraciones locales y datos industriales: recorridos legibles, accesibilidad y componentes reutilizables.", items: ["Angular / TypeScript", "Recorridos de negocio", "Accesibilidad"] },
       { title: "Backend NestJS", description: "APIs Node.js estructuradas alrededor de la lógica de negocio, datos fiables e integración de producto.", items: ["NestJS", "REST / GraphQL", "MongoDB / PostgreSQL"] },
       { title: "DevOps", description: "Entregar con contenedores, pipelines y calidad. También lo enseño en Nexa con BibliFlow: Docker, Jenkins, SonarQube.", items: ["Docker", "Kubernetes", "CI/CD · AWS"] },
-      { title: "Móvil", description: "React Native para multiplataforma. Swift es una exploración personal, no la oferta de contratación.", items: ["React Native", "Swift como exploración", "Lógica de aplicación"] },
+      { title: "Móvil", description: "React Native para multiplataforma. Swift para apps iOS entregadas (PoseLock, Pas envoyé), no la oferta TypeScript.", items: ["React Native", "SwiftUI entregado", "Lógica de aplicación"] },
     ],
   },
   about: {
@@ -361,10 +368,10 @@ const es: Dictionary = {
       { period: "2022 — 2023", title: "Ingeniero consultor · Extia", description: "Misiones web full-stack en agile, incluido Angular / Next.js en Operis. Revisiones, calidad, ciclos cortos." },
       { period: "2020 — 2022", title: "Desarrollador · Citizens", description: "Symfony 5, Vue.js, Docker, CI/CD, Linux. Lead de un equipo de dos desarrolladores en Scrum." },
       { period: "2024 —", title: "Docente · Nexa y Normandie Web School", description: "Full-stack y DevOps: Node, Angular, MongoDB, Docker, Jenkins, SonarQube. Proyecto fil rouge: BibliFlow." },
-      { period: "2022 —", title: "Freelance · Granville", description: "Web, móvil e industrialización en paralelo a los puestos asalariados." },
+      { period: "2022 —", title: "Freelance · Granville", description: "Productos entregados en paralelo a los puestos: DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop y sitios de clientes." },
     ],
     methodLabel: "Método", methodTitle: "En qué me fijo primero.", methodItems: ["Fiabilidad de los datos y las APIs.", "Legibilidad Angular / TypeScript.", "CI/CD y calidad antes de la demo.", "Fricción real del recorrido."],
-    explorationsLabel: "Exploraciones", explorationsTitle: "Fuera de la oferta principal.", explorationsText: "Swift / SwiftUI (2048, PoseLock) y un asignador C++: curiosidad de sistemas, no el puesto que busco.",
+    explorationsLabel: "Exploraciones", explorationsTitle: "Fuera de la oferta principal.", explorationsText: "Un clon 2048 en SwiftUI y un asignador C++: curiosidad de sistemas, fuera del carrusel.",
     contactCta: "Contactarme", expertisesCta: "Ver especialidades",
   },
   contact: { label: "Contacto", title: "Open to work.", lead: "Busco un puesto o una misión full-stack TypeScript — Angular / NestJS, con un listón de entrega real.", lookingFor: "CDI o freelance. Web, APIs, industrialización. Remoto o Normandía / Francia.", location: "Granville · Normandía · Francia", availability: "Disponible para hablar. Email primero, LinkedIn después." },
@@ -372,20 +379,20 @@ const es: Dictionary = {
     label: "FAQ", title: "Preguntas frecuentes.", entries: [
       { question: "¿Quién eres?", answer: "Soy Dylan COUTO DE OLIVEIRA, desarrollador full-stack TypeScript sénior con base en Normandía. Más de 5 años de experiencia, open to work." },
       { question: "¿Cuál es tu stack principal?", answer: "Angular, NestJS, Node.js y TypeScript en el día a día. React y Next.js como complemento. Móvil: React Native. DevOps: Docker, Kubernetes, CI/CD, AWS." },
-      { question: "¿Qué pruebas concretas puedes mostrar?", answer: "En Campbell Scientific, aplicaciones Angular / NestJS usadas en más de 30 países. En Operis, SaaS para administraciones con hasta 15.000 usuarios/día. En personal: Cast Loop, y BibliFlow para la enseñanza DevOps." },
+      { question: "¿Qué pruebas concretas puedes mostrar?", answer: "En Campbell Scientific, aplicaciones Angular / NestJS usadas en más de 30 países. En Operis, SaaS para administraciones con hasta 15.000 usuarios/día. Productos entregados: DuoShot, MakeItGueznet, PoseLock, Pas envoyé. También Cast Loop y BibliFlow." },
       { question: "¿Qué papel ocupas en un equipo?", answer: "Full-stack TypeScript, sobre todo Angular + NestJS, con ojo DevOps en la CI/CD. También puedo ir de front o formar (Nexa, Normandie Web School)." },
-      { question: "¿Swift o React Native?", answer: "React Native es el móvil de producción. Swift es una exploración personal, visible en 2048 y PoseLock, no la oferta que vendo." },
+      { question: "¿Swift o React Native?", answer: "React Native es el móvil de producción para la oferta TypeScript. También entrego Swift: PoseLock y Pas envoyé son apps iOS, no solo una exploración 2048." },
       { question: "¿Cómo te contacto?", answer: "Lo más directo: contact@dylan-cdo.fr. LinkedIn para contratación: https://www.linkedin.com/in/dylan-cdo/" },
     ],
   },
-  project: { role: "Rol", angle: "Enfoque", viewOnline: "Ver en línea", problem: "Problema", solution: "Solución", results: "Resultados", otherProjects: "Todos los proyectos", contact: "Contactarme", homeBreadcrumb: "Inicio", projectsBreadcrumb: "Proyectos", indexLabel: "Proyectos", indexTitle: "Casos de estudio y pruebas.", indexLead: "Misiones con nombre, productos entregados y algunas exploraciones. Los seis primeros son los que pongo delante.", featuredLabel: "Destacados", moreLabel: "Otros proyectos", notFoundTitle: "Proyecto no encontrado — Dylan COUTO DE OLIVEIRA", notFoundDescription: "La página de proyecto solicitada no existe." },
+  project: { role: "Rol", angle: "Enfoque", viewOnline: "Ver en línea", problem: "Problema", solution: "Solución", results: "Resultados", noPreview: "Captura de interfaz pendiente.", otherProjects: "Todos los proyectos", contact: "Contactarme", homeBreadcrumb: "Inicio", projectsBreadcrumb: "Proyectos", indexLabel: "Proyectos", indexTitle: "Casos de estudio y pruebas.", indexLead: "Misiones con nombre, productos entregados y algunas exploraciones. Los seis destacados: Campbell, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé.", featuredLabel: "Destacados", moreLabel: "Otros proyectos", notFoundTitle: "Proyecto no encontrado — Dylan COUTO DE OLIVEIRA", notFoundDescription: "La página de proyecto solicitada no existe." },
   metadata: {
     home: { title: "Dylan COUTO DE OLIVEIRA — Full-stack TypeScript · Angular y NestJS", description: "Portfolio de Dylan COUTO DE OLIVEIRA, desarrollador full-stack TypeScript sénior en Normandía. Angular, NestJS, Node.js. Open to work." },
     expertises: { title: "Especialidades — Dylan COUTO DE OLIVEIRA", description: "Angular, NestJS, DevOps (Docker, Kubernetes, CI/CD, AWS) y React Native. Pruebas en Campbell Scientific, Operis y Nexa." },
     about: { title: "Sobre mí — Dylan COUTO DE OLIVEIRA", description: "Más de 5 años en full-stack TypeScript: Campbell Scientific, Operis, Extia, Citizens. Docente en Nexa y Normandie Web School. Con base en Normandía." },
     contact: { title: "Contacto — Dylan COUTO DE OLIVEIRA", description: "Contacta con Dylan COUTO DE OLIVEIRA: open to work, full-stack TypeScript Angular / NestJS. contact@dylan-cdo.fr" },
     faq: { title: "FAQ — Dylan COUTO DE OLIVEIRA", description: "FAQ: stack Angular / NestJS, pruebas Campbell y Operis, DevOps, React Native vs Swift, contacto." },
-    projects: { title: "Proyectos — Dylan COUTO DE OLIVEIRA", description: "Casos de estudio: Campbell Scientific, Operis, Cast Loop, sitios de clientes, BibliFlow, exploraciones Swift y C++." },
+    projects: { title: "Proyectos — Dylan COUTO DE OLIVEIRA", description: "Casos de estudio: Campbell Scientific, Operis, DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop, sitios de clientes, BibliFlow." },
   },
   schema: { jobTitle: "Desarrollador full-stack TypeScript", description: "Desarrollador full-stack TypeScript sénior, especializado en Angular y NestJS, con base en Normandía.", country: "Francia", contactType: "profesional", availableLanguages: ["Francés", "Inglés"] },
 };

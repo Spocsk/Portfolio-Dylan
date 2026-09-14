@@ -1,6 +1,6 @@
 # Dylan COUTO DE OLIVEIRA
 
-> Développeur full-stack TypeScript senior basé en Normandie, France. Open to work. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile de production : React Native. DevOps : Docker, Kubernetes, CI/CD, AWS. Swift et C++ en exploration personnelle.
+> Développeur full-stack TypeScript senior basé en Normandie, France. Open to work. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile de production : React Native. Apps iOS livrées : PoseLock, Pas envoyé. DevOps : Docker, Kubernetes, CI/CD, AWS.
 
 Site : https://www.dylan-cdo.fr
 Contact : contact@dylan-cdo.fr
@@ -21,12 +21,16 @@ GitHub : https://github.com/Spocsk
 - Frontend Angular / TypeScript : SaaS, collectivités, data industrielle
 - Backend NestJS / Node.js : APIs métier, MongoDB, PostgreSQL
 - DevOps : Docker, Kubernetes, CI/CD, AWS — enseigné à Nexa (BibliFlow)
-- Mobile : React Native en production ; Swift en exploration
+- Mobile : React Native en production ; SwiftUI livré (PoseLock, Pas envoyé)
 
 ## Preuves
 
 - Campbell Scientific : applications Angular / NestJS utilisées dans plus de 30 pays pour de l'acquisition de données critique
 - Operis : SaaS collectivités Angular, jusqu'à 15 000 utilisateurs/jour, ~60 % des métropoles
+- DuoShot : SaaS Next.js screenshots App Store iPhone Duo : https://duoshot.vercel.app
+- MakeItGueznet : jeu de soirée Next.js / Convex : https://makeitgueznet.vercel.app
+- PoseLock : app iOS posing on-device : https://github.com/Spocsk/PoseLock
+- Pas envoyé : app iOS no-contact (compteur, brouillons non envoyés, widgets)
 - Extia, Citizens : missions full-stack, lead d'une équipe de 2, Docker / CI/CD
 - Intervenant Nexa et Normandie Web School
 
@@ -43,6 +47,10 @@ GitHub : https://github.com/Spocsk
 
 - Campbell Scientific — Data industrielle Angular / NestJS
 - Operis — SaaS collectivités Angular
+- DuoShot — SaaS screenshots iPhone Duo : https://duoshot.vercel.app
+- MakeItGueznet — Jeu de soirée Next.js / Convex : https://makeitgueznet.vercel.app
+- PoseLock — App iOS posing on-device : https://github.com/Spocsk/PoseLock
+- Pas envoyé — App iOS no-contact
 - Cast Loop — SaaS multi-tenant Next.js + NestJS + Supabase : https://cast-loop-web.vercel.app
 - Victor COUTO — Vitrine artisan : https://www.artisan-couto.fr
 - HP Sonorisation — Vitrine événementielle : https://www.hpsonorisation.fr

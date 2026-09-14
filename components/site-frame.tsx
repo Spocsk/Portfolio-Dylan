@@ -60,6 +60,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
   const navCopy = dictionary.navigation;
   const navLinks = [
     { href: "/", label: navCopy.home },
+    { href: "/projets", label: navCopy.projects },
     { href: "/expertises", label: navCopy.expertises },
     { href: "/a-propos", label: navCopy.about },
     { href: "/faq", label: navCopy.faq },
@@ -122,6 +123,9 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
   }, [isLanguageOpen, isMenuOpen]);
 
   const isDark = activeTheme === "dark";
+  const currentPath = stripLocalePrefix(pathname);
+  const isNavActive = (href: string) =>
+    currentPath === href || (href !== "/" && currentPath.startsWith(`${href}/`));
 
   return (
     <div className="portfolio-bg">
@@ -153,7 +157,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
 
             <div className="main-nav-links">
               {navLinks.map((link) => {
-                const isActive = stripLocalePrefix(pathname) === link.href;
+                const isActive = isNavActive(link.href);
                 return (
                   <Link
                     key={link.href}
@@ -272,7 +276,7 @@ export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren
         >
           <div className="mobile-nav-links">
             {navLinks.map((link) => {
-              const isActive = stripLocalePrefix(pathname) === link.href;
+              const isActive = isNavActive(link.href);
               return (
                 <Link
                   key={link.href}

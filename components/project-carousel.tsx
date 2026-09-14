@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import type { Project } from "../lib/projects";
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
@@ -34,14 +34,15 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
     [activeIndex, total]
   );
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") goTo(activeIndex + 1);
-      else if (e.key === "ArrowLeft") goTo(activeIndex - 1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [activeIndex, goTo]);
+  const onCarouselKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goTo(activeIndex + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goTo(activeIndex - 1);
+    }
+  };
 
   const onPointerDown = (e: React.PointerEvent) => {
     pointerStart.current = { x: e.clientX, y: e.clientY };
@@ -66,6 +67,8 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
       role="region"
       aria-roledescription="carousel"
       aria-label={copy.label}
+      tabIndex={0}
+      onKeyDown={onCarouselKeyDown}
     >
       <div
         className="pf-carousel-stage"
@@ -79,6 +82,11 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
           <span className="pf-carousel-index-sep">/</span>
           <span className="pf-carousel-index-tot">{pad(total)}</span>
         </div>
+        <p className="pf-sr-only" aria-live="polite">
+          {copy.slideOf
+            .replace("{current}", String(activeIndex + 1))
+            .replace("{total}", String(total))}
+        </p>
 
         <Link
           key={project.slug}
@@ -98,7 +106,10 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
                   priority={activeIndex === 0}
                 />
               ) : (
-                <PixelPlaceholder seed={project.slug} />
+                <>
+                  <PixelPlaceholder seed={project.slug} />
+                  <p className="pf-media-empty-caption">{copy.noPreview}</p>
+                </>
               )}
             </div>
             <span className="pf-carousel-media-ring" aria-hidden="true" />
@@ -153,13 +164,12 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
       </div>
 
       <div className="pf-carousel-rail">
-        <ol className="pf-carousel-list" role="tablist" aria-label={copy.label}>
+        <ol className="pf-carousel-list">
           {projects.map((p, i) => (
             <li key={p.slug}>
               <button
                 type="button"
-                role="tab"
-                aria-selected={i === activeIndex}
+                aria-current={i === activeIndex ? "true" : undefined}
                 className={`pf-carousel-chip-btn${
                   i === activeIndex ? " is-active" : ""
                 }`}

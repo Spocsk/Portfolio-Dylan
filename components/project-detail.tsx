@@ -27,29 +27,27 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
         ) : (
           <div className="pf-hero-media pf-hero-media-empty" data-theme={project.theme ?? "graphite"}>
             <PixelPlaceholder seed={project.slug} />
-            <p className="pf-hero-media-caption">
-              {project.eyebrow} · {project.title}
-            </p>
+            <p className="pf-hero-media-caption">{copy.noPreview}</p>
           </div>
         )}
       </section>
       <section className="pf-section">
         <div className="pf-split">
-          <div className="pf-block"><span className="pf-label">{copy.role}</span><p>{project.role}</p></div>
+          <div className="pf-block"><h2 className="pf-label">{copy.role}</h2><p>{project.role}</p></div>
           <div className="pf-block">
-            <span className="pf-label">{copy.angle}</span><p>{project.summary}</p>
+            <h2 className="pf-label">{copy.angle}</h2><p>{project.summary}</p>
             {project.externalUrl ? <a href={project.externalUrl} className="pf-text-link" target="_blank" rel="noopener noreferrer" data-umami-event="project_external_click" data-umami-event-slug={project.slug} data-umami-event-locale={locale}>{copy.viewOnline}</a> : null}
           </div>
         </div>
       </section>
       <section className="pf-section">
         <div className="pf-split">
-          <div className="pf-block"><span className="pf-label">{copy.problem}</span><p>{project.problem}</p></div>
-          <div className="pf-block"><span className="pf-label">{copy.solution}</span><p>{project.solution}</p></div>
+          <div className="pf-block"><h2 className="pf-label">{copy.problem}</h2><p>{project.problem}</p></div>
+          <div className="pf-block"><h2 className="pf-label">{copy.solution}</h2><p>{project.solution}</p></div>
         </div>
       </section>
       <section className="pf-section">
-        <div className="pf-block"><span className="pf-label">{copy.results}</span><ul>{project.results.map((result) => <li key={result}>{result}</li>)}</ul></div>
+        <div className="pf-block"><h2 className="pf-label">{copy.results}</h2><ul>{project.results.map((result) => <li key={result}>{result}</li>)}</ul></div>
       </section>
       <section className="pf-page-footnav">
         <Link href={localizePath("/projets", locale)} className="pf-text-link">{copy.otherProjects}</Link>
