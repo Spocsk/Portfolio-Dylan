@@ -1,6 +1,6 @@
 # Dylan COUTO DE OLIVEIRA
 
-> Développeur full-stack TypeScript senior basé en Normandie, France. Open to work. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile de production : React Native. Apps iOS livrées : PoseLock, Pas envoyé. DevOps : Docker, Kubernetes, CI/CD, AWS.
+> Dylan CDO conçoit des produits TypeScript, intervient auprès des écoles de développement et crée des automatisations IA pour les PME. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile : React Native. Apps iOS livrées : PoseLock, Pas envoyé. DevOps : Docker, Kubernetes, CI/CD, AWS.
 
 Site : https://www.dylan-cdo.fr
 Contact : contact@dylan-cdo.fr
@@ -10,17 +10,17 @@ GitHub : https://github.com/Spocsk
 ## Identité
 
 - Nom : Dylan COUTO DE OLIVEIRA
-- Rôle : Développeur full-stack TypeScript
+- Rôle : Développeur full-stack, intervenant et concepteur d’automatisations
 - Localisation : Granville, Normandie, France
 - Langues de travail : français (natif), anglais (professionnel)
-- Locales du site : français, anglais, espagnol
-- Disponibilité : open to work — CDI ou freelance, Angular / NestJS
+- Locales du site : français, anglais
+- Disponibilité : interventions en école, automatisations IA pour PME, et opportunités de développement en second plan
 
 ## Expertises
 
 - Frontend Angular / TypeScript : SaaS, collectivités, data industrielle
 - Backend NestJS / Node.js : APIs métier, MongoDB, PostgreSQL
-- DevOps : Docker, Kubernetes, CI/CD, AWS — enseigné à Nexa (BibliFlow)
+- DevOps : Docker, Kubernetes, CI/CD, AWS — transmis via le projet pédagogique BibliFlow, sans citer d’établissement
 - Mobile : React Native en production ; SwiftUI livré (PoseLock, Pas envoyé)
 
 ## Preuves
@@ -32,16 +32,16 @@ GitHub : https://github.com/Spocsk
 - PoseLock : app iOS posing on-device : https://github.com/Spocsk/PoseLock
 - Pas envoyé : app iOS no-contact (compteur, brouillons non envoyés, widgets)
 - Extia, Citizens : missions full-stack, lead d'une équipe de 2, Docker / CI/CD
-- Intervenant Nexa et Normandie Web School
+- Interventions en école, Bac+2 à Bac+5, établissements non cités
 
 ## Pages clés
 
 - / — Accueil : https://www.dylan-cdo.fr/
-- /expertises — Domaines : https://www.dylan-cdo.fr/expertises
-- /a-propos — Parcours nominatif : https://www.dylan-cdo.fr/a-propos
-- /projets — Liste des études de cas : https://www.dylan-cdo.fr/projets
-- /faq — Réponses recrutement : https://www.dylan-cdo.fr/faq
-- /contact — Open to work : https://www.dylan-cdo.fr/contact
+- /interventions-ecoles — Interventions : https://www.dylan-cdo.fr/interventions-ecoles
+- /agents-automatisations-ia — Automatisations : https://www.dylan-cdo.fr/agents-automatisations-ia
+- /a-propos — Parcours : https://www.dylan-cdo.fr/a-propos
+- /projets — Études de cas : https://www.dylan-cdo.fr/projets
+- /contact — Rendez-vous : https://www.dylan-cdo.fr/contact
 
 ## Projets
 

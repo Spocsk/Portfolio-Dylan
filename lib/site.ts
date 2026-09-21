@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { getDictionary, localizePath, locales, type Locale } from "./i18n";
+import { bookingUrl } from "./service-content";
 
 export const siteConfig = {
   name: "Dylan COUTO DE OLIVEIRA",
   siteName: "dylan-cdo.fr",
   url: "https://www.dylan-cdo.fr",
   email: "contact@dylan-cdo.fr",
+  bookingUrl,
   social: {
     linkedin: "https://www.linkedin.com/in/dylan-cdo/",
     github: "https://github.com/Spocsk",
@@ -24,6 +26,32 @@ export const siteLastModified = "2026-09-14T16:00:00.000Z";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
+}
+
+export function serviceSchema(kind: "education" | "automation", locale: Locale = "fr") {
+  const isFrench = locale === "fr";
+  const path = kind === "education" ? "/interventions-ecoles" : "/agents-automatisations-ia";
+  const name = kind === "education"
+    ? (isFrench ? "Interventions en école de développement" : "Software development teaching")
+    : (isFrench ? "Agents et automatisations IA pour PME" : "AI agents and automation for SMEs");
+  const description = kind === "education"
+    ? (isFrench ? "Modules, workshops, jurys et projets fil rouge pour les cursus Bac+2 à Bac+5." : "Practical modules, workshops, juries and capstone projects for higher education.")
+    : (isFrench ? "Conception et déploiement de workflows IA sur mesure, documentés et sous contrôle humain." : "Design and delivery of custom, documented AI workflows under human control.");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    url: localizedAbsoluteUrl(path, locale),
+    provider: { "@id": `${localizedAbsoluteUrl("/", locale)}#person` },
+    areaServed: { "@type": "Country", name: "France" },
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: bookingUrl,
+      availableLanguage: ["fr", "en"],
+    },
+  };
 }
 
 export function localizedAbsoluteUrl(path: string, locale: Locale) {
@@ -102,7 +130,11 @@ export function getSiteSchema(locale: Locale) {
       givenName: "Dylan",
       familyName: "COUTO DE OLIVEIRA",
       url: homepage,
-      image: absoluteUrl("/opengraph-image"),
+      image: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/portrait.png"),
+        caption: siteConfig.name,
+      },
       jobTitle: dictionary.schema.jobTitle,
       description: dictionary.schema.description,
       email: `mailto:${siteConfig.email}`,
@@ -121,6 +153,10 @@ export function getSiteSchema(locale: Locale) {
         "CI/CD",
         "PostgreSQL",
         "MongoDB",
+        "Artificial intelligence automation",
+        "n8n",
+        "Make",
+        "Software development education",
       ],
       address: {
         "@type": "PostalAddress",
@@ -150,7 +186,21 @@ export function getSiteSchema(locale: Locale) {
   ];
 }
 
-export function breadcrumbSchema(items: { name: string; path: string }[], locale: Locale = "fr") {
+export type BreadcrumbItem = { name: string; path: string };
+
+export function offerCrumbs(kind: "education" | "automation", locale: Locale): BreadcrumbItem[] {
+  const dictionary = getDictionary(locale);
+  const path = kind === "education" ? "/interventions-ecoles" : "/agents-automatisations-ia";
+  const label = kind === "education"
+    ? (locale === "fr" ? "Interventions en école" : "Teaching")
+    : (locale === "fr" ? "Agents & automatisations IA" : "AI agents & automation");
+  return [
+    { name: dictionary.project.homeBreadcrumb, path: "/" },
+    { name: label, path },
+  ];
+}
+
+export function breadcrumbSchema(items: BreadcrumbItem[], locale: Locale = "fr") {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -161,6 +211,14 @@ export function breadcrumbSchema(items: { name: string; path: string }[], locale
       item: localizedAbsoluteUrl(item.path, locale),
     })),
   };
+}
+
+export function offerJsonLd(kind: "education" | "automation", locale: Locale, faq: readonly { question: string; answer: string }[]) {
+  return [
+    serviceSchema(kind, locale),
+    breadcrumbSchema(offerCrumbs(kind, locale), locale),
+    faqPageSchema(faq, locale),
+  ];
 }
 
 export function faqPageSchema(entries: readonly { question: string; answer: string }[], locale: Locale = "fr") {

@@ -1,4 +1,4 @@
-import { AboutContent } from "../../components/content-pages";
+import { AboutPageContent } from "../../components/service-pages";
 import SiteFrame from "../../components/site-frame";
 import { getDictionary } from "../../lib/i18n";
 import { breadcrumbSchema, createPageMetadata, profilePageSchema } from "../../lib/site";
@@ -8,14 +8,15 @@ const dictionary = getDictionary(locale);
 export const metadata = createPageMetadata({ ...dictionary.metadata.about, path: "/a-propos", locale, ogType: "profile" });
 
 export default function AboutPage() {
+  const crumbs = [{ name: dictionary.project.homeBreadcrumb, path: "/" }, { name: dictionary.navigation.about, path: "/a-propos" }];
   const jsonLd = [
     profilePageSchema("/a-propos", locale),
-    breadcrumbSchema([{ name: dictionary.project.homeBreadcrumb, path: "/" }, { name: dictionary.navigation.about, path: "/a-propos" }], locale),
+    breadcrumbSchema(crumbs, locale),
   ];
   return (
-    <SiteFrame locale={locale}>
+    <SiteFrame locale={locale} crumbs={crumbs}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <AboutContent locale={locale} />
+      <AboutPageContent locale={locale} />
     </SiteFrame>
   );
 }

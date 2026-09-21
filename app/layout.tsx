@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
@@ -14,26 +13,7 @@ const geist = Geist({
   display: "swap",
 });
 
-const themeInitScript = `
-(() => {
-  try {
-    const storedTheme = localStorage.getItem("portfolio-theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-    const activeTheme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : systemTheme;
-
-    if (storedTheme === "light" || storedTheme === "dark") {
-      document.documentElement.dataset.theme = storedTheme;
-    }
-
-    document.documentElement.dataset.activeTheme = activeTheme;
-  } catch {}
-})();
-`;
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -48,7 +28,7 @@ export const metadata: Metadata = {
     locale: "fr",
   }),
   appleWebApp: {
-    title: "Dylan Portfolio",
+    title: "Dylan CDO",
   },
   icons: {
     icon: [
@@ -80,14 +60,11 @@ export default async function RootLayout({
   return (
     <html
       lang={dictionary.htmlLang}
-      className={geist.variable}
+      className={`${geist.variable} ${geistMono.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeInitScript}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

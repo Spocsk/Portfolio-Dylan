@@ -15,16 +15,14 @@ export default async function LocalizedProjectsIndexPage({ params }: { params: P
   const { locale } = await params;
   if (!isPrefixedLocale(locale)) notFound();
   const dictionary = getDictionary(locale);
-  const jsonLd = breadcrumbSchema(
-    [
-      { name: dictionary.project.homeBreadcrumb, path: "/" },
-      { name: dictionary.project.projectsBreadcrumb, path: "/projets" },
-    ],
-    locale,
-  );
+  const crumbs = [
+    { name: dictionary.project.homeBreadcrumb, path: "/" },
+    { name: dictionary.project.projectsBreadcrumb, path: "/projets" },
+  ];
+  const jsonLd = breadcrumbSchema(crumbs, locale);
 
   return (
-    <SiteFrame locale={locale}>
+    <SiteFrame locale={locale} crumbs={crumbs}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ProjectsIndexContent locale={locale} />
     </SiteFrame>

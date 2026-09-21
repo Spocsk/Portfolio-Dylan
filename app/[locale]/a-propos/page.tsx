@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { AboutContent } from "../../../components/content-pages";
+import { AboutPageContent } from "../../../components/service-pages";
 import SiteFrame from "../../../components/site-frame";
 import { getDictionary, isPrefixedLocale } from "../../../lib/i18n";
 import { breadcrumbSchema, createPageMetadata, profilePageSchema } from "../../../lib/site";
@@ -15,6 +15,7 @@ export default async function LocalizedAboutPage({ params }: { params: Promise<{
   const { locale } = await params;
   if (!isPrefixedLocale(locale)) notFound();
   const dictionary = getDictionary(locale);
-  const jsonLd = [profilePageSchema("/a-propos", locale), breadcrumbSchema([{ name: dictionary.project.homeBreadcrumb, path: "/" }, { name: dictionary.navigation.about, path: "/a-propos" }], locale)];
-  return <SiteFrame locale={locale}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><AboutContent locale={locale} /></SiteFrame>;
+  const crumbs = [{ name: dictionary.project.homeBreadcrumb, path: "/" }, { name: dictionary.navigation.about, path: "/a-propos" }];
+  const jsonLd = [profilePageSchema("/a-propos", locale), breadcrumbSchema(crumbs, locale)];
+  return <SiteFrame locale={locale} crumbs={crumbs}><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /><AboutPageContent locale={locale} /></SiteFrame>;
 }

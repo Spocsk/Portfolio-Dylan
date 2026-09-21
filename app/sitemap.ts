@@ -6,7 +6,7 @@ import { absoluteUrl, siteLastModified } from "../lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date(siteLastModified);
-  const staticRoutes = ["/", "/expertises", "/a-propos", "/contact", "/faq", "/projets"];
+  const staticRoutes = ["/", "/interventions-ecoles", "/agents-automatisations-ia", "/a-propos", "/contact", "/projets"];
 
   const routes = [
     ...staticRoutes,

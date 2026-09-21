@@ -1,86 +1,26 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Dylan COUTO DE OLIVEIRA — Full-stack TypeScript, Angular & NestJS";
-export const size = {
-  width: 1200,
-  height: 630,
-};
+export const alt = "Dylan CDO - Je conçois, je transmets, j’automatise";
+export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          background:
-            "linear-gradient(135deg, rgb(15, 17, 21), rgb(34, 39, 48) 50%, rgb(232, 168, 124))",
-          color: "white",
-          padding: "64px",
-          fontFamily: "sans-serif",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "18px",
-            maxWidth: "860px",
-          }}
-        >
-          <span
-            style={{
-              fontSize: 28,
-              letterSpacing: 6,
-              textTransform: "uppercase",
-              opacity: 0.75,
-            }}
-          >
-            dylan-cdo.fr
-          </span>
-          <h1
-            style={{
-              fontSize: 74,
-              lineHeight: 1.05,
-              margin: 0,
-            }}
-          >
-            Dylan COUTO DE OLIVEIRA
-          </h1>
-          <p
-            style={{
-              fontSize: 34,
-              lineHeight: 1.3,
-              margin: 0,
-              opacity: 0.9,
-            }}
-          >
-            Développeur full-stack TypeScript.
-            <br />
-            Angular, NestJS, Node.js.
-          </p>
+    <div style={{ width: "100%", height: "100%", display: "flex", background: "#f1efe8", color: "#151719", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ width: "56%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "54px 58px" }}>
+        <div style={{ display: "flex", fontSize: 27, fontWeight: 700, letterSpacing: "-1.5px" }}>Dylan <span style={{ color: "#224dff", marginLeft: 7 }}>CDO</span></div>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 700, letterSpacing: "-4px", lineHeight: .92 }}>
+          <span>Je conçois,</span><span>je transmets,</span><span style={{ color: "#224dff" }}>j’automatise.</span>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            gap: "18px",
-            fontSize: 28,
-            opacity: 0.9,
-          }}
-        >
-          <span>Angular</span>
-          <span>•</span>
-          <span>NestJS</span>
-          <span>•</span>
-          <span>DevOps</span>
+        <span style={{ fontSize: 17, color: "#626660" }}>Développement · Écoles · Automatisations IA</span>
+      </div>
+      <div style={{ width: "44%", display: "flex", alignItems: "center", padding: 38, background: "#181a1e" }}>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", border: "1px solid #3c4047", borderRadius: 8 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "23px", borderBottom: "1px solid #353940", color: "#f5f4ee" }}><span>Tableau d’opérations</span><span style={{ color: "#58e19d" }}>● actif</span></div>
+          {["Demande reçue", "Besoin extrait", "Validation humaine"].map((item, index) => <div key={item} style={{ display: "flex", justifyContent: "space-between", padding: "24px 23px", borderBottom: index < 2 ? "1px solid #30343a" : "1px solid transparent", color: index === 2 ? "#ffffff" : "#989da6", background: index === 2 ? "#253485" : "transparent" }}><span>0{index + 1} / {item}</span><span>{index < 2 ? "OK" : "EN COURS"}</span></div>)}
         </div>
       </div>
-    ),
+    </div>,
     size,
   );
 }

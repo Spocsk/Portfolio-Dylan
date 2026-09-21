@@ -2,10 +2,13 @@ import type { Locale } from "./i18n";
 
 export type ProjectTheme = "sunset" | "aurora" | "graphite";
 
+export type ProjectAxis = "web" | "systems" | "pedagogy";
+
 export interface Project {
   slug: string;
   title: string;
   eyebrow: string;
+  axis: ProjectAxis;
   featured: boolean;
   theme?: ProjectTheme;
   previewImage?: string;
@@ -27,8 +30,11 @@ export const projects: Project[] = [
     slug: "campbell-scientific",
     title: "Campbell Scientific",
     eyebrow: "Data industrielle",
+    axis: "systems",
     featured: true,
     theme: "graphite",
+    previewImage: "/assets/campbell-scientific-logo.jpg",
+    previewAlt: "Logo Campbell Scientific.",
     summary:
       "Applications web Angular / NestJS pour l’exploitation de systèmes d’acquisition de données critiques, utilisées dans plus de 30 pays.",
     description:
@@ -52,7 +58,8 @@ export const projects: Project[] = [
     slug: "operis",
     title: "Operis",
     eyebrow: "SaaS collectivités",
-    featured: true,
+    axis: "systems",
+    featured: false,
     theme: "aurora",
     summary:
       "Interfaces Angular pour des SaaS dédiés aux collectivités, jusqu’à 15 000 utilisateurs/jour et une couverture d’environ 60 % des métropoles.",
@@ -77,6 +84,7 @@ export const projects: Project[] = [
     slug: "duoshot",
     title: "DuoShot",
     eyebrow: "SaaS App Store",
+    axis: "web",
     featured: true,
     theme: "aurora",
     previewImage: "/assets/duoshot-site-preview.webp",
@@ -106,7 +114,8 @@ export const projects: Project[] = [
     slug: "makeitgueznet",
     title: "MakeItGueznet",
     eyebrow: "Jeu de soirée",
-    featured: true,
+    axis: "web",
+    featured: false,
     theme: "sunset",
     previewImage: "/assets/makeitgueznet-site-preview.webp",
     previewAlt:
@@ -135,8 +144,11 @@ export const projects: Project[] = [
     slug: "poselock",
     title: "PoseLock",
     eyebrow: "App iOS",
+    axis: "web",
     featured: true,
     theme: "graphite",
+    previewImage: "/assets/poselock-site-preview.png",
+    previewAlt: "Bannière du site PoseLock : Pose. Score. Lock.",
     summary:
       "Application iOS de posing on-device : Pose. Score. Lock. Vision Body Pose 3D, journal et abonnement StoreKit.",
     description:
@@ -152,7 +164,7 @@ export const projects: Project[] = [
       "Quatre surfaces : onboarding, accueil, caméra, réglages — journal et bibliothèque en feuilles.",
       "Tests unitaires sur scoring, pose du jour et quota.",
     ],
-    externalUrl: "https://github.com/Spocsk/PoseLock",
+    externalUrl: "https://spocsk.github.io/PoseLock/",
     seoTitle: "PoseLock — Étude de cas app iOS posing on-device",
     seoDescription:
       "Étude de cas PoseLock : app iOS SwiftUI, Vision Body Pose 3D et StoreKit, scoring on-device sans backend.",
@@ -161,7 +173,8 @@ export const projects: Project[] = [
     slug: "pas-envoye",
     title: "Pas envoyé",
     eyebrow: "App iOS",
-    featured: true,
+    axis: "web",
+    featured: false,
     theme: "graphite",
     summary:
       "App iOS no-contact : compteur de jours, brouillon non envoyé, widgets lock et home. Le silence est la fonctionnalité.",
@@ -186,6 +199,7 @@ export const projects: Project[] = [
     slug: "cast-loop",
     title: "Cast Loop",
     eyebrow: "SaaS multi-tenant",
+    axis: "web",
     featured: false,
     theme: "aurora",
     previewImage: "/assets/cast-loop-site-preview.webp",
@@ -215,6 +229,7 @@ export const projects: Project[] = [
     slug: "victor-couto",
     title: "Victor COUTO",
     eyebrow: "Site vitrine",
+    axis: "web",
     featured: false,
     theme: "sunset",
     previewImage: "/assets/artisan-code-site-preview.webp",
@@ -243,6 +258,7 @@ export const projects: Project[] = [
     slug: "hp-sonorisation",
     title: "HP Sonorisation",
     eyebrow: "Event & Booking",
+    axis: "web",
     featured: false,
     theme: "graphite",
     previewImage: "/assets/hp-sonorisation-site-preview.webp",
@@ -271,12 +287,13 @@ export const projects: Project[] = [
     slug: "bibliflow",
     title: "BibliFlow",
     eyebrow: "Enseignement DevOps",
+    axis: "pedagogy",
     featured: false,
     theme: "sunset",
     summary:
       "Projet fil rouge pour étudiants : comprendre Docker, Jenkins et SonarQube en construisant un système de gestion de stocks de livres.",
     description:
-      "Conçu pour des étudiants de master à Nexa : un environnement pédagogique complet mêlant développement full-stack (Node.js, Angular) et bonnes pratiques DevOps.",
+      "Conçu pour des étudiants de master : un environnement pédagogique complet mêlant développement full-stack (Node.js, Angular) et bonnes pratiques DevOps.",
     role: "Intervenant — cadrage pédagogique, stack Node / Angular, containerisation Docker, CI Jenkins, qualité SonarQube.",
     stack: ["Node.js", "Angular", "Docker", "Jenkins", "SonarQube"],
     problem:
@@ -291,12 +308,13 @@ export const projects: Project[] = [
     externalUrl: "https://github.com/Spocsk/BibliFlow",
     seoTitle: "BibliFlow — Projet pédagogique Docker / Jenkins / SonarQube",
     seoDescription:
-      "BibliFlow : projet fil rouge Nexa pour enseigner Docker, Jenkins, SonarQube, Node.js et Angular via une gestion de stocks de livres.",
+      "BibliFlow : projet fil rouge pour enseigner Docker, Jenkins, SonarQube, Node.js et Angular via une gestion de stocks de livres.",
   },
   {
     slug: "swift-2048",
     title: "2048 Swift Game",
     eyebrow: "Exploration iOS",
+    axis: "systems",
     featured: false,
     theme: "sunset",
     summary:
@@ -323,6 +341,7 @@ export const projects: Project[] = [
     slug: "allocator-cpp",
     title: "Allocator C++",
     eyebrow: "Exploration systèmes",
+    axis: "systems",
     featured: false,
     theme: "aurora",
     summary:
@@ -349,6 +368,7 @@ export const projects: Project[] = [
     slug: "portfolio-dylan",
     title: "Portfolio Dylan",
     eyebrow: "Frontend",
+    axis: "web",
     featured: false,
     theme: "graphite",
     previewImage: "/assets/portfolio-dylan-site-preview.webp",
@@ -503,13 +523,13 @@ const englishProjectCopy: Record<string, ProjectCopy> = {
     eyebrow: "DevOps teaching",
     previewAlt: "BibliFlow teaching project around Docker, Jenkins and SonarQube.",
     summary: "A fil-rouge project for students: learn Docker, Jenkins and SonarQube by building a book-stock system.",
-    description: "Designed for master’s students at Nexa: a complete teaching environment mixing full-stack development (Node.js, Angular) and DevOps practice.",
+    description: "Designed for master’s students: a complete teaching environment mixing full-stack development (Node.js, Angular) and DevOps practice.",
     role: "Lecturer — pedagogy, Node / Angular stack, Docker, Jenkins CI, SonarQube quality.",
     problem: "Students needed an end-to-end project connecting API, UI, software quality and industrialisation, not isolated exercises.",
     solution: "A book-stock fil rouge: Node.js REST API, Angular UI, SonarQube analysis, Docker containers and Jenkins automation.",
     results: ["A teaching environment that mixes development and DevOps.", "Practice that transfers to industry (quality, CI, containers).", "A working project delivered with the students."],
     seoTitle: "BibliFlow — Docker / Jenkins / SonarQube teaching project",
-    seoDescription: "BibliFlow: Nexa fil-rouge project teaching Docker, Jenkins, SonarQube, Node.js and Angular through a book-stock system.",
+    seoDescription: "BibliFlow: a capstone project teaching Docker, Jenkins, SonarQube, Node.js and Angular through a book-stock system.",
   },
   "swift-2048": {
     eyebrow: "iOS exploration",
@@ -549,168 +569,8 @@ const englishProjectCopy: Record<string, ProjectCopy> = {
   },
 };
 
-const spanishProjectCopy: Record<string, ProjectCopy> = {
-  "campbell-scientific": {
-    eyebrow: "Datos industriales",
-    previewAlt: "Caso de estudio Campbell Scientific de adquisición de datos industriales.",
-    summary: "Aplicaciones web Angular / NestJS para sistemas de adquisición de datos críticos, usadas en más de 30 países.",
-    description: "En Campbell Scientific trabajé en aplicaciones web industriales para visualizar, configurar y explotar datos de campo de alto volumen: meteorología, hidrología, petróleo/gas, utilities y entornos aislados.",
-    role: "Ingeniero de software — interfaces Angular / TypeScript, APIs NestJS / Node.js, CI/CD y Docker.",
-    problem: "Los equipos de campo y los clientes industriales necesitan interfaces fiables para datos cuya error o indisponibilidad puede afectar una decisión operativa, en más de 30 países.",
-    solution: "Interfaces Angular para visualización y configuración, APIs NestJS para equipos, medidas, supervisión y cloud, e industrialización de entregas con CI/CD y Docker.",
-    results: ["Aplicaciones usadas en más de 30 países por clientes públicos, industriales y científicos.", "Atención a la fiabilidad, la reactividad de la UI y el uso en condiciones extremas.", "Releases más seguras gracias a CI/CD y prácticas de calidad."],
-    seoTitle: "Campbell Scientific — Caso de estudio Angular / NestJS",
-    seoDescription: "Caso Campbell Scientific: aplicaciones web industriales Angular y NestJS para adquisición de datos crítica en más de 30 países.",
-  },
-  operis: {
-    eyebrow: "SaaS administraciones",
-    previewAlt: "Caso de estudio Operis de SaaS para administraciones locales.",
-    summary: "Interfaces Angular para SaaS de administraciones locales, hasta 15.000 usuarios/día y alrededor del 60 % de las metrópolis francesas.",
-    description: "En Operis desarrollé interfaces Angular para SaaS de administraciones territoriales: urbanismo, suelo, escolar y trámites desmaterializados, en un marco GNAU y ley ELAN.",
-    role: "Desarrollador front-end Angular / TypeScript, componentes reutilizables, accesibilidad y recorridos agentes / ciudadanos.",
-    problem: "Agentes públicos y ciudadanos manipulan datos administrativos sensibles. Los recorridos deben seguir siendo legibles, trazables y estables a gran escala.",
-    solution: "Componentes Angular reutilizables, modernización de recorridos GNAU / ELAN y más coherencia UI para acelerar la evolución del producto.",
-    results: ["Contribución a plataformas de hasta 15.000 usuarios/día.", "Cobertura anunciada de alrededor del 60 % de las metrópolis francesas.", "Menos duplicación de pantallas de negocio gracias a componentes compartidos."],
-    seoTitle: "Operis — Caso de estudio SaaS Angular para administraciones",
-    seoDescription: "Caso Operis: interfaces Angular para SaaS de administraciones, hasta 15.000 usuarios/día y ~60 % de las metrópolis.",
-  },
-  duoshot: {
-    eyebrow: "SaaS App Store",
-    previewAlt: "DuoShot: pipeline de capturas App Store para iPhone Duo, vista previa sin chasis.",
-    summary: "SaaS Next.js para producir capturas App Store de iPhone Duo correctas, en minutos, sin dispositivo físico.",
-    description: "DuoShot es un pipeline App Store sin chasis: outer 5,4″, inner 7,6″, opción 6,9″. Vista previa sin cuenta, ZIP una vez conectado. Subidas del navegador a Supabase Storage, render Sharp en Node, checkout Stripe.",
-    role: "Diseño de producto, arquitectura fullstack Next.js, auth Supabase, pipeline de imagen Sharp y facturación Stripe.",
-    problem: "Las capturas App Store para iPhone Duo (pantalla externa e interna) no coinciden con un iPhone clásico. Sin dispositivo, chasis y ratios incorrectos fallan la review.",
-    solution: "Un pipeline web que recorta y compone los tres formatos Duo, con preview inmediata, ZIP HD tras cuenta, y planes Free / Launch / Indie / Studio.",
-    results: ["Una herramienta pública en producción: https://duoshot.vercel.app.", "Preview sin cuenta, ZIP con cuenta, auth Google / email / magic link.", "Quality gate Vitest + Cypress, despliegues Vercel."],
-    seoTitle: "DuoShot — Caso de estudio SaaS de capturas iPhone Duo",
-    seoDescription: "Caso DuoShot: SaaS Next.js + Supabase + Stripe para capturas App Store de iPhone Duo sin dispositivo.",
-  },
-  makeitgueznet: {
-    eyebrow: "Juego de fiesta",
-    previewAlt: "MakeItGueznet: inicio Polaroid para entrar en una sala y poner leyendas a archivos propios.",
-    summary: "Juego de fiesta web: salas, biblioteca de imágenes y GIF, leyendas, notas anónimas de 1 a 5 estrellas.",
-    description: "MakeItGueznet es un juego privado para jugar con los archivos del grupo. Cuenta para la biblioteca, código de sala, drop en el lobby, una imagen distinta por jugador, overlay de texto (también en GIF), voto anónimo, revelación de autores.",
-    role: "Diseño de producto, frontend Next.js, backend Convex (auth, storage, tiempo real) y dirección visual Polaroid.",
-    problem: "Los kits de pago de juegos de memes bloquean la subida de fotos y GIF del grupo. Queríamos una ronda completa en teléfono y portátil, solo con nuestros archivos.",
-    solution: "Un solo bucle: biblioteca personal, código corto, pool común, leyenda Polaroid, notas 1–5 sin ver al autor, puntuaciones, siguiente ronda.",
-    results: ["Un producto jugable en producción: https://makeitgueznet.vercel.app.", "Tiempo real Convex para salas, rondas y votos.", "Identidad Polaroid original, sin copiar una marca de terceros."],
-    seoTitle: "MakeItGueznet — Caso de estudio juego de fiesta Next.js / Convex",
-    seoDescription: "Caso MakeItGueznet: juego de fiesta Next.js y Convex, archivos propios, leyendas y notas anónimas.",
-  },
-  poselock: {
-    eyebrow: "App iOS",
-    previewAlt: "PoseLock, app iOS de posing on-device: pose, puntuación y lock.",
-    summary: "App iOS de posing on-device: Pose. Score. Lock. Vision Body Pose 3D, diario y suscripción StoreKit.",
-    description: "PoseLock juzga la línea, no a la persona. Cámara a pantalla completa, esqueleto, packs de poses, locks con stills, diario J-7. Todo en el dispositivo: SwiftUI, Vision 3D, SwiftData. Sin backend.",
-    role: "Diseño de producto, SwiftUI, scoring Vision, SwiftData, StoreKit 2 y cuota Pro.",
-    problem: "El posing fotográfico carece de feedback inmediato y privado. Un score en línea implicaría enviar la imagen; aquí todo debe quedarse on-device.",
-    solution: "Marco de cámara, score de lock, plantillas gold, diario comparativo, paywall en el 4.º lock gratuito. iPhone, iOS 17+.",
-    results: ["App iOS entregada, código público: https://github.com/Spocsk/PoseLock.", "Cuatro superficies: onboarding, inicio, cámara, ajustes — diario y biblioteca en hojas.", "Tests unitarios de scoring, pose del día y cuota."],
-    seoTitle: "PoseLock — Caso de estudio app iOS de posing on-device",
-    seoDescription: "Caso PoseLock: app iOS SwiftUI, Vision Body Pose 3D y StoreKit, scoring totalmente on-device.",
-  },
-  "pas-envoye": {
-    eyebrow: "App iOS",
-    previewAlt: "Pas envoyé, app iOS no-contact con contador de días y borradores no enviados.",
-    summary: "App iOS no-contact: contador de días, borrador no enviado, widgets lock y home. El silencio es la función.",
-    description: "Pas envoyé ayuda a dejar de escribirle a alguien. Número grande, « Conservar aquí », un borrador que nunca abre Messages, reset honesto al recaer. Widgets siempre gratis. Paywall solo desde Ajustes.",
-    role: "Diseño de producto, SwiftUI, widgets, persistencia App Group, RevenueCat y analítica PostHog mínima.",
-    problem: "Las apps de no-contact empujan coaching, rachas y social. La necesidad aquí es la inversa: un contador, un cajón para lo que no se envía, cero terapia.",
-    solution: "Núcleo gratis: una persona, contador de días calendario, 7 últimos borradores, widgets. Pro: historial ilimitado, hasta 3 personas, export. Nunca paywall en el primer lanzamiento.",
-    results: ["App iOS entregada, UI en francés, solo iPhone, solo oscuro.", "Widgets de bloqueo e inicio siempre fuera del paywall.", "Tests unitarios y de UI: contador, persistencia, ningún envío a Messages, paywall desde Ajustes."],
-    seoTitle: "Pas envoyé — Caso de estudio app iOS no-contact",
-    seoDescription: "Caso Pas envoyé: app iOS SwiftUI no-contact, contador de días, borradores no enviados y widgets.",
-  },
-  "cast-loop": {
-    eyebrow: "SaaS multiempresa",
-    previewAlt: "Panel de publicación de Cast Loop con dashboard, calendario editorial y pipeline de publicaciones.",
-    summary: "Plataforma SaaS multiempresa para planificar y publicar en redes sociales, con un único panel para agencias, equipos y múltiples cuentas.",
-    description: "Producto SaaS completo para conectar varias cuentas sociales (LinkedIn, Facebook e Instagram), gestionar varias empresas cliente y coordinar borradores, calendario, programación y publicación desde un único panel.",
-    role: "Diseño de producto, arquitectura full-stack, frontend Next.js, API NestJS, esquema Supabase y pipeline de publicación.",
-    problem: "Los equipos que gestionan varias marcas en distintas redes pierden tiempo cambiando de interfaz, cuenta y zona horaria, sin una visión centralizada.",
-    solution: "Arquitectura multiempresa estricta, programador minuto a minuto con bloqueo Postgres y un panel Next.js que reúne cuentas, calendario, pipeline editorial y recordatorios de Telegram.",
-    results: ["Un único panel para varias empresas cliente y cuentas sociales.", "Un pipeline con estados explícitos y registro de auditoría.", "Una base SaaS extensible."],
-    seoTitle: "Cast Loop — Caso de estudio SaaS de publicación social",
-    seoDescription: "Caso de estudio de Cast Loop, plataforma SaaS multiempresa de planificación y publicación social con Next.js, NestJS y Supabase.",
-  },
-  "victor-couto": {
-    eyebrow: "Sitio corporativo",
-    previewAlt: "Landing page premium para Victor COUTO, empresa artesanal de Normandía.",
-    summary: "Landing page premium para una empresa artesanal, con jerarquía clara, una estética sobria y un recorrido orientado al contacto.",
-    description: "Diseño y desarrollo de un sitio premium para una empresa artesanal de Normandía, pensado para presentar su saber hacer, generar confianza y facilitar el contacto.",
-    role: "Dirección de arte, estructura de contenidos, integración frontend y optimización de la conversión.",
-    problem: "El objetivo era una presencia web más cualitativa que un catálogo, con un mensaje claro y una experiencia móvil fluida.",
-    solution: "Landing page con jerarquía visual marcada, hero directo, secciones breves y llamadas a la acción claras.",
-    results: ["Una presencia digital más creíble y premium.", "Un recorrido sin fricciones orientado al contacto.", "Una interfaz clara que sitúa el contenido del negocio en primer plano."],
-    seoTitle: "Victor COUTO — Caso de estudio de sitio artesanal",
-    seoDescription: "Caso de estudio de un sitio premium para una empresa artesanal, con dirección de arte, jerarquía clara y conversión orientada al contacto.",
-  },
-  "hp-sonorisation": {
-    eyebrow: "Eventos y reservas",
-    previewAlt: "Sitio inmersivo de HP Sonorisation con estética nocturna y llamadas a la acción destacadas.",
-    summary: "Sitio inmersivo para un proveedor de sonido y animación, construido alrededor de un universo nocturno y un hero espectacular.",
-    description: "Rediseño de un sitio de eventos para destacar el universo de marca, su capacidad para animar eventos y facilitar el contacto.",
-    role: "Diseño de producto, diseño frontend, narrativa visual y definición de las secciones de conversión.",
-    problem: "El sitio debía diferenciarse visualmente, seguir siendo comprensible en móvil y mantener un objetivo de conversión claro.",
-    solution: "Interfaz más inmersiva, dirección de arte nocturna, hero rotundo y secciones diseñadas para comunicar rápidamente la oferta.",
-    results: ["Una identidad visual más memorable.", "Una presentación más clara de los servicios.", "Un mejor equilibrio entre impacto visual y claridad del recorrido."],
-    seoTitle: "HP Sonorisation — Caso de estudio de sitio de eventos",
-    seoDescription: "Caso de estudio de un sitio inmersivo para servicios de sonido y animación, con identidad fuerte, hero visual y llamadas a la acción más claras.",
-  },
-  bibliflow: {
-    eyebrow: "Enseñanza DevOps",
-    previewAlt: "Proyecto pedagógico BibliFlow con Docker, Jenkins y SonarQube.",
-    summary: "Proyecto fil rouge para estudiantes: entender Docker, Jenkins y SonarQube construyendo un sistema de stocks de libros.",
-    description: "Diseñado para estudiantes de máster en Nexa: un entorno pedagógico completo que mezcla desarrollo full-stack (Node.js, Angular) y prácticas DevOps.",
-    role: "Docente — pedagogía, stack Node / Angular, Docker, CI Jenkins, calidad SonarQube.",
-    problem: "Los estudiantes necesitaban un proyecto de extremo a extremo que uniera API, interfaz, calidad e industrialización, no ejercicios aislados.",
-    solution: "Un fil rouge de stocks de libros: API REST Node.js, UI Angular, análisis SonarQube, contenedores Docker y automatización Jenkins.",
-    results: ["Un entorno pedagógico que mezcla desarrollo y DevOps.", "Una práctica transferable a empresa (calidad, CI, contenedores).", "Un proyecto funcional entregado con los estudiantes."],
-    seoTitle: "BibliFlow — Proyecto pedagógico Docker / Jenkins / SonarQube",
-    seoDescription: "BibliFlow: proyecto fil rouge Nexa para enseñar Docker, Jenkins, SonarQube, Node.js y Angular con una gestión de stocks de libros.",
-  },
-  "swift-2048": {
-    eyebrow: "Exploración iOS",
-    previewAlt: "Juego de puzle 2048 desarrollado en Swift.",
-    summary: "Clon del puzle 2048 desarrollado en Swift, con lógica de juego personalizada y animaciones fluidas.",
-    description: "Proyecto iOS para explorar Swift y la calidad percibida mediante la animación. Exploración, no la oferta móvil principal.",
-    role: "Desarrollo iOS, arquitectura de la lógica de juego y animación de la experiencia.",
-    problem: "Reproducir una mecánica conocida manteniendo el control total sobre fusiones, puntuación y transiciones de estado.",
-    solution: "Una implementación propia del motor, cuidando la fluidez de los movimientos y la solidez de las reglas.",
-    results: ["Mayor dominio de Swift y SwiftUI.", "Un proyecto demostrativo de exploración móvil.", "Una base para seguir iterando sobre la UX de juego."],
-    seoTitle: "2048 Swift Game — Proyecto iOS en Swift",
-    seoDescription: "Proyecto iOS en Swift inspirado en 2048, con lógica personalizada, animaciones fluidas y aprendizaje práctico del ecosistema Apple.",
-  },
-  "allocator-cpp": {
-    eyebrow: "Exploración de sistemas",
-    previewAlt: "Proyecto de programación de sistemas sobre un asignador de memoria en C++.",
-    summary: "Proyecto C++ centrado en la asignación de memoria y en la comprensión de los mecanismos de bajo nivel.",
-    description: "Exploración de un asignador en C++ — fuera de la oferta TypeScript.",
-    role: "Diseño de bajo nivel, experimentación algorítmica y compromisos entre rendimiento y legibilidad.",
-    problem: "Comprender mejor los mecanismos de asignación de memoria, poco visibles en proyectos frontend.",
-    solution: "Un proyecto centrado en la mecánica de asignación y en observar cómo las decisiones de implementación afectan a la estructura y al rendimiento.",
-    results: ["Una comprensión más profunda de los mecanismos de memoria.", "Un proyecto técnico sólido fuera del ámbito web habitual.", "Una muestra de curiosidad en temas de bajo nivel."],
-    seoTitle: "Allocator C++ — Proyecto de programación de sistemas",
-    seoDescription: "Proyecto C++ sobre asignación de memoria y programación de sistemas: experimentación, rendimiento y comprensión de bajo nivel.",
-  },
-  "portfolio-dylan": {
-    eyebrow: "Frontend",
-    previewAlt: "Portfolio de Dylan COUTO DE OLIVEIRA, desarrollador full-stack TypeScript, con dirección de arte premium.",
-    summary: "El código fuente de este portfolio, creado con Next.js, una dirección de arte cuidada y una base SEO/GEO más sólida.",
-    description: "Portfolio personal concebido como escaparate de un perfil sénior: frontend cuidado, páginas internas indexables y señales de entidad alineadas con LinkedIn.",
-    role: "Diseño de producto, frontend, estructura de contenidos, trabajo SEO/GEO.",
-    problem: "El portfolio debía conservar su personalidad visual y, al mismo tiempo, ser más explícito, indexable y útil para la contratación.",
-    solution: "Página de inicio potente, páginas internas, metadatos enriquecidos y casos de estudio con nombre.",
-    results: ["Mayor claridad del perfil y de las especialidades.", "Más páginas indexables además de la portada.", "Una base más sólida para la visibilidad SEO y GEO."],
-    seoTitle: "Portfolio Dylan — Rediseño frontend y SEO/GEO",
-    seoDescription: "Caso de estudio del portfolio de Dylan: rediseño frontend, nuevas páginas internas y refuerzo de las señales SEO/GEO.",
-  },
-};
-
 const translatedProjectCopy: Record<Exclude<Locale, "fr">, Record<string, ProjectCopy>> = {
   en: englishProjectCopy,
-  es: spanishProjectCopy,
 };
 
 export function getProjects(locale: Locale = "fr"): Project[] {

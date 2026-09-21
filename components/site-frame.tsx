@@ -1,350 +1,96 @@
 "use client";
 
+import { ArrowUpRight, List, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type PropsWithChildren, useEffect, useRef, useState } from "react";
+import { type PropsWithChildren, useEffect, useState } from "react";
 
-import { siteConfig, socialLinks } from "../lib/site";
 import { trackUmami } from "../lib/analytics";
-import {
-  getDictionary,
-  localizePath,
-  locales,
-  stripLocalePrefix,
-  type Locale,
-} from "../lib/i18n";
+import { localizePath, stripLocalePrefix, type Locale } from "../lib/i18n";
+import { bookingUrl, getServiceCopy } from "../lib/service-content";
+import { siteConfig, socialLinks, type BreadcrumbItem } from "../lib/site";
+import Breadcrumbs from "./breadcrumbs";
+import RouteReveal from "./route-reveal";
 
-type ThemeMode = "light" | "dark";
-
-const THEME_STORAGE_KEY = "portfolio-theme";
-
-function getStoredTheme(): ThemeMode | null {
-  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-  return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
-}
-
-function getSystemTheme(): ThemeMode {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
-function applyTheme(themePreference: ThemeMode | null): ThemeMode {
-  const root = document.documentElement;
-  const activeTheme = themePreference ?? getSystemTheme();
-
-  if (themePreference) {
-    root.dataset.theme = themePreference;
-  } else {
-    delete root.dataset.theme;
-  }
-
-  root.dataset.activeTheme = activeTheme;
-
-  const themeMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeMeta instanceof HTMLMetaElement) {
-    themeMeta.content = activeTheme === "dark" ? "#0f1115" : "#faf9f7";
-  }
-
-  return activeTheme;
-}
-
-export default function SiteFrame({ children, locale = "fr" }: PropsWithChildren<{ locale?: Locale }>) {
+export default function SiteFrame({ children, locale = "fr", crumbs }: PropsWithChildren<{ locale?: Locale; crumbs?: BreadcrumbItem[] }>) {
   const pathname = usePathname();
-  const navRef = useRef<HTMLElement>(null);
-  const preferredThemeRef = useRef<ThemeMode | null>(null);
-  const [activeTheme, setActiveTheme] = useState<ThemeMode>("light");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const dictionary = getDictionary(locale);
-  const navCopy = dictionary.navigation;
-  const navLinks = [
-    { href: "/", label: navCopy.home },
-    { href: "/projets", label: navCopy.projects },
-    { href: "/expertises", label: navCopy.expertises },
-    { href: "/a-propos", label: navCopy.about },
-    { href: "/faq", label: navCopy.faq },
-    { href: "/contact", label: navCopy.contact },
-  ];
-  const footerLinks = [
-    { href: "/faq", label: dictionary.footer.faq },
-    { href: "/expertises", label: dictionary.footer.expertises },
-    { href: "/a-propos", label: dictionary.footer.profile },
-    { href: "/projets", label: dictionary.footer.projects },
-  ];
-
-  useEffect(() => {
-    const storedTheme = getStoredTheme();
-    preferredThemeRef.current = storedTheme;
-    setActiveTheme(applyTheme(storedTheme));
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleMediaChange = () => {
-      if (preferredThemeRef.current !== null) return;
-      setActiveTheme(applyTheme(null));
-    };
-
-    mediaQuery.addEventListener("change", handleMediaChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setIsLanguageOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    const handleDocumentClick = (event: MouseEvent) => {
-      if (!isMenuOpen && !isLanguageOpen) return;
-      if (event.target instanceof Node && navRef.current?.contains(event.target)) {
-        return;
-      }
-
-      setIsMenuOpen(false);
-      setIsLanguageOpen(false);
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setIsMenuOpen(false);
-      setIsLanguageOpen(false);
-    };
-
-    document.addEventListener("click", handleDocumentClick);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isLanguageOpen, isMenuOpen]);
-
-  const isDark = activeTheme === "dark";
+  const [open, setOpen] = useState(false);
+  const copy = getServiceCopy(locale);
   const currentPath = stripLocalePrefix(pathname);
-  const isNavActive = (href: string) =>
-    currentPath === href || (href !== "/" && currentPath.startsWith(`${href}/`));
+  const links = [
+    ["/projets", copy.nav.projects],
+    ["/interventions-ecoles", copy.nav.education],
+    ["/agents-automatisations-ia", copy.nav.automation],
+    ["/a-propos", copy.nav.about],
+  ] as const;
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
 
   return (
-    <div className="portfolio-bg">
-      <nav
-        ref={navRef}
-        className="main-nav"
-        aria-label={navCopy.label}
-        data-menu-open={isMenuOpen}
-      >
-        <div className="main-nav-inner">
-          <div className="main-nav-links-wrap">
-            <button
-              id="nav-burger"
-              className="nav-burger"
-              type="button"
-              aria-label={isMenuOpen ? navCopy.closeMenu : navCopy.openMenu}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-nav-panel"
-              onClick={(event) => {
-                event.stopPropagation();
-                setIsMenuOpen((current) => !current);
-                setIsLanguageOpen(false);
-              }}
-            >
-              <span className="nav-burger-line" />
-              <span className="nav-burger-line" />
-              <span className="nav-burger-line" />
-            </button>
+    <div className="site-shell">
+      <header className="site-header">
+        <nav className="site-nav" aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"}>
+          <Link href={localizePath("/", locale)} className="wordmark" aria-label={locale === "fr" ? "Dylan CDO, accueil" : "Dylan CDO, home"}>
+            Dylan <span>CDO</span>
+          </Link>
 
-            <div className="main-nav-links">
-              {navLinks.map((link) => {
-                const isActive = isNavActive(link.href);
-                return (
-                  <Link
-                    key={link.href}
-                    href={localizePath(link.href, locale)}
-                    className={`nav-btn${isActive ? " active" : ""}`}
-                    aria-current={isActive ? "page" : undefined}
-                    onClick={() => {
-                      if (link.href === "/contact") {
-                        trackUmami("contact_section_click", {
-                          placement: "nav_desktop",
-                          locale,
-                        });
-                      }
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="main-nav-actions">
-            <div className="language-switcher">
-              <button
-                id="language-toggle"
-                className="language-toggle"
-                type="button"
-                aria-label={`${navCopy.languageSelector} : ${dictionary.languageName}`}
-                aria-haspopup="menu"
-                aria-expanded={isLanguageOpen}
-                aria-controls="language-menu"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setIsLanguageOpen((current) => !current);
-                  setIsMenuOpen(false);
-                }}
-              >
-                <span className="language-flag" aria-hidden="true">
-                  {dictionary.languageFlag}
-                </span>
-                <span>{dictionary.languageCode}</span>
-                <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
-                  <path d="m2.5 4.5 3.5 3 3.5-3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <div
-                id="language-menu"
-                className="language-menu"
-                role="menu"
-                aria-label={navCopy.chooseLanguage}
-                hidden={!isLanguageOpen}
-              >
-                {locales.map((targetLocale) => {
-                  const targetDictionary = getDictionary(targetLocale);
-                  const href = localizePath(stripLocalePrefix(pathname), targetLocale);
-                  const isActive = targetLocale === locale;
-                  return (
-                    <Link
-                      key={targetLocale}
-                      href={href}
-                      role="menuitemradio"
-                      aria-checked={isActive}
-                      aria-label={`${navCopy.switchTo} ${targetDictionary.languageName}`}
-                      className={`language-option${isActive ? " is-active" : ""}`}
-                      onClick={() => {
-                        trackUmami("language_change", {
-                          from: locale,
-                          to: targetLocale,
-                          path: pathname,
-                        });
-                        setIsLanguageOpen(false);
-                      }}
-                    >
-                      <span className="language-option-label">
-                        <span className="language-flag" aria-hidden="true">
-                          {targetDictionary.languageFlag}
-                        </span>
-                        <span>{targetDictionary.languageName}</span>
-                      </span>
-                      <span className="language-option-code">{targetDictionary.languageCode}</span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-            <button
-              id="theme-toggle"
-              className="theme-toggle"
-              type="button"
-              aria-label={isDark ? navCopy.lightMode : navCopy.darkMode}
-              aria-pressed={isDark}
-              data-active-theme={activeTheme}
-              onClick={() => {
-                const nextTheme = isDark ? "light" : "dark";
-                preferredThemeRef.current = nextTheme;
-                window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-                setActiveTheme(applyTheme(nextTheme));
-              }}
-            >
-              <span className="theme-toggle-icon theme-toggle-sun" aria-hidden="true">
-                ☀
-              </span>
-              <span className="theme-toggle-icon theme-toggle-moon" aria-hidden="true">
-                ☾
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <div
-          id="mobile-nav-panel"
-          className="mobile-nav-panel"
-          aria-label={navCopy.mobileMenu}
-          hidden={!isMenuOpen}
-        >
-          <div className="mobile-nav-links">
-            {navLinks.map((link) => {
-              const isActive = isNavActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={localizePath(link.href, locale)}
-                  className={`nav-btn mobile-nav-btn${isActive ? " active" : ""}`}
-                  aria-current={isActive ? "page" : undefined}
-                  onClick={() => {
-                    if (link.href === "/contact") {
-                      trackUmami("contact_section_click", {
-                        placement: "nav_mobile",
-                        locale,
-                      });
-                    }
-                  }}
-                >
-                  {link.label}
-                </Link>
-              );
+          <div className="desktop-nav">
+            {links.map(([href, label]) => {
+              const active = currentPath === href || currentPath.startsWith(`${href}/`);
+              return <Link key={href} href={localizePath(href, locale)} aria-current={active ? "page" : undefined}>{label}</Link>;
             })}
           </div>
-        </div>
-      </nav>
 
-      <main className="site-main">{children}</main>
-
-      <footer className="footer footer-rich pf-footer">
-        <div className="footer-inner">
-          <p className="footer-title">{siteConfig.name}</p>
-          <div className="footer-links">
-            {footerLinks.map((link) => (
-              <Link key={link.href} href={localizePath(link.href, locale)} className="footer-link">
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="footer-link"
-              rel="me"
-              onClick={() =>
-                trackUmami("contact_email_click", {
-                  placement: "footer",
-                  locale,
-                })
-              }
+          <div className="nav-actions">
+            <Link
+              href={localizePath(currentPath, locale === "fr" ? "en" : "fr")}
+              className="language-link"
+              aria-label={locale === "fr" ? "View the English version" : "Voir la version française"}
+              onClick={() => trackUmami("language_change", { from: locale, to: locale === "fr" ? "en" : "fr", path: pathname })}
             >
-              Email
+              {locale === "fr" ? "EN" : "FR"}
+            </Link>
+            <a className="nav-book" href={bookingUrl} target="_blank" rel="noreferrer" data-umami-event="calendar_click" data-umami-event-context="navigation" data-umami-event-placement="header">
+              {copy.nav.book}<ArrowUpRight />
             </a>
-            {socialLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="footer-link"
-                rel="me noopener noreferrer"
-                target="_blank"
-                onClick={() =>
-                  trackUmami("social_click", {
-                    network: link.label.toLowerCase(),
-                    placement: "footer",
-                    locale,
-                  })
-                }
-              >
-                {link.label}
-              </a>
-            ))}
+            <button className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? copy.nav.close : copy.nav.menu} onClick={() => setOpen((value) => !value)}>
+              {open ? <X /> : <List />}
+            </button>
           </div>
+        </nav>
+
+        <div className="mobile-navigation" id="mobile-navigation" hidden={!open}>
+          {links.map(([href, label], index) => <Link key={href} href={localizePath(href, locale)}><span>0{index + 1}</span>{label}</Link>)}
+          <a href={bookingUrl} target="_blank" rel="noreferrer" data-umami-event="calendar_click" data-umami-event-context="navigation" data-umami-event-placement="mobile_nav">{copy.nav.book}<ArrowUpRight /></a>
         </div>
-        <p className="footer-legal">© 2026 — Dylan Couto de Oliveira · {dictionary.footer.location}</p>
+      </header>
+
+      {crumbs && crumbs.length > 0 ? <Breadcrumbs items={crumbs} locale={locale} /> : null}
+      <main><RouteReveal path={pathname}>{children}</RouteReveal></main>
+
+      <footer className="site-footer">
+        <div className="footer-statement">
+          <span>Dylan CDO</span>
+          <p>{locale === "fr" ? "Conception, transmission et automatisation depuis la Normandie." : "Design, teaching and automation from Normandy."}</p>
+        </div>
+        <div className="footer-navigation">
+          {links.map(([href, label]) => <Link key={href} href={localizePath(href, locale)}>{label}</Link>)}
+          <Link href={localizePath("/contact", locale)}>Contact</Link>
+        </div>
+        <div className="footer-contact">
+          <a href={`mailto:${siteConfig.email}`} data-umami-event="contact_email_click" data-umami-event-context="footer" data-umami-event-placement="footer">{siteConfig.email}</a>
+          <div>{socialLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}</a>)}</div>
+          <small>© {new Date().getFullYear()} Dylan Couto de Oliveira</small>
+        </div>
       </footer>
     </div>
   );

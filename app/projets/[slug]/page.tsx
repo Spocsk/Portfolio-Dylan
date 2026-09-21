@@ -24,12 +24,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const project = getProjectBySlug(slug, locale);
   if (!project) notFound();
   const copy = getDictionary(locale).project;
+  const crumbs = [{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/projets" }, { name: project.title, path: `/projets/${project.slug}` }];
   const jsonLd = [
     projectCreativeWorkSchema(project, locale),
-    breadcrumbSchema([{ name: copy.homeBreadcrumb, path: "/" }, { name: copy.projectsBreadcrumb, path: "/projets" }, { name: project.title, path: `/projets/${project.slug}` }], locale),
+    breadcrumbSchema(crumbs, locale),
   ];
   return (
-    <SiteFrame locale={locale}>
+    <SiteFrame locale={locale} crumbs={crumbs}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ProjectDetail project={project} locale={locale} />
     </SiteFrame>

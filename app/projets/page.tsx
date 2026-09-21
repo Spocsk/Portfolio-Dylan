@@ -12,16 +12,14 @@ export const metadata = createPageMetadata({
 });
 
 export default function ProjectsIndexPage() {
-  const jsonLd = breadcrumbSchema(
-    [
-      { name: dictionary.project.homeBreadcrumb, path: "/" },
-      { name: dictionary.project.projectsBreadcrumb, path: "/projets" },
-    ],
-    locale,
-  );
+  const crumbs = [
+    { name: dictionary.project.homeBreadcrumb, path: "/" },
+    { name: dictionary.project.projectsBreadcrumb, path: "/projets" },
+  ];
+  const jsonLd = breadcrumbSchema(crumbs, locale);
 
   return (
-    <SiteFrame locale={locale}>
+    <SiteFrame locale={locale} crumbs={crumbs}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <ProjectsIndexContent locale={locale} />
     </SiteFrame>
