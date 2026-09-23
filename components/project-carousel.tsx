@@ -7,6 +7,7 @@ import { useCallback, useRef, useState } from "react";
 import type { Project } from "../lib/projects";
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
 import { trackUmami } from "../lib/analytics";
+import CampbellVisual from "./campbell-visual";
 import PixelPlaceholder from "./pixel-placeholder";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -95,24 +96,28 @@ export default function ProjectCarousel({ projects, locale }: { projects: Projec
           aria-label={`${copy.openProject} ${project.title}`}
           onClick={() => trackUmami("project_open", { slug: project.slug, locale })}
         >
-          <div className="pf-carousel-media" data-theme={project.theme ?? "graphite"}>
-            <div className="pf-carousel-media-frame">
-              {project.previewImage ? (
-                <Image
-                  src={project.previewImage}
-                  alt={project.previewAlt ?? project.title}
-                  fill
-                  sizes="(max-width: 860px) 100vw, 52vw"
-                  priority={activeIndex === 0}
-                />
-              ) : (
-                <>
-                  <PixelPlaceholder seed={project.slug} />
-                  <p className="pf-media-empty-caption">{copy.noPreview}</p>
-                </>
-              )}
-            </div>
-            <span className="pf-carousel-media-ring" aria-hidden="true" />
+          <div className={`pf-carousel-media${project.slug === "campbell-scientific" ? " is-campbell" : ""}`} data-theme={project.theme ?? "graphite"}>
+            {project.slug === "campbell-scientific" ? (
+              <CampbellVisual locale={locale} />
+            ) : (
+              <div className="pf-carousel-media-frame">
+                {project.previewImage ? (
+                  <Image
+                    src={project.previewImage}
+                    alt={project.previewAlt ?? project.title}
+                    fill
+                    sizes="(max-width: 860px) 100vw, 52vw"
+                    priority={activeIndex === 0}
+                  />
+                ) : (
+                  <>
+                    <PixelPlaceholder seed={project.slug} />
+                    <p className="pf-media-empty-caption">{copy.noPreview}</p>
+                  </>
+                )}
+              </div>
+            )}
+            {project.slug !== "campbell-scientific" && <span className="pf-carousel-media-ring" aria-hidden="true" />}
           </div>
 
           <div className="pf-carousel-copy">

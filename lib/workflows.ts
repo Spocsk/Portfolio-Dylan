@@ -14,6 +14,8 @@ export type WorkflowScene = {
   kicker: string;
   title: string;
   text: string;
+  agentLabel: string;
+  agentAction: string;
   demoLabel: string;
   fictive: string;
   replay: string;
@@ -27,8 +29,8 @@ export type WorkflowScene = {
 };
 
 const shared = {
-  fr: { demoLabel: "Scénario démonstratif", fictive: "Données fictives", replay: "Rejouer", retained: "Contrôle humain conservé" },
-  en: { demoLabel: "Demonstration scenario", fictive: "Fictional data", replay: "Replay", retained: "Human control retained" },
+  fr: { demoLabel: "Scénario démonstratif", fictive: "Données fictives", replay: "Rejouer", retained: "Contrôle humain conservé", agentLabel: "Agent IA" },
+  en: { demoLabel: "Demonstration scenario", fictive: "Fictional data", replay: "Replay", retained: "Human control retained", agentLabel: "AI agent" },
 } as const;
 
 const scenes: Record<Locale, readonly WorkflowScene[]> = {
@@ -38,6 +40,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "01 · Qualification",
       title: "Une conversation devient une opportunité exploitable.",
       text: "L’agent comprend la demande, repère l’information manquante, pose une question puis prépare une fiche structurée pour l’équipe.",
+      agentAction: "Vous aide à qualifier la demande",
       ...shared.fr,
       input: "Chat entrant",
       inputDetail: "Camille / Atelier Sillage",
@@ -63,6 +66,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "02 · Relance J-3",
       title: "La bonne relance, au bon moment, après validation.",
       text: "Le workflow surveille les échéances, vérifie la règle métier, rédige le message et attend le feu vert humain avant programmation.",
+      agentAction: "Prépare une relance à valider",
       ...shared.fr,
       input: "Calendrier commercial",
       inputDetail: "Échéance : 25 sept. 2026",
@@ -89,6 +93,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "03 · Synthèse",
       title: "Les informations dispersées deviennent un plan d’action.",
       text: "Emails, documents et données CRM sont rassemblés. L’agent synthétise, propose les prochaines actions et laisse la décision à l’équipe.",
+      agentAction: "Synthétise les sources pour l’équipe",
       ...shared.fr,
       input: "Email + PDF + CRM",
       inputDetail: "3 sources collectées",
@@ -117,6 +122,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "01 · Qualification",
       title: "A conversation becomes an actionable opportunity.",
       text: "The agent understands the request, finds the missing information, asks one question and prepares a structured record for the team.",
+      agentAction: "Helps qualify the request",
       ...shared.en,
       input: "Incoming chat",
       inputDetail: "Camille / Atelier Sillage",
@@ -142,6 +148,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "02 · D-3 follow-up",
       title: "The right follow-up, at the right time, after approval.",
       text: "The workflow watches deadlines, checks the business rule, drafts the message and waits for human approval before scheduling.",
+      agentAction: "Drafts a follow-up for review",
       ...shared.en,
       input: "Sales calendar",
       inputDetail: "Deadline: Sep 25, 2026",
@@ -168,6 +175,7 @@ const scenes: Record<Locale, readonly WorkflowScene[]> = {
       kicker: "03 · Synthesis",
       title: "Scattered information becomes an action plan.",
       text: "Emails, documents and CRM data are gathered. The agent summarises, suggests next actions and leaves the decision to the team.",
+      agentAction: "Summarises sources for the team",
       ...shared.en,
       input: "Email + PDF + CRM",
       inputDetail: "3 sources collected",

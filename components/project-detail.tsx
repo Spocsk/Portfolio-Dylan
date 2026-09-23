@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { getDictionary, localizePath, type Locale } from "../lib/i18n";
 import type { Project } from "../lib/projects";
+import CampbellVisual from "./campbell-visual";
 import PixelPlaceholder from "./pixel-placeholder";
 
 export default function ProjectDetail({ project, locale }: { project: Project; locale: Locale }) {
@@ -14,7 +15,9 @@ export default function ProjectDetail({ project, locale }: { project: Project; l
         <h1>{project.title}.</h1>
         <p className="pf-page-lead">{project.description}</p>
         <div className="pf-tags">{project.stack.map((item) => <span key={item} className="pf-tag">{item}</span>)}</div>
-        {project.previewImage ? (
+        {project.slug === "campbell-scientific" ? (
+          <div className="pf-hero-media pf-hero-media-campbell"><CampbellVisual locale={locale} /></div>
+        ) : project.previewImage ? (
           <div className="pf-hero-media">
             <Image
               src={project.previewImage}

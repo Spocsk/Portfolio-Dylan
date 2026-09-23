@@ -9,6 +9,7 @@ import {
   ClockCountdown,
   FilePdf,
   PaperPlaneTilt,
+  Robot,
   Sparkle,
   Tray,
   UserCircle,
@@ -47,8 +48,8 @@ export function OperationsBoard({ locale = "fr" }: { locale?: Locale }) {
     <div className="ops-board" ref={root} aria-label={scene.title}>
       <div className="ops-board-head">
         <div>
-          <span className="ops-board-kicker">{scene.input}</span>
-          <strong>{scene.inputDetail}</strong>
+          <span className="ops-board-kicker"><ChatCircleDots aria-hidden="true" />{locale === "fr" ? "Chatbot IA · qualification" : "AI chatbot · qualification"}</span>
+          <strong>{locale === "fr" ? "Conversation avec " : "Conversation with "}{scene.inputDetail}</strong>
         </div>
         <div className="ops-board-meta">
           <span className="ops-disclosure">{scene.demoLabel} · {scene.fictive}</span>
@@ -64,7 +65,7 @@ export function OperationsBoard({ locale = "fr" }: { locale?: Locale }) {
             <p>{scene.beats.prospect}</p>
           </div>
           <div className="ops-message is-agent" data-beat>
-            <span>{scene.steps[2]?.label}</span>
+            <span>{locale === "fr" ? "Chatbot IA · question complémentaire" : "AI chatbot · follow-up question"}</span>
             <p>{scene.beats.agent}</p>
           </div>
           <div className="ops-message" data-beat>
@@ -88,6 +89,18 @@ function SceneMeta({ scene }: { scene: WorkflowScene }) {
   return <div className="demo-meta"><span>{scene.demoLabel}</span><span>{scene.fictive}</span></div>;
 }
 
+function AgentIdentity({ scene }: { scene: WorkflowScene }) {
+  return (
+    <div className="agent-presence">
+      <span className="agent-presence-icon" aria-hidden="true"><Robot weight="duotone" /></span>
+      <div>
+        <strong>{scene.agentLabel}</strong>
+        <span>{scene.agentAction}</span>
+      </div>
+    </div>
+  );
+}
+
 function LeadVisual({ scene, replayKey }: { scene: WorkflowScene; replayKey: number }) {
   const root = useRef<HTMLDivElement>(null);
   useBeatTimeline(root, replayKey);
@@ -97,7 +110,7 @@ function LeadVisual({ scene, replayKey }: { scene: WorkflowScene; replayKey: num
       <div className="demo-chat-grid">
         <div className="demo-thread">
           <div className="demo-bubble scene-beat" data-beat><b>{scene.inputDetail.split(" / ")[0]}</b><p>{scene.beats.prospect}</p></div>
-          <div className="demo-bubble is-ai scene-beat" data-beat><b>{scene.steps[2]?.label}</b><p>{scene.beats.agent}</p></div>
+          <div className="demo-bubble is-ai scene-beat" data-beat><b>{scene.agentLabel} · {scene.steps[2]?.label}</b><p>{scene.beats.agent}</p></div>
           <div className="demo-bubble scene-beat" data-beat><b>{scene.inputDetail.split(" / ")[0]}</b><p>{scene.beats.answer}</p></div>
         </div>
         <div className="demo-record scene-beat is-primary" data-beat>
@@ -264,6 +277,7 @@ export function WorkflowShowcase({ locale = "fr" }: { locale?: Locale }) {
               <h2>{item.title}</h2>
               <p>{item.text}</p>
               <div className="workflow-mobile-visual">
+                <AgentIdentity scene={item} />
                 <SceneMeta scene={item} />
                 <MobileVisual scene={item} replayKey={replayKey} />
                 <button type="button" className="replay-button" onClick={replay}><ArrowClockwise />{item.replay}</button>
@@ -274,9 +288,13 @@ export function WorkflowShowcase({ locale = "fr" }: { locale?: Locale }) {
       </div>
       <div className="workflow-pin-column" data-workflow-column>
         <div className="workflow-stage" data-workflow-stage aria-live="polite">
+          <AgentIdentity scene={scene} />
           <SceneMeta scene={scene} />
           <DesktopWorkflowCanvas scene={scene} replayKey={`${active}-${replayKey}`} />
-          <button type="button" className="replay-button" onClick={replay}><ArrowClockwise />{scene.replay}</button>
+          <div className="workflow-stage-footer">
+            <span className="agent-presence-note"><Robot weight="duotone" aria-hidden="true" />{scene.agentLabel} · {scene.agentAction}</span>
+            <button type="button" className="replay-button" onClick={replay}><ArrowClockwise />{scene.replay}</button>
+          </div>
         </div>
       </div>
     </section>
