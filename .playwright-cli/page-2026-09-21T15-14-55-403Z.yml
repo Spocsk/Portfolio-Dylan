@@ -1,0 +1,194 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]:
+    - banner [ref=f7e3]:
+      - navigation "Navigation principale" [ref=f7e4]:
+        - link "Dylan CDO, accueil" [ref=f7e5] [cursor=pointer]:
+          - /url: /
+          - text: Dylan CDO
+        - generic [ref=f7e6]:
+          - link "View the English version" [ref=f7e7] [cursor=pointer]:
+            - /url: /en/agents-automatisations-ia
+            - text: EN
+          - button "Menu" [ref=f7e8]
+    - main [ref=f7e11]:
+      - generic [ref=f7e12]:
+        - generic [ref=f7e13]:
+          - generic [ref=f7e14]:
+            - heading "Des workflows qui avancent, même quand votre attention est ailleurs." [level=1] [ref=f7e15]
+            - paragraph [ref=f7e16]: Je conçois des automatisations sur mesure pour les équipes commerciales, administratives et support, de l’audit au déploiement, sans boîte noire incontrôlable.
+            - generic [ref=f7e17]:
+              - link "Prendre rendez-vous" [ref=f7e18] [cursor=pointer]:
+                - /url: https://calendar.app.google/HrpfJcFVepgRzhar6
+              - link "contact@dylan-cdo.fr" [ref=f7e21] [cursor=pointer]:
+                - /url: mailto:contact@dylan-cdo.fr?subject=Projet%20d%E2%80%99automatisation%20IA
+          - complementary [ref=f7e24]:
+            - generic [ref=f7e25]: Socle technique
+            - strong [ref=f7e26]: TypeScript · APIs · n8n · Make · agents IA
+            - paragraph [ref=f7e27]: Choisi après cadrage, jamais pour l’effet de mode.
+        - generic [ref=f7e29]:
+          - article [ref=f7e30]:
+            - text: 01 · Qualification
+            - heading "Une conversation devient une opportunité exploitable." [level=2] [ref=f7e31]
+            - paragraph [ref=f7e32]: L’agent comprend la demande, repère l’information manquante, pose une question puis prépare une fiche structurée pour l’équipe.
+            - generic [ref=f7e33]:
+              - generic [ref=f7e34]:
+                - generic [ref=f7e35]: Scénario démonstratif
+                - generic [ref=f7e36]: Données fictives
+              - generic [ref=f7e37]:
+                - generic [ref=f7e38]:
+                  - generic [ref=f7e39]: Lead entrant
+                  - generic [ref=f7e42]: live
+                - generic [ref=f7e44]:
+                  - generic [ref=f7e45]:
+                    - text: Camille
+                    - paragraph [ref=f7e46]: Nous perdons du temps à relancer les devis.
+                  - generic [ref=f7e47]:
+                    - text: Assistant
+                    - paragraph [ref=f7e48]: Combien de jours avant l’échéance souhaitez-vous agir ?
+                  - generic [ref=f7e49]:
+                    - text: Camille
+                    - paragraph [ref=f7e50]: Trois jours, avec validation du commercial.
+              - button "Rejouer" [ref=f7e51] [cursor=pointer]
+          - article [ref=f7e54]:
+            - text: 02 · Relance J-3
+            - heading "La bonne relance, au bon moment, après validation." [level=2] [ref=f7e55]
+            - paragraph [ref=f7e56]: Le workflow surveille les échéances, vérifie la règle métier, rédige le message et attend le feu vert humain avant programmation.
+            - generic [ref=f7e57]:
+              - generic [ref=f7e58]:
+                - generic [ref=f7e59]: Scénario démonstratif
+                - generic [ref=f7e60]: Données fictives
+              - generic [ref=f7e61]:
+                - generic [ref=f7e62]:
+                  - generic [ref=f7e63]: Échéances commerciales
+                  - generic [ref=f7e66]: sept. 2026
+                - generic [ref=f7e67]:
+                  - generic [ref=f7e68]:
+                    - generic [ref=f7e69]: L
+                    - strong [ref=f7e70]: "21"
+                  - generic [ref=f7e71]:
+                    - generic [ref=f7e72]: M
+                    - strong [ref=f7e73]: "22"
+                  - generic [ref=f7e74]:
+                    - generic [ref=f7e75]: M
+                    - strong [ref=f7e76]: "23"
+                  - generic [ref=f7e77]:
+                    - generic [ref=f7e78]: J
+                    - strong [ref=f7e79]: "24"
+                  - generic [ref=f7e80]:
+                    - generic [ref=f7e81]: V
+                    - strong [ref=f7e82]: "25"
+                - generic [ref=f7e86]:
+                  - text: RÈGLE 07
+                  - strong [ref=f7e87]: Si échéance dans 3 jours, préparer une relance
+                - generic [ref=f7e90]:
+                  - generic [ref=f7e91]:
+                    - text: Message préparé
+                    - paragraph [ref=f7e92]: Bonjour Camille, un point rapide sur votre devis…
+                  - generic [ref=f7e93]: Validé
+                - generic [ref=f7e96]: Relance programmée · 22 sept. · 09:15
+              - button "Rejouer" [ref=f7e99] [cursor=pointer]
+          - article [ref=f7e102]:
+            - text: 03 · Synthèse
+            - heading "Les informations dispersées deviennent un plan d’action." [level=2] [ref=f7e103]
+            - paragraph [ref=f7e104]: Emails, documents et données CRM sont rassemblés. L’agent synthétise, propose les prochaines actions et laisse la décision à l’équipe.
+            - generic [ref=f7e105]:
+              - generic [ref=f7e106]:
+                - generic [ref=f7e107]: Scénario démonstratif
+                - generic [ref=f7e108]: Données fictives
+              - generic [ref=f7e109]:
+                - generic [ref=f7e110]:
+                  - generic [ref=f7e111]: Dossier de préparation
+                  - generic [ref=f7e114]: 3 sources
+                - generic [ref=f7e115]:
+                  - generic [ref=f7e116]:
+                    - generic [ref=f7e119]: Email
+                    - generic [ref=f7e120]: Demande Atelier Sillage
+                  - generic [ref=f7e121]:
+                    - generic [ref=f7e124]: PDF
+                    - generic [ref=f7e125]: Cahier-des-charges.pdf
+                  - generic [ref=f7e126]:
+                    - generic [ref=f7e129]: CRM
+                    - generic [ref=f7e130]: Historique du compte
+                - generic [ref=f7e131]:
+                  - text: SYNTHÈSE GÉNÉRÉE
+                  - paragraph [ref=f7e132]: "PME artisanale, 12 utilisateurs. Priorité : relances de devis avec contrôle commercial."
+                - generic [ref=f7e133]:
+                  - generic [ref=f7e134]:
+                    - generic [ref=f7e135]: "01"
+                    - generic [ref=f7e136]: Confirmer la source des échéances
+                    - emphasis [ref=f7e137]: À valider
+                  - generic [ref=f7e138]:
+                    - generic [ref=f7e139]: "02"
+                    - generic [ref=f7e140]: Prototyper la règle J-3
+                    - emphasis [ref=f7e141]: À valider
+              - button "Rejouer" [ref=f7e142] [cursor=pointer]
+        - generic [ref=f7e145]:
+          - generic [ref=f7e146]:
+            - generic [ref=f7e147]: De l’idée au système
+            - heading "Une automatisation cadrée comme un produit." [level=2] [ref=f7e148]
+          - list [ref=f7e149]:
+            - listitem [ref=f7e150]:
+              - generic [ref=f7e151]: "01"
+              - strong [ref=f7e152]: Audit
+            - listitem [ref=f7e153]:
+              - generic [ref=f7e154]: "02"
+              - strong [ref=f7e155]: Prototype
+            - listitem [ref=f7e156]:
+              - generic [ref=f7e157]: "03"
+              - strong [ref=f7e158]: Déploiement
+            - listitem [ref=f7e159]:
+              - generic [ref=f7e160]: "04"
+              - strong [ref=f7e161]: Documentation
+            - listitem [ref=f7e162]:
+              - generic [ref=f7e163]: "05"
+              - strong [ref=f7e164]: Formation
+            - listitem [ref=f7e165]:
+              - generic [ref=f7e166]: "06"
+              - strong [ref=f7e167]: Maintenance optionnelle
+        - generic [ref=f7e168]:
+          - generic [ref=f7e169]:
+            - text: Garde-fous
+            - heading "L’autonomie reste sous contrôle." [level=2] [ref=f7e173]
+          - list [ref=f7e174]:
+            - listitem [ref=f7e175]: Accès minimaux aux outils et données.
+            - listitem [ref=f7e178]: Actions importantes tracées et explicables.
+            - listitem [ref=f7e181]: Validation humaine sur les opérations sensibles.
+            - listitem [ref=f7e184]: Hébergement choisi selon vos contraintes.
+        - generic [ref=f7e187]:
+          - paragraph [ref=f7e188]: Offre en lancement. Les exemples présentés sont des scénarios fictifs, conçus pour montrer la méthode sans inventer de résultats client.
+          - paragraph [ref=f7e189]: Hermes Agent, développé par Nous Research, peut être retenu lorsque le cadrage justifie ce niveau d’autonomie. Ce n’est jamais un choix par défaut.
+        - generic [ref=f7e190]:
+          - text: Contact
+          - heading "Partons d’un seul workflow qui mérite d’être simplifié." [level=2] [ref=f7e191]
+          - generic [ref=f7e192]:
+            - link "Prendre rendez-vous" [ref=f7e193] [cursor=pointer]:
+              - /url: https://calendar.app.google/HrpfJcFVepgRzhar6
+            - link "contact@dylan-cdo.fr" [ref=f7e196] [cursor=pointer]:
+              - /url: mailto:contact@dylan-cdo.fr?subject=Projet%20d%E2%80%99automatisation%20IA
+    - contentinfo [ref=f7e199]:
+      - generic [ref=f7e200]:
+        - text: Dylan CDO
+        - paragraph [ref=f7e201]: Conception, transmission et automatisation depuis la Normandie.
+      - generic [ref=f7e202]:
+        - link "Projets" [ref=f7e203] [cursor=pointer]:
+          - /url: /projets
+        - link "Interventions en école" [ref=f7e204] [cursor=pointer]:
+          - /url: /interventions-ecoles
+        - link "Agents & automatisations IA" [ref=f7e205] [cursor=pointer]:
+          - /url: /agents-automatisations-ia
+        - link "À propos" [ref=f7e206] [cursor=pointer]:
+          - /url: /a-propos
+        - link "Contact" [ref=f7e207] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f7e208]:
+        - link "contact@dylan-cdo.fr" [ref=f7e209] [cursor=pointer]:
+          - /url: mailto:contact@dylan-cdo.fr
+        - generic [ref=f7e210]:
+          - link "LinkedIn" [ref=f7e211] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/dylan-cdo/
+          - link "GitHub" [ref=f7e212] [cursor=pointer]:
+            - /url: https://github.com/Spocsk
+          - link "X" [ref=f7e213] [cursor=pointer]:
+            - /url: https://x.com/Spocsk
+        - generic [ref=f7e214]: © 2026 Dylan Couto de Oliveira
+  - alert [ref=f7e215]

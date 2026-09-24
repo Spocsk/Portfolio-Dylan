@@ -1,61 +1,36 @@
 # Dylan COUTO DE OLIVEIRA
 
-> Dylan CDO conçoit des produits TypeScript, intervient auprès des écoles de développement et crée des automatisations IA pour les PME. Socle : Angular, NestJS, Node.js, TypeScript. React et Next.js en complément. Mobile : React Native. Apps iOS livrées : PoseLock, Pas envoyé. DevOps : Docker, Kubernetes, CI/CD, AWS.
+> Portfolio professionnel de Dylan COUTO DE OLIVEIRA, développeur full-stack TypeScript basé en Normandie. Il conçoit des applications web, intervient dans les écoles de développement et crée des agents et automatisations IA pour les PME.
 
-Site : https://www.dylan-cdo.fr
-Contact : contact@dylan-cdo.fr
-LinkedIn : https://www.linkedin.com/in/dylan-cdo/
-GitHub : https://github.com/Spocsk
+Le site est en français, avec une version anglaise sous `/en`. Les pages de projets décrivent le contexte, le rôle de Dylan, la solution et les résultats. Pour une information détaillée ou récente, consulter la page liée plutôt que ce résumé. Contact : contact@dylan-cdo.fr.
 
-## Identité
+## Présentation et services
 
-- Nom : Dylan COUTO DE OLIVEIRA
-- Rôle : Développeur full-stack, intervenant et concepteur d’automatisations
-- Localisation : Granville, Normandie, France
-- Langues de travail : français (natif), anglais (professionnel)
-- Locales du site : français, anglais
-- Disponibilité : interventions en école, automatisations IA pour PME, et opportunités de développement en second plan
+- [Accueil](https://www.dylan-cdo.fr/) : profil et principaux domaines d'activité.
+- [À propos](https://www.dylan-cdo.fr/a-propos) : parcours, compétences et approche de travail.
+- [Interventions en école](https://www.dylan-cdo.fr/interventions-ecoles) : modules, ateliers, jurys et projets pédagogiques pour les cursus Bac+2 à Bac+5.
+- [Agents et automatisations IA](https://www.dylan-cdo.fr/agents-automatisations-ia) : conception de workflows sur mesure pour les PME.
+- [Contact](https://www.dylan-cdo.fr/contact) : moyens de joindre Dylan et de prendre rendez-vous.
 
-## Expertises
+## Études de cas
 
-- Frontend Angular / TypeScript : SaaS, collectivités, data industrielle
-- Backend NestJS / Node.js : APIs métier, MongoDB, PostgreSQL
-- DevOps : Docker, Kubernetes, CI/CD, AWS — transmis via le projet pédagogique BibliFlow, sans citer d’établissement
-- Mobile : React Native en production ; SwiftUI livré (PoseLock, Pas envoyé)
+- [Tous les projets](https://www.dylan-cdo.fr/projets) : index des études de cas.
+- [Campbell Scientific](https://www.dylan-cdo.fr/projets/campbell-scientific) : applications industrielles Angular et NestJS pour l'acquisition et l'exploitation de données.
+- [Operis](https://www.dylan-cdo.fr/projets/operis) : interfaces Angular pour des logiciels destinés aux collectivités.
+- [DuoShot](https://www.dylan-cdo.fr/projets/duoshot) : SaaS Next.js de création de captures App Store.
+- [Cast Loop](https://www.dylan-cdo.fr/projets/cast-loop) : plateforme SaaS de planification et de publication sur les réseaux sociaux.
+- [PoseLock](https://www.dylan-cdo.fr/projets/poselock) : application iOS de posing avec analyse sur l'appareil.
+- [Pas envoyé](https://www.dylan-cdo.fr/projets/pas-envoye) : application iOS de suivi no-contact et de brouillons non envoyés.
+- [BibliFlow](https://www.dylan-cdo.fr/projets/bibliflow) : projet pédagogique autour de Docker, Jenkins et SonarQube.
 
-## Preuves
+## Optional
 
-- Campbell Scientific : applications Angular / NestJS utilisées dans plus de 30 pays pour de l'acquisition de données critique
-- Operis : SaaS collectivités Angular, jusqu'à 15 000 utilisateurs/jour, ~60 % des métropoles
-- DuoShot : SaaS Next.js screenshots App Store iPhone Duo : https://duoshot.vercel.app
-- MakeItGueznet : jeu de soirée Next.js / Convex : https://makeitgueznet.vercel.app
-- PoseLock : app iOS posing on-device : https://github.com/Spocsk/PoseLock
-- Pas envoyé : app iOS no-contact (compteur, brouillons non envoyés, widgets)
-- Extia, Citizens : missions full-stack, lead d'une équipe de 2, Docker / CI/CD
-- Interventions en école, Bac+2 à Bac+5, établissements non cités
-
-## Pages clés
-
-- / — Accueil : https://www.dylan-cdo.fr/
-- /interventions-ecoles — Interventions : https://www.dylan-cdo.fr/interventions-ecoles
-- /agents-automatisations-ia — Automatisations : https://www.dylan-cdo.fr/agents-automatisations-ia
-- /a-propos — Parcours : https://www.dylan-cdo.fr/a-propos
-- /projets — Études de cas : https://www.dylan-cdo.fr/projets
-- /contact — Rendez-vous : https://www.dylan-cdo.fr/contact
-
-## Projets
-
-- Campbell Scientific — Data industrielle Angular / NestJS
-- Operis — SaaS collectivités Angular
-- DuoShot — SaaS screenshots iPhone Duo : https://duoshot.vercel.app
-- MakeItGueznet — Jeu de soirée Next.js / Convex : https://makeitgueznet.vercel.app
-- PoseLock — App iOS posing on-device : https://github.com/Spocsk/PoseLock
-- Pas envoyé — App iOS no-contact
-- Cast Loop — SaaS multi-tenant Next.js + NestJS + Supabase : https://cast-loop-web.vercel.app
-- Victor COUTO — Vitrine artisan : https://www.artisan-couto.fr
-- HP Sonorisation — Vitrine événementielle : https://www.hpsonorisation.fr
-- BibliFlow — Fil rouge DevOps Docker / Jenkins / SonarQube : https://github.com/Spocsk/BibliFlow
-
-## Comment le contacter
-
-Email : contact@dylan-cdo.fr. LinkedIn pour le recrutement.
+- [English homepage](https://www.dylan-cdo.fr/en) : point d'entrée de la version anglaise ; les pages et études de cas y sont également disponibles sous `/en`.
+- [MakeItGueznet](https://www.dylan-cdo.fr/projets/makeitgueznet) : jeu de soirée web avec salles et votes en temps réel.
+- [Victor COUTO](https://www.dylan-cdo.fr/projets/victor-couto) : site vitrine pour un artisan.
+- [HP Sonorisation](https://www.dylan-cdo.fr/projets/hp-sonorisation) : site vitrine événementiel.
+- [2048 Swift Game](https://www.dylan-cdo.fr/projets/swift-2048) : exploration iOS autour de la logique du jeu 2048.
+- [Allocator C++](https://www.dylan-cdo.fr/projets/allocator-cpp) : exploration de l'allocation mémoire en C++.
+- [Ce portfolio](https://www.dylan-cdo.fr/projets/portfolio-dylan) : conception du site et travail sur sa structure SEO.
+- [GitHub](https://github.com/Spocsk) : profil et dépôts publics de Dylan.
+- [LinkedIn](https://www.linkedin.com/in/dylan-cdo/) : profil professionnel de Dylan.

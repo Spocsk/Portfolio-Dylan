@@ -1,0 +1,162 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - banner [ref=f3e3]:
+      - navigation "Navigation principale" [ref=f3e4]:
+        - link "Dylan CDO, accueil" [ref=f3e5] [cursor=pointer]:
+          - /url: /
+          - text: Dylan CDO
+        - generic [ref=f3e6]:
+          - link "Projets" [ref=f3e7] [cursor=pointer]:
+            - /url: /projets
+          - link "Interventions en école" [ref=f3e8] [cursor=pointer]:
+            - /url: /interventions-ecoles
+          - link "Agents & automatisations IA" [ref=f3e9] [cursor=pointer]:
+            - /url: /agents-automatisations-ia
+          - link "À propos" [ref=f3e10] [cursor=pointer]:
+            - /url: /a-propos
+        - generic [ref=f3e11]:
+          - link "View the English version" [ref=f3e12] [cursor=pointer]:
+            - /url: /en
+            - text: EN
+          - link "Prendre rendez-vous" [ref=f3e13] [cursor=pointer]:
+            - /url: https://calendar.app.google/HrpfJcFVepgRzhar6
+    - main [ref=f3e16]:
+      - generic [ref=f3e18]:
+        - generic [ref=f3e19]:
+          - generic [ref=f3e20]:
+            - paragraph [ref=f3e21]:
+              - generic [ref=f3e22]: Dylan CDO
+              - generic [ref=f3e23]: Normandie
+            - heading "Je conçois, je transmets, j’automatise." [level=1] [ref=f3e24]:
+              - generic [ref=f3e25]: Je conçois,
+              - generic [ref=f3e27]: je transmets,
+              - generic [ref=f3e29]: j’automatise.
+            - list [ref=f3e31]:
+              - listitem [ref=f3e32]: Concevoir des produits
+              - listitem [ref=f3e33]: Transmettre le métier
+              - listitem [ref=f3e34]: Automatiser le travail
+            - generic [ref=f3e35]:
+              - paragraph [ref=f3e36]: J’aide les équipes à construire des produits fiables, les écoles à former des développeurs opérationnels et les PME à transformer leurs tâches répétitives en systèmes utiles.
+              - img "Dylan COUTO DE OLIVEIRA" [ref=f3e37]
+              - generic [ref=f3e38]:
+                - link "Explorer les automatisations" [ref=f3e39] [cursor=pointer]:
+                  - /url: /agents-automatisations-ia
+                - link "Voir mes projets" [ref=f3e42] [cursor=pointer]:
+                  - /url: /projets
+          - generic "Une conversation devient une opportunité exploitable." [ref=f3e46]:
+            - generic [ref=f3e47]:
+              - generic [ref=f3e48]:
+                - generic [ref=f3e49]: Chat entrant
+                - strong [ref=f3e50]: Camille / Atelier Sillage
+              - generic [ref=f3e51]:
+                - generic [ref=f3e52]: Scénario démonstratif · Données fictives
+                - button "Rejouer" [ref=f3e53] [cursor=pointer]
+            - generic [ref=f3e56]:
+              - generic [ref=f3e57]:
+                - generic [ref=f3e58]:
+                  - text: Camille / Atelier Sillage
+                  - paragraph [ref=f3e59]: Nous perdons du temps à relancer les devis.
+                - generic [ref=f3e60]:
+                  - text: Question complémentaire
+                  - paragraph [ref=f3e61]: Combien de jours avant l’échéance souhaitez-vous agir ?
+                - generic [ref=f3e62]:
+                  - text: Camille
+                  - paragraph [ref=f3e63]: Trois jours, avec validation du commercial.
+              - generic [ref=f3e64]:
+                - generic [ref=f3e65]:
+                  - generic [ref=f3e66]: Fiche qualifiée
+                  - strong [ref=f3e67]: Suivi des devis · J-3
+                - generic [ref=f3e68]: Validation commerciale
+        - generic [ref=f3e70]:
+          - generic [ref=f3e71]: Deux façons de travailler ensemble
+          - heading "Du savoir transmis au travail automatisé." [level=2] [ref=f3e72]
+        - generic [ref=f3e73]:
+          - link "01 Interventions en école Former des développeurs qui savent livrer. Modules, workshops, jurys et projets fil rouge pour les cursus Bac+2 à Bac+5, partout en France." [ref=f3e74] [cursor=pointer]:
+            - /url: /interventions-ecoles
+            - generic [ref=f3e75]: "01"
+            - generic [ref=f3e76]:
+              - text: Interventions en école
+              - heading "Former des développeurs qui savent livrer." [level=3] [ref=f3e77]
+              - paragraph [ref=f3e78]: Modules, workshops, jurys et projets fil rouge pour les cursus Bac+2 à Bac+5, partout en France.
+          - link "02 Agents & automatisations IA Retirer les frictions du quotidien. Des agents et workflows IA reliés à vos outils, documentés et gardés sous contrôle humain." [ref=f3e81] [cursor=pointer]:
+            - /url: /agents-automatisations-ia
+            - generic [ref=f3e82]: "02"
+            - generic [ref=f3e83]:
+              - text: Agents & automatisations IA
+              - heading "Retirer les frictions du quotidien." [level=3] [ref=f3e84]
+              - paragraph [ref=f3e85]: Des agents et workflows IA reliés à vos outils, documentés et gardés sous contrôle humain.
+        - generic [ref=f3e88]:
+          - generic [ref=f3e89]:
+            - generic [ref=f3e90]: Travaux choisis
+            - heading "Des preuves de conception et d’exécution." [level=2] [ref=f3e91]
+          - region "Projets" [ref=f3e92]:
+            - generic [ref=f3e93]:
+              - generic [aria-hidden] [ref=f3e94]:
+                - generic [ref=f3e95]: "01"
+                - generic [ref=f3e96]: /
+                - generic [ref=f3e97]: "03"
+              - paragraph [ref=f3e98]: Projet 1 sur 3
+              - link "Ouvrir le projet Campbell Scientific" [ref=f3e99] [cursor=pointer]:
+                - /url: /projets/campbell-scientific
+                - img "Logo Campbell Scientific." [ref=f3e102]
+                - generic [ref=f3e104]:
+                  - paragraph [ref=f3e105]: Data industrielle
+                  - heading "Campbell Scientific" [level=3] [ref=f3e107]
+                  - paragraph [ref=f3e108]: Applications web Angular / NestJS pour l’exploitation de systèmes d’acquisition de données critiques, utilisées dans plus de 30 pays.
+                  - generic [aria-hidden] [ref=f3e109]:
+                    - generic [ref=f3e110]: Angular
+                    - generic [ref=f3e111]: TypeScript
+                    - generic [ref=f3e112]: NestJS
+                  - generic [ref=f3e113]: Voir l’étude de cas
+            - generic [ref=f3e116]:
+              - list [ref=f3e117]:
+                - listitem [ref=f3e118]:
+                  - button "01 Campbell Scientific" [ref=f3e119] [cursor=pointer]:
+                    - generic [ref=f3e120]: "01"
+                    - generic [ref=f3e121]: Campbell Scientific
+                - listitem [ref=f3e123]:
+                  - button "02 DuoShot" [ref=f3e124] [cursor=pointer]:
+                    - generic [ref=f3e125]: "02"
+                    - generic [ref=f3e126]: DuoShot
+                - listitem [ref=f3e128]:
+                  - button "03 PoseLock" [ref=f3e129] [cursor=pointer]:
+                    - generic [ref=f3e130]: "03"
+                    - generic [ref=f3e131]: PoseLock
+              - generic [ref=f3e133]:
+                - button "Projet précédent" [ref=f3e134] [cursor=pointer]
+                - button "Projet suivant" [ref=f3e137] [cursor=pointer]
+        - generic [ref=f3e140]:
+          - text: Contact
+          - heading "Vous avez un cours à construire, un workflow à simplifier ou un produit à renforcer ?" [level=2] [ref=f3e141]
+          - generic [ref=f3e142]:
+            - link "Prendre rendez-vous" [ref=f3e143] [cursor=pointer]:
+              - /url: https://calendar.app.google/HrpfJcFVepgRzhar6
+            - link "contact@dylan-cdo.fr" [ref=f3e146] [cursor=pointer]:
+              - /url: mailto:contact@dylan-cdo.fr
+    - contentinfo [ref=f3e147]:
+      - generic [ref=f3e148]:
+        - text: Dylan CDO
+        - paragraph [ref=f3e149]: Conception, transmission et automatisation depuis la Normandie.
+      - generic [ref=f3e150]:
+        - link "Projets" [ref=f3e151] [cursor=pointer]:
+          - /url: /projets
+        - link "Interventions en école" [ref=f3e152] [cursor=pointer]:
+          - /url: /interventions-ecoles
+        - link "Agents & automatisations IA" [ref=f3e153] [cursor=pointer]:
+          - /url: /agents-automatisations-ia
+        - link "À propos" [ref=f3e154] [cursor=pointer]:
+          - /url: /a-propos
+        - link "Contact" [ref=f3e155] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f3e156]:
+        - link "contact@dylan-cdo.fr" [ref=f3e157] [cursor=pointer]:
+          - /url: mailto:contact@dylan-cdo.fr
+        - generic [ref=f3e158]:
+          - link "LinkedIn" [ref=f3e159] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/dylan-cdo/
+          - link "GitHub" [ref=f3e160] [cursor=pointer]:
+            - /url: https://github.com/Spocsk
+          - link "X" [ref=f3e161] [cursor=pointer]:
+            - /url: https://x.com/Spocsk
+        - generic [ref=f3e162]: © 2026 Dylan Couto de Oliveira
+  - button "Open Next.js Dev Tools" [ref=f3e168] [cursor=pointer]

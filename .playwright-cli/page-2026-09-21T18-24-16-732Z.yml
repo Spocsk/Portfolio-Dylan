@@ -1,0 +1,122 @@
+- generic [active] [ref=f9e1]:
+  - generic [ref=f9e2]:
+    - banner [ref=f9e3]:
+      - navigation "Navigation principale" [ref=f9e4]:
+        - link "Dylan CDO, accueil" [ref=f9e5] [cursor=pointer]:
+          - /url: /
+          - text: Dylan CDO
+        - generic [ref=f9e6]:
+          - link "View the English version" [ref=f9e7] [cursor=pointer]:
+            - /url: /en/a-propos
+            - text: EN
+          - button "Menu" [ref=f9e8]
+    - navigation "Fil d’Ariane" [ref=f9e11]:
+      - list [ref=f9e12]:
+        - listitem [ref=f9e13]:
+          - link "Accueil" [ref=f9e14] [cursor=pointer]:
+            - /url: /
+          - text: /
+        - listitem [ref=f9e15]:
+          - generic [ref=f9e16]: À propos
+    - main [ref=f9e17]:
+      - generic [ref=f9e18]:
+        - generic [ref=f9e19]:
+          - generic [ref=f9e20]:
+            - text: À propos
+            - heading "Relier la technique, la transmission et les usages." [level=1] [ref=f9e21]
+            - paragraph [ref=f9e22]: Je suis Dylan Couto de Oliveira, développeur full-stack TypeScript. Mon travail consiste à rendre les systèmes plus clairs, les équipes plus autonomes et la technologie réellement utile.
+          - figure "Dylan CDO" [ref=f9e23]:
+            - img "Dylan COUTO DE OLIVEIRA" [ref=f9e25]
+        - generic [ref=f9e27]:
+          - article [ref=f9e28]:
+            - generic [ref=f9e29]: "01"
+            - heading "Concevoir" [level=2] [ref=f9e30]
+            - paragraph [ref=f9e31]: Applications web, APIs et produits robustes, de l’architecture à la mise en production.
+          - article [ref=f9e32]:
+            - generic [ref=f9e33]: "02"
+            - heading "Transmettre" [level=2] [ref=f9e34]
+            - paragraph [ref=f9e35]: Interventions adaptées au niveau des étudiants, avec des livrables et critères explicites.
+          - article [ref=f9e36]:
+            - generic [ref=f9e37]: "03"
+            - heading "Automatiser" [level=2] [ref=f9e38]
+            - paragraph [ref=f9e39]: Workflows IA pragmatiques, intégrés aux outils existants et supervisés par l’humain.
+        - generic [ref=f9e40]:
+          - generic [ref=f9e41]:
+            - generic [ref=f9e42]: Parcours
+            - heading "De la production à la transmission." [level=2] [ref=f9e43]
+          - list [ref=f9e44]:
+            - listitem [ref=f9e45]:
+              - generic [ref=f9e46]: 2024 —
+              - generic [ref=f9e47]:
+                - heading "Ingénieur logiciel · Campbell Scientific" [level=3] [ref=f9e48]
+                - paragraph [ref=f9e49]: Applications industrielles Angular et NestJS pour l’acquisition de données critiques, utilisées dans plus de 30 pays.
+            - listitem [ref=f9e50]:
+              - generic [ref=f9e51]: 2023 — 2024
+              - generic [ref=f9e52]:
+                - heading "Développeur front-end · Operis" [level=3] [ref=f9e53]
+                - paragraph [ref=f9e54]: "Interfaces Angular pour des SaaS de collectivités : urbanisme, foncier, scolaire. Plateformes jusqu’à 15 000 utilisateurs par jour."
+            - listitem [ref=f9e55]:
+              - generic [ref=f9e56]: 2022 — 2023
+              - generic [ref=f9e57]:
+                - heading "Missions full-stack" [level=3] [ref=f9e58]
+                - paragraph [ref=f9e59]: Livraisons web en agile, revues et qualité, dont des interfaces Angular et Next.js.
+            - listitem [ref=f9e60]:
+              - generic [ref=f9e61]: 2020 — 2022
+              - generic [ref=f9e62]:
+                - heading "Concepteur développeur" [level=3] [ref=f9e63]
+                - paragraph [ref=f9e64]: Symfony, Vue.js, Docker et CI/CD. Lead d’une équipe de deux développeurs.
+            - listitem [ref=f9e65]:
+              - generic [ref=f9e66]: 2024 —
+              - generic [ref=f9e67]:
+                - heading "Interventions en école" [level=3] [ref=f9e68]
+                - paragraph [ref=f9e69]: "Modules et projet fil rouge : Node, Angular, bases de données, Docker et qualité logicielle. Les établissements restent anonymes."
+            - listitem [ref=f9e70]:
+              - generic [ref=f9e71]: 2022 —
+              - generic [ref=f9e72]:
+                - heading "Produits livrés" [level=3] [ref=f9e73]
+                - paragraph [ref=f9e74]: DuoShot, MakeItGueznet, PoseLock, Pas envoyé, Cast Loop et des sites clients.
+        - generic [ref=f9e75]:
+          - generic [ref=f9e76]: Ma méthode
+          - generic [ref=f9e77]:
+            - paragraph [ref=f9e78]: Je pars du contexte, rends les décisions visibles, livre par incréments et documente ce qui doit durer.
+            - list [ref=f9e79]:
+              - listitem [ref=f9e80]: Partir du contexte réel avant de choisir un outil.
+              - listitem [ref=f9e81]: Rendre les décisions, les critères et les jalons visibles.
+              - listitem [ref=f9e82]: Livrer par incréments testés, puis documenter ce qui doit durer.
+              - listitem [ref=f9e83]: Garder une validation humaine sur ce qui est sensible.
+        - generic [ref=f9e84]:
+          - text: Contact
+          - heading "Voyons ce que nous pouvons rendre plus clair, plus solide ou plus fluide." [level=2] [ref=f9e85]
+          - generic [ref=f9e86]:
+            - link "Prendre rendez-vous" [ref=f9e87] [cursor=pointer]:
+              - /url: https://calendar.app.google/HrpfJcFVepgRzhar6
+            - link "contact@dylan-cdo.fr" [ref=f9e90] [cursor=pointer]:
+              - /url: mailto:contact@dylan-cdo.fr?subject=Prise%20de%20contact
+    - contentinfo [ref=f9e93]:
+      - generic [ref=f9e94]:
+        - text: Dylan CDO
+        - paragraph [ref=f9e95]: Conception, transmission et automatisation depuis la Normandie.
+      - generic [ref=f9e96]:
+        - link "Projets" [ref=f9e97] [cursor=pointer]:
+          - /url: /projets
+        - link "Interventions en école" [ref=f9e98] [cursor=pointer]:
+          - /url: /interventions-ecoles
+        - link "Agents & automatisations IA" [ref=f9e99] [cursor=pointer]:
+          - /url: /agents-automatisations-ia
+        - link "À propos" [ref=f9e100] [cursor=pointer]:
+          - /url: /a-propos
+        - link "Contact" [ref=f9e101] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f9e102]:
+        - link "contact@dylan-cdo.fr" [ref=f9e103] [cursor=pointer]:
+          - /url: mailto:contact@dylan-cdo.fr
+        - generic [ref=f9e104]:
+          - link "LinkedIn" [ref=f9e105] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/dylan-cdo/
+          - link "GitHub" [ref=f9e106] [cursor=pointer]:
+            - /url: https://github.com/Spocsk
+          - link "X" [ref=f9e107] [cursor=pointer]:
+            - /url: https://x.com/Spocsk
+        - generic [ref=f9e108]: © 2026 Dylan Couto de Oliveira
+  - button "Open Next.js Dev Tools" [ref=f9e114] [cursor=pointer]
+  - alert [ref=f9e118]

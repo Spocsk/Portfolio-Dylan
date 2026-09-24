@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-21T15:11:48Z",
+  "title": "Design System: Dylan CDO",
+  "extensions": {
+    "colorMeta": {
+      "mineral-ivory": {
+        "role": "neutral",
+        "displayName": "Mineral Ivory",
+        "tonalRamp": ["#24231f", "#46443d", "#6b685f", "#918e83", "#b9b6ac", "#d7d4cc", "#e8e5de", "#f7f5ef"]
+      },
+      "strong-paper": {
+        "role": "neutral",
+        "displayName": "Strong Paper",
+        "tonalRamp": ["#252421", "#494844", "#706e68", "#98968f", "#bfbdB6", "#dcdbd5", "#efeee9", "#fffefa"]
+      },
+      "graphite-ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "tonalRamp": ["#111315", "#292c2f", "#46494c", "#65686b", "#888b8e", "#afb1b3", "#d5d6d7", "#f2f3f3"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": ["#20221f", "#3b3e39", "#595c56", "#797c75", "#9b9e97", "#bfc1bb", "#dedfdB", "#f3f4f0"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Editorial Hairline",
+        "tonalRamp": ["rgba(21, 23, 25, 0.72)", "rgba(21, 23, 25, 0.60)", "rgba(21, 23, 25, 0.48)", "rgba(21, 23, 25, 0.36)", "rgba(21, 23, 25, 0.26)", "rgba(21, 23, 25, 0.16)", "rgba(21, 23, 25, 0.10)", "rgba(21, 23, 25, 0.05)"]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Operations Graphite",
+        "tonalRamp": ["#0d0f12", "#181a1e", "#2c2f34", "#474a50", "#666970", "#8d9096", "#babcc0", "#e7e8e9"]
+      },
+      "graphite-raised": {
+        "role": "neutral",
+        "displayName": "Raised Graphite",
+        "tonalRamp": ["#0e1012", "#202329", "#33373e", "#4d5158", "#6b6f76", "#92959b", "#bfc1c5", "#e9eaeb"]
+      },
+      "graphite-deep": {
+        "role": "neutral",
+        "displayName": "Deep Graphite",
+        "tonalRamp": ["#090a0c", "#101215", "#292c30", "#45484d", "#64676c", "#8b8e92", "#b9bbbe", "#e6e7e8"]
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "On-Dark Ivory",
+        "tonalRamp": ["#262521", "#4a4943", "#706f68", "#97958e", "#bebab3", "#dbdad3", "#ecebe5", "#fbfaf5"]
+      },
+      "action-cobalt": {
+        "role": "primary",
+        "displayName": "Action Cobalt",
+        "tonalRamp": ["#07134d", "#0d258b", "#183ad0", "#224dff", "#5d77ff", "#8fa1ff", "#bec9ff", "#eef1ff"]
+      },
+      "action-cobalt-dark": {
+        "role": "primary",
+        "displayName": "Action Cobalt Dark",
+        "tonalRamp": ["#060f3d", "#0b1f73", "#132fa8", "#183ad0", "#5368de", "#8796e9", "#bac3f3", "#edf0fc"]
+      },
+      "completion-green": {
+        "role": "secondary",
+        "displayName": "Completion Green",
+        "tonalRamp": ["#0c3b27", "#146344", "#218d61", "#38b87e", "#58e19d", "#88ebba", "#b5f3d3", "#e8fbf2"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Editorial Display",
+        "purpose": "Short hero and page statements with compact line-height and tight tracking."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Major section arguments and workflow chapter titles."
+      },
+      "title": {
+        "displayName": "Structured Title",
+        "purpose": "Scannable topic, record, and indexed-row headings."
+      },
+      "body": {
+        "displayName": "Explanatory Body",
+        "purpose": "Credible, comfortable reading copy kept near 65–75 characters."
+      },
+      "action": {
+        "displayName": "Compact Action",
+        "purpose": "Buttons, links, and decisive interactive labels."
+      },
+      "label": {
+        "displayName": "Operational Label",
+        "purpose": "Uppercase indices, states, columns, timestamps, and disclosures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "operations-float",
+        "value": "0 40px 100px rgba(0, 0, 0, 0.35)",
+        "purpose": "Lifts the complete operations board from the graphite hero field."
+      },
+      {
+        "name": "workflow-float",
+        "value": "0 30px 90px rgba(0, 0, 0, 0.30)",
+        "purpose": "Separates a complete workflow or demonstration canvas from its stage."
+      },
+      {
+        "name": "media-float",
+        "value": "0 26px 70px rgba(16, 18, 20, 0.18)",
+        "purpose": "Adds restrained depth to project imagery on paper."
+      },
+      {
+        "name": "active-inset",
+        "value": "inset 2px 0 #224dff",
+        "purpose": "Marks the active or final workflow row without changing its geometry."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "200ms ease",
+        "purpose": "Hover color and two-pixel action lift."
+      },
+      {
+        "name": "chapter-state",
+        "value": "350ms ease",
+        "purpose": "Fades workflow chapter emphasis between inactive and active states."
+      },
+      {
+        "name": "reveal-standard",
+        "value": "GSAP power2.out · 320–500ms · 8–18px or 0.97–1 scale",
+        "purpose": "Sequential data, row, and destination reveals."
+      },
+      {
+        "name": "reveal-emphatic",
+        "value": "GSAP power3.out · 420–550ms · 10–24px",
+        "purpose": "Route, board, and teaching-pipeline entrances."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Skips GSAP timelines, reveals all chapters inline, removes sticky staging, and disables nonessential transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "navigation-collapse",
+        "value": "1050px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "page-cap",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single cobalt action used for the next meaningful decision.",
+      "html": "<button class=\"ds-btn-primary\">BOOK 30 MINUTES<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M8 7h9v9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn-primary { min-height: 43px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 17px; border: 0; border-radius: var(--radius, 6px); color: #fff; background: var(--cobalt, #224dff); font-family: var(--font-sans, Geist, Arial, sans-serif); font-size: .78rem; font-weight: 640; cursor: pointer; transition: transform .2s ease, background .2s ease; } .ds-btn-primary svg { width: 15px; height: 15px; } .ds-btn-primary:hover { transform: translateY(-2px); background: var(--cobalt-dark, #183ad0); } .ds-btn-primary:focus-visible { outline: 3px solid var(--cobalt, #224dff); outline-offset: 4px; } .ds-btn-primary:active { transform: translateY(0); }"
+    },
+    {
+      "name": "Editorial Text Action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "A quiet secondary action with no container and one structural underline.",
+      "html": "<a class=\"ds-text-action\" href=\"#\">VIEW PROJECTS<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14m0 0 6-6m-6 6-6-6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-text-action { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 9px 0; border-bottom: 1px solid currentColor; color: var(--ink, #151719); font-family: var(--font-sans, Geist, Arial, sans-serif); font-size: .83rem; font-weight: 620; text-decoration: none; transition: color .2s ease; } .ds-text-action svg { width: 15px; height: 15px; } .ds-text-action:hover { color: var(--cobalt, #224dff); } .ds-text-action:focus-visible { outline: 3px solid var(--cobalt, #224dff); outline-offset: 4px; } .ds-text-action:active { opacity: .72; }"
+    },
+    {
+      "name": "Technical Chip",
+      "kind": "chip",
+      "refersTo": "chip-technical",
+      "description": "A restrained mono tag for technologies, record types, and project metadata.",
+      "html": "<span class=\"ds-tech-chip\">TYPESCRIPT</span>",
+      "css": ".ds-tech-chip { display: inline-flex; align-items: center; padding: 7px 10px; border: 1px solid var(--line, rgba(21, 23, 25, .16)); border-radius: 999px; color: var(--ink, #151719); background: transparent; font-family: var(--font-mono, 'Geist Mono', monospace); font-size: .6rem; letter-spacing: .04em; }"
+    },
+    {
+      "name": "Sticky Site Navigation",
+      "kind": "nav",
+      "description": "A paper navigation strip with compact routes, cobalt active state, and a dark booking action.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\">Dylan <span>CDO</span></a><div class=\"ds-routes\"><a href=\"#\">PROJECTS</a><a class=\"ds-active\" href=\"#\">AUTOMATION</a><a href=\"#\">ABOUT</a></div><a class=\"ds-book\" href=\"#\">BOOK A CALL</a></nav>",
+      "css": ".ds-nav { min-height: 72px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; padding: 0 32px; border-bottom: 1px solid var(--line, rgba(21, 23, 25, .16)); color: var(--ink, #151719); background: color-mix(in srgb, var(--paper, #f1efe8) 92%, transparent); font-family: var(--font-sans, Geist, Arial, sans-serif); } .ds-nav a { color: inherit; text-decoration: none; } .ds-wordmark { font-size: 1.18rem; font-weight: 720; letter-spacing: -.04em; } .ds-wordmark span { color: var(--cobalt, #224dff); } .ds-routes { display: flex; gap: 30px; } .ds-routes a { padding: 10px 0; color: #494c49; font-size: .72rem; font-weight: 550; } .ds-routes a:hover { color: var(--ink, #151719); } .ds-routes .ds-active { color: var(--ink, #151719); box-shadow: inset 0 -2px var(--cobalt, #224dff); } .ds-book { justify-self: end; padding: 14px 17px; border-radius: var(--radius, 6px); color: #fff !important; background: var(--ink, #151719); font-size: .72rem; font-weight: 640; } .ds-nav a:focus-visible { outline: 3px solid var(--cobalt, #224dff); outline-offset: 4px; }"
+    },
+    {
+      "name": "Four-Stage Workflow",
+      "kind": "custom",
+      "refersTo": "operations-board",
+      "description": "The signature stable topology: trigger, structured data, human validation, and planned action.",
+      "html": "<section class=\"ds-workflow\"><header><span>OPERATIONS BOARD</span><b><i></i> READY</b></header><div class=\"ds-workflow-grid\"><div class=\"ds-step\"><small>01</small><strong>Incoming message</strong><em>CHECKED</em></div><div class=\"ds-step\"><small>02</small><strong>Structured data</strong><em>CHECKED</em></div><div class=\"ds-step\"><small>03</small><strong>Human approval</strong><em>APPROVED</em></div><div class=\"ds-step ds-current\"><small>04</small><strong>Scheduled action</strong><em>PLANNED</em></div></div></section>",
+      "css": ".ds-workflow { overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 9px; color: var(--on-dark, #f5f4ee); background: var(--graphite-deep, #101215); box-shadow: 0 30px 90px rgba(0,0,0,.3); font-family: var(--font-sans, Geist, Arial, sans-serif); } .ds-workflow header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid rgba(255,255,255,.1); font-family: var(--font-mono, 'Geist Mono', monospace); font-size: .62rem; letter-spacing: .09em; } .ds-workflow header b { display: flex; align-items: center; gap: 8px; font-weight: 500; } .ds-workflow header i { width: 7px; height: 7px; border-radius: 50%; background: #58e19d; } .ds-workflow-grid { padding: 10px 20px; } .ds-step { min-height: 68px; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 14px; border-bottom: 1px solid rgba(255,255,255,.09); } .ds-step small, .ds-step em { color: #8d929d; font-family: var(--font-mono, 'Geist Mono', monospace); font-size: .56rem; font-style: normal; } .ds-step strong { font-size: .82rem; font-weight: 560; } .ds-step em { color: #78dda6; } .ds-current { margin-inline: -20px; padding-inline: 20px; background: rgba(34,77,255,.16); box-shadow: inset 2px 0 var(--cobalt, #224dff); } .ds-workflow:focus-within { outline: 3px solid var(--cobalt, #224dff); outline-offset: 4px; }"
+    },
+    {
+      "name": "Completion Status",
+      "kind": "custom",
+      "description": "The compact green confirmation used only after a real approval, check, or completed state.",
+      "html": "<span class=\"ds-complete\"><i></i> HUMAN CONTROL RETAINED</span>",
+      "css": ".ds-complete { display: inline-flex; align-items: center; gap: 8px; padding: 10px; color: #7fe1ab; background: rgba(88,225,157,.07); font-family: var(--font-mono, 'Geist Mono', monospace); font-size: .58rem; letter-spacing: .03em; } .ds-complete i { width: 7px; height: 7px; border-radius: 50%; background: #58e19d; box-shadow: 0 0 0 3px rgba(88,225,157,.12); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Operations Dossier",
+    "overview": "This system turns a technical portfolio into an editorial operations document: calm mineral paper carries the argument, while graphite work surfaces reveal systems in motion. The composition feels authored and precise rather than assembled from interchangeable SaaS cards.\n\nEvery expressive decision serves credibility. Cobalt marks the one decisive action or active state; green confirms completion; structured demonstrations expose how information moves from trigger to treatment, human validation, and result. Motion clarifies that progression without becoming the proof itself.",
+    "keyCharacteristics": [
+      "Mineral-ivory editorial pages interrupted by focused graphite operating surfaces.",
+      "Uneven grids, hairline rules, and indexed sequences instead of generic card collections.",
+      "One cobalt action accent, with green reserved for completed system state.",
+      "Geist for the narrative voice and Geist Mono for labels, records, status, and system data.",
+      "Stable four-stage workflow topology whose meaning survives reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Action Color Rule",
+        "body": "Cobalt indicates action or active state; do not introduce a competing accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Completion Means Completion Rule",
+        "body": "Green appears only when the interface can honestly communicate live, ready, approved, checked, or completed state.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Geist explains and persuades; Geist Mono identifies, indexes, and reports system state.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stable Topology Rule",
+        "body": "Workflow illustrations always preserve four semantic stages—message or trigger, structured data, human validation, and planned action—even when the layout changes across viewports.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Paper, Lifted Instrument Rule",
+        "body": "Keep editorial content flat; reserve elevation for the visual apparatus that demonstrates work.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use cobalt sparingly for the next meaningful action, current route, or active workflow state.",
+      "Do reserve green for a state that is demonstrably complete, approved, checked, or ready.",
+      "Do preserve the four-stage workflow topology across desktop, mobile, animation, and reduced-motion layouts.",
+      "Do label scenarios as demonstrations with fictional data and keep human validation visible where it matters.",
+      "Do use uneven editorial grids, indexed rows, and hairline divisions to structure dense material.",
+      "Do make every animated sequence fully legible as a static interface."
+    ],
+    "donts": [
+      "Don't add a second action accent, gradients, or decorative color fields that dilute cobalt's role.",
+      "Don't turn offers, claims, or sections into a uniform grid of generic rounded cards.",
+      "Don't use green for decoration, hover, branding, or unfinished progress.",
+      "Don't let mono labels replace readable headings or body copy.",
+      "Don't animate layout properties when opacity and transforms can communicate the same change.",
+      "Don't imply that fictional workflow data is a client case, testimonial, or measured result."
+    ]
+  }
+}

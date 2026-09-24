@@ -1,0 +1,168 @@
+- generic [active] [ref=e1]:
+  - link "Aller au contenu" [ref=e2] [cursor=pointer]:
+    - /url: "#contenu"
+  - banner [ref=e3]:
+    - link "PoseLock — retour en haut" [ref=e4] [cursor=pointer]:
+      - /url: "#top"
+      - generic [ref=e6]: PoseLock
+    - navigation "Navigation principale" [ref=e7]:
+      - link "Comment ça marche" [ref=e8] [cursor=pointer]:
+        - /url: "#methode"
+      - link "L’app" [ref=e9] [cursor=pointer]:
+        - /url: "#produit"
+      - link "Confidentialité" [ref=e10] [cursor=pointer]:
+        - /url: "#confidentialite"
+    - link "Bientôt sur iOS" [ref=e11] [cursor=pointer]:
+      - /url: "#bientot"
+  - main [ref=e12]:
+    - region [ref=e13]:
+      - generic [ref=e16]:
+        - paragraph [ref=e17]: BODYBUILDING · POSING · IPHONE
+        - heading "PoseLock" [level=1] [ref=e18]
+        - paragraph [ref=e19]: Pose. Score. Lock.
+        - paragraph [ref=e20]: Ta pose notée en direct, sur l’iPhone. La vidéo de séance n’en sort jamais.
+        - generic [ref=e21]:
+          - button "PoseLock sera bientôt disponible sur l’App Store" [disabled] [ref=e22]:
+            - generic [ref=e25]:
+              - generic [ref=e26]: Bientôt sur
+              - text: l’App Store
+          - link "Voir le produit" [ref=e27] [cursor=pointer]:
+            - /url: "#methode"
+            - text: Voir le produit
+            - generic [aria-hidden] [ref=e28]: ↓
+      - generic "Caractéristiques principales" [ref=e29]:
+        - generic [ref=e30]: 17 points
+        - generic [ref=e31]: Vision 3D
+        - generic [ref=e32]: 100 % on-device
+      - generic [aria-hidden] [ref=e33]: Faire défiler
+    - region [ref=e35]:
+      - generic [ref=e36]:
+        - paragraph [ref=e37]: LE PROBLÈME
+        - heading "Tu ne peux pas tenir la pose et te juger en même temps." [level=2] [ref=e38]: Tu ne peux pas tenir la poseet te juger en même temps.
+      - list [ref=e39]:
+        - listitem [ref=e40]:
+          - generic [ref=e41]: "01"
+          - heading "Le miroir te montre la version que tu corriges déjà." [level=3] [ref=e42]
+          - paragraph [ref=e43]: Une épaule plus haute ou un bassin qui part se voient mieux de l’extérieur.
+        - listitem [ref=e44]:
+          - generic [ref=e45]: "02"
+          - heading "Dix prises pour une seule qui passe." [level=3] [ref=e46]
+          - paragraph [ref=e47]: Sans retour pendant la pose, tu découvres l’erreur seulement après.
+        - listitem [ref=e48]:
+          - generic [ref=e49]: "03"
+          - heading "Sans mesure, un mois ne raconte rien." [level=3] [ref=e50]
+          - paragraph [ref=e51]: Le journal garde la même pose pour comparer une ligne à l’autre.
+    - region [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - paragraph [ref=e55]: COMMENT ÇA MARCHE
+          - heading "Pose. Score. Lock." [level=2] [ref=e56]
+          - list [ref=e57]:
+            - listitem [ref=e58]:
+              - generic [ref=e59]: "01"
+              - generic [ref=e60]:
+                - heading "Pose" [level=3] [ref=e61]
+                - paragraph [ref=e62]: Cadre tout le corps. Le stickman suit tes angles en direct.
+            - listitem [ref=e63]:
+              - generic [ref=e64]: "02"
+              - generic [ref=e65]:
+                - heading "Score" [level=3] [ref=e66]
+                - paragraph: "Le score juge la ligne, jamais la personne. Vert : l’angle est dans la tolérance."
+            - listitem [ref=e67]:
+              - generic [ref=e68]: "03"
+              - generic [ref=e69]:
+                - heading "Lock" [level=3] [ref=e70]
+                - paragraph: À 85 ou plus, tiens 1,5 seconde. PoseLock verrouille la photo.
+        - paragraph [ref=e78]:
+          - generic [ref=e79]: CADRE TA POSE
+    - region [ref=e81]:
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - paragraph [ref=e84]: LE PRODUIT, POUR DE VRAI
+          - heading "Ta ligne. Ta progression." [level=2] [ref=e85]: Ta ligne.Ta progression.
+        - paragraph [ref=e86]: "Pas une promesse abstraite : la pose du jour, le score, le recul d’un mois et une carte prête à partager."
+      - generic "Captures de l’application PoseLock" [ref=e87]:
+        - figure "01 Ta pose du jour" [ref=e88]:
+          - img "Accueil PoseLock avec pose du jour, score et évolution" [ref=e90]
+          - generic [ref=e91]:
+            - generic [ref=e92]: "01"
+            - text: Ta pose du jour
+        - figure "02 Le même angle, J‑30" [ref=e93]:
+          - img "Comparatif exemple de la même pose à un mois d’écart" [ref=e95]
+          - generic [ref=e96]:
+            - generic [ref=e97]: "02"
+            - text: Le même angle, J‑30
+        - figure "03 Chaque prise, gardée" [ref=e98]:
+          - img "Détail d’une prise Front double biceps dans le journal" [ref=e100]
+          - generic [ref=e101]:
+            - generic [ref=e102]: "03"
+            - text: Chaque prise, gardée
+        - figure "04 Prête à partager" [ref=e103]:
+          - img "Carte PoseLock prête à être partagée sur Instagram ou TikTok" [ref=e105]
+          - generic [ref=e106]:
+            - generic [ref=e107]: "04"
+            - text: Prête à partager
+      - paragraph [ref=e108]: Les scores montrés sont des exemples de démonstration.
+    - region [ref=e109]:
+      - generic [aria-hidden] [ref=e110]: ICI
+      - generic [ref=e111]:
+        - paragraph [ref=e112]: CONFIDENTIALITÉ
+        - heading "Rien ne quitte l’iPhone." [level=2] [ref=e113]
+        - paragraph [ref=e114]: Vision analyse la pose sur l’appareil. La séance reste dans ce cadre.
+        - list [ref=e115]:
+          - listitem [ref=e116]:
+            - strong [ref=e117]: "01"
+            - generic [ref=e118]: La vidéo de séance n’est jamais envoyée.
+          - listitem [ref=e119]:
+            - strong [ref=e120]: "02"
+            - generic [ref=e121]: Les photos lockées restent dans le stockage local.
+          - listitem [ref=e122]:
+            - strong [ref=e123]: "03"
+            - generic [ref=e124]: Aucun compte n’est nécessaire pour commencer.
+    - region [ref=e125]:
+      - generic [ref=e126]:
+        - paragraph [ref=e127]: POSELOCK PRO
+        - heading "Plus de séances. Plus de recul." [level=2] [ref=e128]: Plus de séances.Plus de recul.
+        - paragraph [ref=e129]: La même caméra. Les limites en moins.
+      - list [ref=e130]:
+        - listitem [ref=e131]:
+          - generic [ref=e132]: "01"
+          - strong [ref=e133]: Locks illimités
+          - paragraph [ref=e134]: Autant de photos lockées que la séance le demande.
+        - listitem [ref=e135]:
+          - generic [ref=e136]: "02"
+          - strong [ref=e137]: Scène, Contenu, Physique
+          - paragraph [ref=e138]: Les trois catalogues, pas un seul.
+        - listitem [ref=e139]:
+          - generic [ref=e140]: "03"
+          - strong [ref=e141]: Comparatif J‑30
+          - paragraph [ref=e142]: La même pose, un mois plus tôt, côte à côte.
+        - listitem [ref=e143]:
+          - generic [ref=e144]: "04"
+          - strong [ref=e145]: Rappels d’échéance
+          - paragraph [ref=e146]: J‑7, J‑3, J‑1, avec la pose à retravailler.
+        - listitem [ref=e147]:
+          - generic [ref=e148]: "05"
+          - strong [ref=e149]: Catalogue Zyzz
+          - paragraph [ref=e150]: "Vacuum, twist, V‑taper : la ligne esthétique."
+    - region [ref=e151]:
+      - generic [ref=e153]:
+        - paragraph [ref=e154]: PRÊT À LOCKER TA LIGNE ?
+        - heading "Pose. Score. Lock." [level=2] [ref=e155]: Pose. Score.Lock.
+        - paragraph [ref=e156]: PoseLock arrive bientôt sur iPhone.
+        - button "PoseLock sera bientôt disponible sur l’App Store" [disabled] [ref=e157]:
+          - generic [ref=e160]:
+            - generic [ref=e161]: Bientôt sur
+            - text: l’App Store
+  - contentinfo [ref=e162]:
+    - link "PoseLock" [ref=e163] [cursor=pointer]:
+      - /url: "#top"
+    - paragraph [ref=e166]: On-device. Sans suivi publicitaire.Zyzz désigne une pose, pas un partenariat.
+    - generic [ref=e167]:
+      - link "GitHub" [ref=e168] [cursor=pointer]:
+        - /url: https://github.com/Spocsk/PoseLock
+      - link "Support" [ref=e169] [cursor=pointer]:
+        - /url: mailto:apps@dylan-cdo.fr
+      - link "Confidentialité" [ref=e170] [cursor=pointer]:
+        - /url: "#confidentialite"
+    - paragraph [ref=e171]: © 2026 PoseLock
