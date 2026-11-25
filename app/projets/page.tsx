@@ -31,10 +31,10 @@ export default function ProjectsPage() {
         </Tile>
         <div className="col w-std">
           <StatTile className="grow" tone="accent" label="En ligne" value="15+" note="sites et apps déployés sur Vercel et GitHub Pages" />
-          <Tile className="grow" href={siteConfig.social.github}>
+          <Tile className="grow">
             <span className="bt-label">Le code</span>
             <span className="h-tile" style={{ fontSize: 28 }}>github.com/Spocsk</span>
-            <span style={{ fontWeight: 600 }}>Voir le profil →</span>
+            <a href={siteConfig.social.github} target="_blank" rel="noreferrer" style={{ fontWeight: 600 }}>Voir le profil →</a>
           </Tile>
         </div>
       </section>

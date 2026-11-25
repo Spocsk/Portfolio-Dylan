@@ -35,7 +35,7 @@ export default function CvPage() {
             </div>
             <div className="cv-side__group">
               <span className="bt-label">Contact</span>
-              <a href={`mailto:${siteConfig.email}`} style={{ wordBreak: "break-all" }}>{siteConfig.email}</a>
+              <span style={{ wordBreak: "break-all", userSelect: "all" }}>{siteConfig.email}</span>
               <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/dylan-cdo</a>
               <span>{siteConfig.location}</span>
               <span>Français · Anglais professionnel</span>

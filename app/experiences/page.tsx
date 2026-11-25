@@ -57,7 +57,7 @@ export default function ExperiencesPage() {
           <span className="bt-label">En parallèle, depuis 2022</span>
           <h2 className="h-tile" style={{ fontSize: 32, letterSpacing: "-0.02em" }}>Formateur</h2>
           <span className="text">Cours de développement en Bachelor et Mastère (Ynov, CESI, Tech Master). Je code mes cours comme des jeux.</span>
-          <Link href="/projets#cours" style={{ fontWeight: 600 }}>Voir les plateformes de cours →</Link>
+          <Link href="/projets" style={{ fontWeight: 600, color: "var(--on-highlight)" }}>Voir les plateformes de cours →</Link>
         </Tile>
         <Tile className="w-wide">
           <span className="bt-label">Références</span>

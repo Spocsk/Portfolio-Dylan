@@ -131,12 +131,12 @@ export const courses: Project[] = [
 ];
 
 export const clientSites: Project[] = [
-  { title: "Artisan Couto", kicker: "Artisan", description: "Le site vitrine d'une entreprise artisanale.", url: "https://www.artisan-couto.fr", image: { src: "/assets/artisan-code-site-preview.webp", alt: "Page d'accueil du site Artisan Couto" } },
-  { title: "HP Sonorisation", kicker: "Sonorisation", description: "Le portfolio d'une entreprise de sonorisation.", url: "https://www.hpsonorisation.fr", image: { src: "/assets/hp-sonorisation-site-preview.webp", alt: "Page d'accueil du site HP Sonorisation" } },
+  { title: "Artisan Couto", kicker: "Artisan", description: "Le site vitrine d'une entreprise artisanale.", url: "https://www.artisan-couto.fr" },
+  { title: "HP Sonorisation", kicker: "Sonorisation", description: "Le portfolio d'une entreprise de sonorisation.", url: "https://www.hpsonorisation.fr" },
 ];
 
 export const funProjects: Project[] = [
-  { title: "MakeItGueznet", kicker: "Jeu de soirée", description: "Un jeu de soirée entre amis.", url: "https://makeitgueznet.vercel.app", image: { src: "/assets/makeitgueznet-site-preview.webp", alt: "Écran d'accueil de MakeItGueznet" } },
+  { title: "MakeItGueznet", kicker: "Jeu de soirée", description: "Un jeu de soirée entre amis.", url: "https://makeitgueznet.vercel.app" },
   { title: "Is new Grok model available?", kicker: "Veille", description: "Une seule question, une seule réponse.", url: "https://www.isnewgrokmodelavailable.xyz" },
 ];
 

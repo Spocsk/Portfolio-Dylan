@@ -36,14 +36,14 @@ export default function HomePage() {
         </div>
         <div className="row">
           <ProjectTile featured className="w-wide" href="/projets/dmt" title="DMT" description="Ma médiathèque auto-hébergée, en production : recherche, téléchargements suivis en direct, lecteur intégré, alertes push. Angular 20, NestJS 11, PostgreSQL." />
-          <ProjectTile className="w-std" href="https://cartable-nine.vercel.app" kicker="Outil · MCP" title="Cartable" description="Prospection d'écoles et rentabilité des contrats pour formateur indépendant.">
+          <ProjectTile className="w-std" href="/projets" kicker="Outil · MCP" title="Cartable" description="Prospection d'écoles et rentabilité des contrats pour formateur indépendant.">
             <span className="chips" style={{ marginTop: "var(--space-2)" }}>
               <Chip tone="good">rentable</Chip><Chip tone="warn">limite</Chip><Chip tone="bad">à refuser</Chip>
             </span>
           </ProjectTile>
-          <ProjectTile className="w-std" href="https://duoshot.vercel.app" kicker="Produit · Next.js" title="DuoShot" description="Les captures App Store de l'iPhone Duo, en trois minutes, sans appareil." />
-          <ProjectTile className="w-std" href="https://spocsk.github.io/oru/" kicker="App iOS · SwiftUI" title="Oru" description="L'origami guidé pli par pli, pour iPhone, iPad et iPhone Duo." />
-          <ProjectTile className="w-std" tone="highlight" href="https://latent-eta-wheat.vercel.app" kicker="Pédagogie" title="Latent" description="Une plateforme interactive pour comprendre comment fonctionnent les LLM." />
+          <ProjectTile className="w-std" href="/projets" kicker="Produit · Next.js" title="DuoShot" description="Les captures App Store de l'iPhone Duo, en trois minutes, sans appareil." />
+          <ProjectTile className="w-std" href="/projets" kicker="App iOS · SwiftUI" title="Oru" description="L'origami guidé pli par pli, pour iPhone, iPad et iPhone Duo." />
+          <ProjectTile className="w-std" tone="highlight" href="/projets" kicker="Pédagogie" title="Latent" description="Une plateforme interactive pour comprendre comment fonctionnent les LLM." />
         </div>
       </section>
 

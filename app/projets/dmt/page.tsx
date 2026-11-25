@@ -34,7 +34,7 @@ export default function DmtPage() {
         keywords: "Angular 20, NestJS 11, PostgreSQL, Docker, GitHub Actions",
         author: { "@id": `${homepage}#person` },
       }} />
-      <Link href="/projets" className="back-link">← Tous les projets</Link>
+      <p className="back-link"><Link href="/projets">← Tous les projets</Link></p>
 
       <section className="row" aria-labelledby="titre">
         <Tile tone="ink" className="w-wide">
@@ -89,13 +89,10 @@ export default function DmtPage() {
       <section className="section row" aria-label="Suite">
         <Tile href="/projets" className="w-std next-tile">
           <span className="bt-label">Projet suivant</span>
-          <span className="bt-project__title">Cartable et les autres →</span>
-        </Tile>
-        <Tile href="/contact" tone="accent" className="w-std next-tile">
-          <span className="bt-label">Une question sur DMT ?</span>
-          <span className="bt-project__title">Parlons-en →</span>
+          <span className="h-tile" style={{ fontSize: 32, letterSpacing: "-0.02em" }}>Cartable →</span>
         </Tile>
       </section>
+      <div className="footer-gap" />
     </>
   );
 }

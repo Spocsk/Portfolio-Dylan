@@ -17,7 +17,7 @@ export default function ContactPage() {
             <span className="bt-label">Contact</span>
             <h1 id="titre" className="cta-title cta-title--xl" style={{ fontSize: "clamp(48px, 7vw, 104px)" }}>Parlons<br />de ton projet.</h1>
             <div className="col" style={{ gap: 14 }}>
-              <a className="contact-email" href={`mailto:${siteConfig.email}`} data-umami-event="contact_email_click" data-umami-event-placement="contact">{siteConfig.email}</a>
+              <span className="contact-email">{siteConfig.email}</span>
               <div className="buttons">
                 <Button variant="inverse" href={`mailto:${siteConfig.email}`} event="contact_email_click">M&apos;écrire</Button>
                 <Button variant="inverse-ghost" href="/cv">Voir mon CV</Button>
@@ -40,6 +40,7 @@ export default function ContactPage() {
           <span className="note" style={{ fontSize: 14 }}>Coordonnées sur demande.</span>
         </Tile>
       </section>
+      <div className="footer-gap" />
     </>
   );
 }
