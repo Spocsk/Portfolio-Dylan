@@ -72,7 +72,7 @@ export function ProjectTile({ title, description, kicker, href, featured, tone, 
   const resolvedTone: Tone = featured ? "ink" : tone ?? "surface";
   const media = image ? (
     <div className="bt-project__media">
-      <Image src={image.src} alt={image.alt} fill sizes={featured ? "(max-width: 900px) 100vw, 840px" : "(max-width: 900px) 100vw, 420px"} />
+      <Image src={image.src} alt={image.alt} fill sizes={featured ? "(max-width: 900px) 100vw, 840px" : "(max-width: 900px) 100vw, 600px"} />
     </div>
   ) : null;
   const body = (
