@@ -1,23 +1,31 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Dylan CDO - Je conçois, je transmets, j’automatise";
+export const alt = "Dylan Couto de Oliveira · Fullstack TypeScript, Angular × NestJS";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", background: "#f1efe8", color: "#151719", fontFamily: "Arial, sans-serif" }}>
-      <div style={{ width: "56%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "54px 58px" }}>
-        <div style={{ display: "flex", fontSize: 27, fontWeight: 700, letterSpacing: "-1.5px" }}>Dylan <span style={{ color: "#224dff", marginLeft: 7 }}>CDO</span></div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 72, fontWeight: 700, letterSpacing: "-4px", lineHeight: .92 }}>
-          <span>Je conçois,</span><span>je transmets,</span><span style={{ color: "#224dff" }}>j’automatise.</span>
+    <div style={{ width: "100%", height: "100%", display: "flex", gap: 16, padding: 40, background: "#ededea", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ flex: 2, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 44, borderRadius: 28, background: "#ffffff", color: "#0e0e0e" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, fontWeight: 700 }}>
+          <div style={{ display: "flex", width: 52, height: 52, borderRadius: 14, background: "#2d3bff", color: "#ffffff", alignItems: "center", justifyContent: "center", fontSize: 20 }}>DC</div>
+          Dylan.
         </div>
-        <span style={{ fontSize: 17, color: "#626660" }}>Développement · Écoles · Automatisations IA</span>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 76, fontWeight: 700, letterSpacing: "-3px", lineHeight: 0.95 }}>
+          <span>Fullstack TypeScript,</span>
+          <span style={{ display: "flex" }}>Angular<span style={{ color: "#2d3bff", margin: "0 18px" }}>×</span>NestJS.</span>
+        </div>
+        <span style={{ fontSize: 24, color: "#3d3d3a" }}>Dylan Couto de Oliveira · développeur full-stack sénior</span>
       </div>
-      <div style={{ width: "44%", display: "flex", alignItems: "center", padding: 38, background: "#181a1e" }}>
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", border: "1px solid #3c4047", borderRadius: 8 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", padding: "23px", borderBottom: "1px solid #353940", color: "#f5f4ee" }}><span>Tableau d’opérations</span><span style={{ color: "#58e19d" }}>● actif</span></div>
-          {["Demande reçue", "Besoin extrait", "Validation humaine"].map((item, index) => <div key={item} style={{ display: "flex", justifyContent: "space-between", padding: "24px 23px", borderBottom: index < 2 ? "1px solid #30343a" : "1px solid transparent", color: index === 2 ? "#ffffff" : "#989da6", background: index === 2 ? "#253485" : "transparent" }}><span>0{index + 1} / {item}</span><span>{index < 2 ? "OK" : "EN COURS"}</span></div>)}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 32, borderRadius: 28, background: "#2d3bff", color: "#ffffff" }}>
+          <span style={{ fontSize: 20, fontWeight: 600 }}>Pipelines GitLab CI</span>
+          <span style={{ fontSize: 80, fontWeight: 700, letterSpacing: "-3px" }}>−30 %</span>
+        </div>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 32, borderRadius: 28, background: "#ffd43b", color: "#0e0e0e" }}>
+          <span style={{ fontSize: 20, fontWeight: 600 }}>Tests</span>
+          <span style={{ fontSize: 80, fontWeight: 700, letterSpacing: "-3px" }}>80 %+</span>
         </div>
       </div>
     </div>,

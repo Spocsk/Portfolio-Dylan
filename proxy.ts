@@ -1,8 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { isPrefixedLocale, localeFromPathname } from "./lib/i18n";
-
+// Send the bare domain to www so every page has a single canonical host.
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");
 
@@ -14,15 +13,7 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  const pathname = request.nextUrl.pathname;
-  const pathnameLocale = localeFromPathname(pathname);
-  const firstSegment = pathname.split("/")[1];
-  const locale = isPrefixedLocale(firstSegment) ? pathnameLocale : "fr";
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-portfolio-locale", locale);
-
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  return NextResponse.next();
 }
 
 export const config = {

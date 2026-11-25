@@ -1,36 +1,20 @@
-# Dylan COUTO DE OLIVEIRA
+# Dylan Couto de Oliveira
 
-> Portfolio professionnel de Dylan COUTO DE OLIVEIRA, développeur full-stack TypeScript basé en Normandie. Il conçoit des applications web, intervient dans les écoles de développement et crée des agents et automatisations IA pour les PME.
+> Portfolio de Dylan Couto de Oliveira, développeur full-stack TypeScript sénior (Angular × NestJS, aussi React, Next.js et SwiftUI), basé entre la Normandie et Paris. Six ans de micro-frontends, de microservices et de pipelines, du SaaS pour les collectivités au monitoring environnemental. Il enseigne aussi le développement en Bachelor et Mastère.
 
-Le site est en français, avec une version anglaise sous `/en`. Les pages de projets décrivent le contexte, le rôle de Dylan, la solution et les résultats. Pour une information détaillée ou récente, consulter la page liée plutôt que ce résumé. Contact : contact@dylan-cdo.fr.
+Le site est en français. Pour une information détaillée ou récente, consulter la page liée plutôt que ce résumé. Contact : contact@dylan-cdo.fr.
 
-## Présentation et services
+## Pages
 
-- [Accueil](https://www.dylan-cdo.fr/) : profil et principaux domaines d'activité.
-- [À propos](https://www.dylan-cdo.fr/a-propos) : parcours, compétences et approche de travail.
-- [Interventions en école](https://www.dylan-cdo.fr/interventions-ecoles) : modules, ateliers, jurys et projets pédagogiques pour les cursus Bac+2 à Bac+5.
-- [Agents et automatisations IA](https://www.dylan-cdo.fr/agents-automatisations-ia) : conception de workflows sur mesure pour les PME.
-- [Contact](https://www.dylan-cdo.fr/contact) : moyens de joindre Dylan et de prendre rendez-vous.
-
-## Études de cas
-
-- [Tous les projets](https://www.dylan-cdo.fr/projets) : index des études de cas.
-- [Campbell Scientific](https://www.dylan-cdo.fr/projets/campbell-scientific) : applications industrielles Angular et NestJS pour l'acquisition et l'exploitation de données.
-- [Operis](https://www.dylan-cdo.fr/projets/operis) : interfaces Angular pour des logiciels destinés aux collectivités.
-- [DuoShot](https://www.dylan-cdo.fr/projets/duoshot) : SaaS Next.js de création de captures App Store.
-- [Cast Loop](https://www.dylan-cdo.fr/projets/cast-loop) : plateforme SaaS de planification et de publication sur les réseaux sociaux.
-- [PoseLock](https://www.dylan-cdo.fr/projets/poselock) : application iOS de posing avec analyse sur l'appareil.
-- [Pas envoyé](https://www.dylan-cdo.fr/projets/pas-envoye) : application iOS de suivi no-contact et de brouillons non envoyés.
-- [BibliFlow](https://www.dylan-cdo.fr/projets/bibliflow) : projet pédagogique autour de Docker, Jenkins et SonarQube.
+- [Accueil](https://www.dylan-cdo.fr/) : profil, chiffres clés, projets choisis et parcours.
+- [Expériences](https://www.dylan-cdo.fr/experiences) : Campbell Scientific (2024-2026), Operis (2022-2024), Citizens (2020-2022), missions, résultats et stack.
+- [Projets](https://www.dylan-cdo.fr/projets) : produits web, apps iOS, plateformes de cours, sites clients.
+- [DMT](https://www.dylan-cdo.fr/projets/dmt) : étude de cas d'une médiathèque auto-hébergée en production (Angular 20, NestJS 11, PostgreSQL).
+- [À propos](https://www.dylan-cdo.fr/a-propos) : parcours, compétences techniques, formation, enseignement.
+- [CV](https://www.dylan-cdo.fr/cv) : curriculum vitæ complet.
+- [Contact](https://www.dylan-cdo.fr/contact) : email, LinkedIn, GitHub.
 
 ## Optional
 
-- [English homepage](https://www.dylan-cdo.fr/en) : point d'entrée de la version anglaise ; les pages et études de cas y sont également disponibles sous `/en`.
-- [MakeItGueznet](https://www.dylan-cdo.fr/projets/makeitgueznet) : jeu de soirée web avec salles et votes en temps réel.
-- [Victor COUTO](https://www.dylan-cdo.fr/projets/victor-couto) : site vitrine pour un artisan.
-- [HP Sonorisation](https://www.dylan-cdo.fr/projets/hp-sonorisation) : site vitrine événementiel.
-- [2048 Swift Game](https://www.dylan-cdo.fr/projets/swift-2048) : exploration iOS autour de la logique du jeu 2048.
-- [Allocator C++](https://www.dylan-cdo.fr/projets/allocator-cpp) : exploration de l'allocation mémoire en C++.
-- [Ce portfolio](https://www.dylan-cdo.fr/projets/portfolio-dylan) : conception du site et travail sur sa structure SEO.
-- [GitHub](https://github.com/Spocsk) : profil et dépôts publics de Dylan.
-- [LinkedIn](https://www.linkedin.com/in/dylan-cdo/) : profil professionnel de Dylan.
+- [GitHub](https://github.com/Spocsk) : dépôts publics.
+- [LinkedIn](https://www.linkedin.com/in/dylan-cdo/) : profil professionnel.

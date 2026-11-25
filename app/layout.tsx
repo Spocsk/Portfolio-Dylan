@@ -1,19 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
+import { Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { getDictionary, isLocale } from "../lib/i18n";
+import JsonLd from "../components/json-ld";
+import SiteFrame from "../components/site-frame";
 import { createPageMetadata, getSiteSchema, siteConfig } from "../lib/site";
 import "../style.css";
 
-const geist = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -23,13 +29,12 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "portfolio",
   ...createPageMetadata({
-    ...getDictionary("fr").metadata.home,
+    title: "Dylan Couto de Oliveira · Développeur full-stack TypeScript, Angular × NestJS",
+    description: siteConfig.description,
     path: "/",
-    locale: "fr",
+    ogType: "profile",
   }),
-  appleWebApp: {
-    title: "Dylan CDO",
-  },
+  appleWebApp: { title: "Dylan CDO" },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -44,33 +49,17 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#faf9f7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ededea" },
+    { media: "(prefers-color-scheme: dark)", color: "#111112" },
+  ],
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
-  const requestHeaders = await headers();
-  const localeHeader = requestHeaders.get("x-portfolio-locale") ?? "fr";
-  const locale = isLocale(localeHeader) ? localeHeader : "fr";
-  const dictionary = getDictionary(locale);
-
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html
-      lang={dictionary.htmlLang}
-      className={`${geist.variable} ${geistMono.variable}`}
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="fr-FR" className={`${spaceGrotesk.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getSiteSchema(locale)),
-          }}
-        />
+        <JsonLd data={getSiteSchema()} />
         <script
           defer
           src="https://analytics.dylan-cdo.fr/script.js"
@@ -81,7 +70,7 @@ export default async function RootLayout({
           data-performance="true"
           data-do-not-track="true"
         />
-        {children}
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );
