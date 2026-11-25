@@ -1,4 +1,4 @@
-# Dylan CDO
+# Dylan Couto de Oliveira
 
 <!-- impeccable:product-schema 1 -->
 
@@ -8,64 +8,64 @@ web
 
 ## Users
 
-- Directions pedagogiques et responsables de programmes d'ecoles de developpement en France, pour des interventions du Bac+2 au Bac+5.
-- Responsables de PME et equipes commerciales, administratives ou support qui veulent reduire les taches repetitives entre leurs outils.
-- Recruteurs et equipes techniques, comme audience secondaire, qui evaluent le parcours de developpeur full-stack de Dylan.
+- Recruteurs et responsables techniques qui évaluent un développeur full-stack TypeScript sénior pour un poste ou une mission.
+- Clients potentiels qui cherchent quelqu'un pour concevoir ou reprendre une application Angular, NestJS, React ou Next.js.
+- Écoles et responsables de programmes, en audience secondaire, qui découvrent l'activité de formateur de Dylan.
 
 ## Product Purpose
 
-Le site presente Dylan CDO comme un expert hybride capable de concevoir des produits web, transmettre le developpement et livrer des agents ou automatisations IA utiles au travail reel. Il doit permettre de comprendre rapidement chaque offre, d'en voir une preuve credible et de reserver un echange de 30 minutes ou d'envoyer un email.
+Montrer en une page ce que Dylan sait faire, ce qu'il a construit et comment le joindre. Un recruteur ou un client doit comprendre en dix secondes : fullstack Angular × NestJS, des projets réels en production, un parcours lisible. Chaque page se termine sur une voie courte vers le contact ou le CV.
 
 ## Positioning
 
-Dylan relie trois pratiques rarement reunies dans un meme profil : une experience full-stack TypeScript en production, une pratique pedagogique du Bac+2 au Bac+5 et la capacite de construire des automatisations hybrides combinant code, API, orchestrateurs et agents IA.
+Développeur full-stack TypeScript sénior, Angular × NestJS, aussi React, Next.js et SwiftUI. Six ans de micro-frontends, de microservices et de pipelines, du SaaS pour les collectivités au monitoring environnemental. Il enseigne aussi le développement en Bachelor et Mastère, et code ses cours comme des jeux.
 
-## Operating Context
+## Site Map
 
-- Interventions pedagogiques a distance partout en France et en presentiel selon le calendrier.
-- Modules recurrents, workshops, jurys, semaines intensives et projets fil rouge.
-- Automatisations pour des workflows commerciaux, administratifs et support.
-- Stack d'automatisation : TypeScript, API, n8n, Make et agents IA. Hermes Agent de Nous Research peut etre retenu apres cadrage.
-- Parcours de livraison IA : audit, prototype, deploiement, documentation, formation et maintenance optionnelle.
+- `/` : accueil, chiffres clés, projets choisis, parcours, bloc contact.
+- `/experiences` : Campbell Scientific, Operis, Citizens, en parallèle l'activité de formateur, références.
+- `/projets` : produits, apps iOS, plateformes de cours, sites clients, projets pour le plaisir.
+- `/projets/dmt` : seule étude de cas détaillée, la médiathèque auto-hébergée DMT.
+- `/a-propos` : portrait, savoir-faire, compétences techniques, formation, enseignement.
+- `/contact` : email, LinkedIn, GitHub, localisation, références.
+- `/cv` : CV complet en HTML, imprimable ou enregistrable en PDF depuis le navigateur.
 
 ## Capabilities and Constraints
 
-- Site Next.js et TypeScript existant, a refondre sans perdre les etudes de cas ni les signaux SEO utiles.
-- Premiere version publique en francais et en anglais.
-- Les anciennes routes espagnoles doivent rediriger vers leur equivalent anglais.
-- Les prix restent sur devis.
-- Les prises de rendez-vous utilisent https://calendar.app.google/HrpfJcFVepgRzhar6.
-- L'email public reste contact@dylan-cdo.fr.
-- Les automatisations sensibles gardent une validation humaine, des acces minimaux et des actions tracables.
-- Le site conserve Umami pour la mesure des interactions.
+- Site Next.js 16 et TypeScript, rendu statique, déployé en conteneur Docker depuis `main`.
+- Français uniquement. L'ancienne version anglaise `/en`, les pages services `/interventions-ecoles` et `/agents-automatisations-ia` et les anciennes études de cas redirigent en 308 vers la page la plus proche (`next.config.ts`).
+- Email public : contact@dylan-cdo.fr. Localisation affichée : Normandie / Paris.
+- Le CV PDF d'origine contient un numéro de téléphone et une autre adresse email : il n'est pas publié. Le bouton du CV imprime la page.
+- Umami mesure les interactions (`data-umami-event` sur les liens email et le bouton d'impression).
+- Le design de référence est la page « Portfolio — Bento » du canvas de conception ; le site doit lui rester fidèle.
 
 ## Brand Commitments
 
-- Signature visible : Dylan CDO.
-- Nom complet pour le referencement et la page A propos : Dylan Couto de Oliveira.
-- Ton personnel, concret et professionnel. Le site parle en "je" et s'adresse au visiteur avec "vous".
-- La reference Kirako.ai concerne la capacite a rendre des workflows concrets et lisibles, pas son identite, sa mise en page ou ses textes.
-- Les illustrations de workflow doivent etre de vraies mini-interfaces animees, pas des videos, des GIF ou des captures factices.
+- Marque : le monogramme `DC` sur carré bleu suivi de « Dylan. ». Le favicon reprend le carré `DC`.
+- Nom complet pour le référencement : Dylan Couto de Oliveira.
+- Français, tutoiement, phrases courtes : « Parlons de ton projet. »
+- Des faits, pas d'adjectifs : « −30 % de temps de build », « 5 devs accompagnés ». Pas de « passionné », « expert reconnu », « solutions innovantes ».
+- Pas d'emoji, pas de point d'exclamation.
 
 ## Evidence on Hand
 
-- Etudes de cas et projets dans `lib/projects.ts`, avec des preuves de production pour Campbell Scientific, Operis et plusieurs produits personnels.
-- Projet pedagogique BibliFlow et contenus d'enseignement existants, sans affichage public du nom des ecoles dans la nouvelle offre.
-- Captures de projets disponibles dans `public/assets/`.
-- Aucun cas client IA publiable, aucun temoignage IA et aucun resultat chiffre IA ne doivent etre fabriques.
-- Les workflows IA sont des scenarios demonstratifs et doivent etre identifies comme tels.
-- Un portrait reel sera fourni par Dylan avant son integration finale. Aucun portrait ne doit etre genere ou recupere automatiquement.
+- Contenus du site dans `lib/content.ts` : expériences, projets, compétences, formation, références.
+- Chiffres publiés, tous sourcés dans le parcours : −30 % de temps de build GitLab CI (Campbell), couverture de tests au-delà de 80 % (Campbell, Operis), ~10 micro-frontends et 10 microservices (Campbell), 15 000 utilisateurs par jour et ≈ 60 % des métropoles françaises (Operis), 5 développeurs accompagnés.
+- Captures disponibles dans `public/assets/` ; seules DuoShot et Cast Loop sont affichées, comme dans la maquette.
+- Portrait réel fourni par Dylan : `public/portrait.jpg`.
+- Pas de capture de DMT ni de Cartable pour l'instant.
 
 ## Product Principles
 
 - Montrer un travail concret avant d'affirmer une expertise.
-- Expliquer chaque automatisation par son declencheur, son traitement, sa validation et son resultat.
-- Ne jamais inventer de client, de chiffre, de temoignage ou de preuve pedagogique.
-- Conserver une voie courte vers la prise de rendez-vous et une alternative par email.
-- Faire de l'accessibilite, de la performance et de la clarte bilingue des criteres de livraison.
+- Ne jamais inventer de client, de chiffre, de témoignage ou de projet.
+- Un projet se décrit par ce qu'il fait pour quelqu'un, en une phrase ; la stack vient après, en étiquette.
+- Ce qui manque ne s'affiche pas : pas de texte entre crochets en production.
+- Accessibilité, performance et fidélité à la maquette sont des critères de livraison.
 
 ## Accessibility & Inclusion
 
-- Navigation complete au clavier, focus visibles et contrastes WCAG AA.
-- Chaque illustration animee reste comprehensible avec `prefers-reduced-motion`.
-- Les animations non essentielles s'arretent hors ecran et lorsque l'onglet est masque.
+- Texte courant au moins 4,5:1 dans les thèmes clair et sombre.
+- Focus clavier visible partout, cibles tactiles d'au moins 44 px.
+- Thème clair, sombre ou système au choix du visiteur ; « Système » suit le réglage de l'appareil.
+- Les animations se limitent au soulèvement des tuiles et s'arrêtent avec `prefers-reduced-motion`.

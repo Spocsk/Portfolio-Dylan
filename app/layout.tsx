@@ -2,9 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 
+import InlineScript from "../components/inline-script";
 import JsonLd from "../components/json-ld";
 import SiteFrame from "../components/site-frame";
 import { createPageMetadata, getSiteSchema, siteConfig } from "../lib/site";
+import { themeInitScript } from "../lib/theme";
 import "../style.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -57,7 +59,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="fr-FR" className={`${spaceGrotesk.variable} ${inter.variable}`} data-scroll-behavior="smooth">
+    <html lang="fr-FR" className={`${spaceGrotesk.variable} ${inter.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <InlineScript html={themeInitScript} />
+      </head>
       <body>
         <JsonLd data={getSiteSchema()} />
         <script

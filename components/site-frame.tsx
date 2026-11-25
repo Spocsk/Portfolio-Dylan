@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { Mark } from "./bento";
 import SiteNav from "./site-nav";
+import ThemeSwitch from "./theme-switch";
 
 export default function SiteFrame({ children }: { children: ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function SiteFrame({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer className="site-footer">
         <p>© 2026 Dylan Couto de Oliveira</p>
+        <ThemeSwitch />
       </footer>
     </div>
   );

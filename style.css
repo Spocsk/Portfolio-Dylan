@@ -18,8 +18,20 @@
   color-scheme: light dark;
 }
 
+/* Theme: "system" (no data-theme) follows the OS; data-theme forces light or dark. */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #111112; --surface: #1b1b1d; --surface-sunken: #111112;
+  --ink: #f2f2ee; --ink-soft: #c4c4be; --muted: #9a9a94; --line: #2c2c2e;
+  --accent: #4f5bff; --on-accent: #ffffff; --accent-text: #8c95ff;
+  --inverse: #f2f2ee; --on-inverse: #0e0e0e; --on-inverse-soft: #3d3d3a;
+  --inverse-raised: #dcdcd6; --inverse-faint: #55554f; --inverse-line: #b5b5af;
+  --success: #3dbe74; --verdict-good: #1f3b2a; --verdict-warn: #3d3415; --verdict-bad: #43241c;
+  --focus: #8c95ff;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --canvas: #111112; --surface: #1b1b1d; --surface-sunken: #111112;
     --ink: #f2f2ee; --ink-soft: #c4c4be; --muted: #9a9a94; --line: #2c2c2e;
     --accent: #4f5bff; --on-accent: #ffffff; --accent-text: #8c95ff;
@@ -43,8 +55,12 @@ a:hover { color: var(--accent-text); }
 /* Page shell */
 .page { max-width: var(--container-max); margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 40px; }
 .site-header { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; padding: 20px 0; }
-.site-footer { margin: 24px 0 0; font-size: 13px; color: var(--muted); }
+.site-footer { margin: 24px 0 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; font-size: 13px; color: var(--muted); }
 .site-footer p { margin: 0; }
+.theme-switch { display: flex; gap: var(--space-1); background: var(--surface); border-radius: var(--radius-full); padding: var(--space-1); }
+.theme-switch button { min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--radius-full); background: transparent; color: var(--ink); font-family: var(--font-sans); font-size: 14px; font-weight: 500; cursor: pointer; }
+.theme-switch button:hover { color: var(--accent-text); }
+.theme-switch button[aria-pressed="true"], .theme-switch button[aria-pressed="true"]:hover { background: var(--ink); color: var(--surface); font-weight: 600; }
 .footer-gap { height: 16px; }
 
 /* Layout helpers */
